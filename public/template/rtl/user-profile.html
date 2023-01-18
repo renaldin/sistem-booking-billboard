@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="TechyDevs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trizen - Travel Booking HTML Template</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link href="../../../../../../../fonts.googleapis.com/css2bff7.css?family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+
+    <!-- Template CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="css/line-awesome.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/animated-headline.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.filer.css">
+    <link rel="stylesheet" href="css/flag-icon.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-rtl.css">
+</head>
+<body>
+<!-- start cssload-loader -->
+<div class="preloader" id="preloader">
+    <div class="loader">
+        <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+    </div>
+</div>
+<!-- end cssload-loader -->
+
+<!-- ================================
+            START HEADER AREA
+================================= -->
+<header class="header-area">
+    <div class="header-top-bar padding-right-100px padding-left-100px">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="header-top-content">
+                        <div class="header-left">
+                            <ul class="list-items">
+                                <li><a href="#"><i class="la la-phone mr-1"></i>(123) 123-456</a></li>
+                                <li><a href="#"><i class="la la-envelope mr-1"></i>trizen@example.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="header-top-content">
+                        <div class="header-right d-flex align-items-center justify-content-end">
+                            <div class="header-right-action">
+                                <div class="select-contain select--contain w-auto">
+                                    <select class="select-contain-select">
+                                        <option data-content='<span class="flag-icon flag-icon-id mr-1"></span> Bahasa Indonesia'>Bahasa Indonesia</option>
+                                        <option data-content='<span class="flag-icon flag-icon-de mr-1"></span> Deutsch'>Deutsch</option>
+                                        <option data-content='<span class="flag-icon flag-icon-us mr-1"></span> English(US)' selected>English US</option>
+                                        <option data-content='<span class="flag-icon flag-icon-gb-eng mr-1"></span> English(UK)'>English UK</option>
+                                        <option data-content='<span class="flag-icon flag-icon-ro mr-1"></span> Romanian'>Romanian</option>
+                                        <option data-content='<span class="flag-icon flag-icon-es mr-1"></span> Español'>Español</option>
+                                        <option data-content='<span class="flag-icon flag-icon-fr mr-1"></span> Francais'>Francais</option>
+                                        <option data-content='<span class="flag-icon flag-icon-it mr-1"></span> Italiano'>Italiano</option>
+                                        <option data-content='<span class="flag-icon flag-icon-pl mr-1"></span> Polski'>Polski</option>
+                                        <option data-content='<span class="flag-icon flag-icon-pt mr-1"></span> Portuguese'>Portuguese</option>
+                                        <option data-content='<span class="flag-icon flag-icon-tr mr-1"></span> Turkish'>Turkish</option>
+                                        <option data-content='<span class="flag-icon flag-icon-ru mr-1"></span> Russian'>Russian</option>
+                                        <option data-content='<span class="flag-icon flag-icon-jp mr-1"></span> Japanese'>Japanese</option>
+                                        <option data-content='<span class="flag-icon flag-icon-cn mr-1"></span> Mandarin'>Mandarin</option>
+                                        <option data-content='<span class="flag-icon flag-icon-tw mr-1"></span> Mandarin Chinese'>Mandarin Chinese</option>
+                                        <option data-content='<span class="flag-icon flag-icon-kr mr-1"></span> Korean'>Korean</option>
+                                        <option data-content='<span class="flag-icon flag-icon-in mr-1"></span> Hindi'>Hindi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="header-right-action">
+                                <div class="select-contain select--contain w-auto">
+                                    <select class="select-contain-select">
+                                        <option value="1">AED</option>
+                                        <option value="2">AUD</option>
+                                        <option value="3">BRL</option>
+                                        <option value="4">CAD</option>
+                                        <option value="5">CHF</option>
+                                        <option value="6">CNY</option>
+                                        <option value="7">EUR</option>
+                                        <option value="8">GBP</option>
+                                        <option value="9">HKD</option>
+                                        <option value="10">IDR</option>
+                                        <option value="11">INR</option>
+                                        <option value="12">JPY</option>
+                                        <option value="13">KRW</option>
+                                        <option value="14">MYR</option>
+                                        <option value="15">NZD</option>
+                                        <option value="16">PHP</option>
+                                        <option value="17">PLN</option>
+                                        <option value="18">RUB</option>
+                                        <option value="19">SAR</option>
+                                        <option value="20">SGD</option>
+                                        <option value="21">THB</option>
+                                        <option value="22">TRY</option>
+                                        <option value="23">TWD</option>
+                                        <option value="24" selected>USD</option>
+                                        <option value="25">VND</option>
+                                        <option value="26">MXN</option>
+                                        <option value="27">ARS</option>
+                                        <option value="28">INR</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="header-right-action">
+                                <a href="#" class="theme-btn theme-btn-small theme-btn-transparent mr-1" data-toggle="modal" data-target="#signupPopupForm">سجل</a>
+                                <a href="#" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">تسجيل الدخول</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-menu-wrapper border-bottom padding-right-100px padding-left-100px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="menu-wrapper">
+                        <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                            <div class="menu-toggler">
+                                <i class="la la-bars"></i>
+                                <i class="la la-times"></i>
+                            </div><!-- end menu-toggler -->
+                        </div><!-- end logo -->
+                        <div class="main-menu-content">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="#">الصفحة الرئيسية <i class="la la-angle-down"></i></a>
+                                        <ul class="dropdown-menu-item">
+                                            <li><a href="index.html">الصفحة الرئيسية - الرئيسية</a></li>
+                                            <li><a href="index2.html">الصفحة الرئيسية - فندق</a></li>
+                                            <li><a href="index3.html">الصفحة الرئيسية - النشاط</a></li>
+                                            <li><a href="index4.html">الصفحة الرئيسية - السيارة</a></li>
+                                            <li><a href="index5.html">الصفحة الرئيسية - كروز</a></li>
+                                            <li><a href="index6.html">المنزل - رحلة</a></li>
+                                            <li><a href="index7.html">المنزل - جولة في المدينة <span class="badge bg-2 text-white">New</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">جولة <i class="la la-angle-down"></i></a>
+                                        <ul class="dropdown-menu-item">
+                                            <li><a href="tour-fullwidth.html">العرض الكامل للجولة</a></li>
+                                            <li><a href="tour-grid.html">شبكة الرحلات</a></li>
+                                            <li><a href="tour-list.html">قائمة الجولات</a></li>
+                                            <li><a href="tour-left-sidebar.html">جولة في الشريط الجانبي الأيسر</a></li>
+                                            <li><a href="tour-right-sidebar.html">جولة الشريط الجانبي الأيمن</a></li>
+                                            <li><a href="tour-details.html">تفاصيل الجولة</a></li>
+                                            <li><a href="tour-booking.html">حجز الرحلات</a></li>
+                                            <li><a href="tour-search-result.html">نتيجة البحث عن الجولة</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">رحلة بحرية <i class="la la-angle-down"></i></a>
+                                        <ul class="dropdown-menu-item">
+                                            <li><a href="cruises.html">الرحلات البحرية</a></li>
+                                            <li><a href="cruises-list.html">قائمة الرحلات البحرية</a></li>
+                                            <li><a href="cruise-sidebar.html">كروز الشريط الجانبي</a></li>
+                                            <li><a href="cruise-details.html">تفاصيل الرحلة</a></li>
+                                            <li><a href="cruise-booking.html">حجز الرحلات البحرية</a></li>
+                                            <li><a href="cruise-search-result.html">نتيجة بحث الرحلات البحرية</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">الصفحات <i class="la la-angle-down"></i></a>
+                                        <div class="dropdown-menu-item mega-menu">
+                                            <ul class="row no-gutters">
+                                                <li class="col-lg-3 mega-menu-item">
+                                                    <ul>
+                                                        <li><a href="add-hotel.html">إضافة فندق </a></li>
+                                                        <li><a href="add-flight.html">أضف رحلة </a></li>
+                                                        <li><a href="add-tour.html">أضف جولة </a></li>
+                                                        <li><a href="add-cruise.html">أضف رحلة بحرية </a></li>
+                                                        <li><a href="add-car.html">أضف سيارة</a></li>
+                                                        <li><a href="user-dashboard.html">لوحة تحكم المستخدم</a></li>
+                                                        <li><a href="admin-dashboard.html">لوحة تحكم المسؤول</a></li>
+                                                        <li><a href="career.html">مسار مهني مسار وظيفي <span class="badge bg-2 text-white">New</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 mega-menu-item">
+                                                    <ul>
+                                                        <li><a href="career-details.html">تفاصيل المهنة <span class="badge bg-2 text-white">New</span></a></li>
+                                                        <li><a href="user-profile.html">ملف تعريفي للمستخدم</a></li>
+                                                        <li><a href="become-local-expert.html">كن خبيرًا محليًا</a></li>
+                                                        <li><a href="contact.html">اتصل</a></li>
+                                                        <li><a href="cart.html">عربة التسوق</a></li>
+                                                        <li><a href="checkout.html">الدفع</a></li>
+                                                        <li><a href="recover.html">إستعادة كلمة المرور</a></li>
+                                                        <li><a href="payment-received.html">تم استلام الدفع</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 mega-menu-item">
+                                                    <ul>
+                                                        <li><a href="payment-complete.html">الدفع تم</a></li>
+                                                        <li><a href="destinations.html">الأماكن</a></li>
+                                                        <li><a href="about.html">حول</a></li>
+                                                        <li><a href="services.html">خدماتنا</a></li>
+                                                        <li><a href="gallery.html">صالة عرض</a></li>
+                                                        <li><a href="pricing.html">التسعير</a></li>
+                                                        <li><a href="faq.html">التعليمات</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-lg-3 mega-menu-item">
+                                                    <ul>
+                                                        <li><a href="blog-full-width.html">بلوق كاملة العرض</a></li>
+                                                        <li><a href="blog-grid.html">شبكة بلوق</a></li>
+                                                        <li><a href="blog-sidebar.html">الشريط الجانبي للمدونة</a></li>
+                                                        <li><a href="blog-single.html">تفاصيل المدونة</a></li>
+                                                        <li><a href="coming-soon.html">قريبا</a></li>
+                                                        <li><a href="page-404.html">404 صفحة</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">طيران <i class="la la-angle-down"></i></a>
+                                        <ul class="dropdown-menu-item">
+                                            <li><a href="flight-grid.html">شبكة الطيران</a></li>
+                                            <li><a href="flight-list.html">قائمة الرحلات</a></li>
+                                            <li><a href="flight-sidebar.html">الشريط الجانبي للرحلة</a></li>
+                                            <li><a href="flight-single.html">تفاصيل الرحلة</a></li>
+                                            <li><a href="flight-booking.html">حجز رحلة طيران </a></li>
+                                            <li><a href="flight-search-result.html">نتيجة بحث الرحلة </a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">الفندق <i class="la la-angle-down"></i></a>
+                                        <ul class="dropdown-menu-item">
+                                            <li><a href="hotel-grid.html">فندق الشبكة </a></li>
+                                            <li><a href="hotel-list.html">قائمة الفنادق</a></li>
+                                            <li><a href="hotel-sidebar.html"> فندق الشريط الجانبي</a></li>
+                                            <li><a href="hotel-single.html">تفاصيل الفندق</a></li>
+                                            <li><a href="hotel-booking.html">حجز الفندق</a></li>
+                                            <li><a href="hotel-search-result.html">نتيجة بحث الفندق</a></li>
+                                            <li>
+                                                <a href="#">غرف <i class="la la-plus"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="room-list.html">قائمة غرفة</a></li>
+                                                    <li><a href="room-grid.html">شبكة الغرفة</a></li>
+                                                    <li><a href="room-search-result.html">نتيجة البحث</a></li>
+                                                    <li><a href="room-search-result-list.html">قائمة نتائج البحث</a></li>
+                                                    <li><a href="room-details.html">تفاصيل الغرفة</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">سيارة <i class="la la-angle-down"></i></a>
+                                        <ul class="dropdown-menu-item">
+                                            <li><a href="car-grid.html">شبكة السيارة</a></li>
+                                            <li><a href="car-list.html">قائمة سيارة</a></li>
+                                            <li><a href="car-sidebar.html">الشريط الجانبي للسيارة </a></li>
+                                            <li><a href="car-single.html">تفاصيل السيارة</a></li>
+                                            <li><a href="car-booking.html">حجز السيارة</a></li>
+                                            <li><a href="car-search-result.html">نتيجة البحث عن سيارة</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div><!-- end main-menu-content -->
+                        <div class="nav-btn">
+                            <a href="become-local-expert.html" class="theme-btn">كن خبيرًا محليًا</a>
+                        </div><!-- end nav-btn -->
+                    </div><!-- end menu-wrapper -->
+                </div><!-- end col-lg-12 -->
+            </div><!-- end row -->
+        </div><!-- end container-fluid -->
+    </div><!-- end header-menu-wrapper -->
+</header>
+<!-- ================================
+         END HEADER AREA
+================================= -->
+
+<!-- ================================
+    START USER AREA
+================================= -->
+<section class="user-area padding-top-100px padding-bottom-60px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+               <h3 class="title font-size-24">معلومات الشريك</h3>
+                <div class="card-item user-card card-item-list mt-4 mb-0">
+                    <div class="card-img">
+                        <img src="images/team7.jpg" alt="user image" class="h-auto">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">TechyDevs</h3>
+                        <p class="card-meta">عضو منذ أبريل 2016</p>
+                        <div class="d-flex justify-content-between pt-3">
+                            <ul class="list-items list-items-2 flex-grow-1">
+                                <li><span>البريد الإلكتروني:</span>contact@techydevs.com</li>
+                                <li><span>هاتف:</span>+22 12345678</li>
+                                <li><span>بريد باي بال:</span>contact@techydevs.com</li>
+                                <li><span>مطار المنزل:</span>نوكسفيل ، تينيسي 37920 ، الولايات المتحدة الأمريكية</li>
+                                <li><span>عنوان:</span>2701 سبنس بل ، نوكسفيل ، الولايات المتحدة الأمريكية</li>
+                                <li><span>موقع الكتروني:</span><a href="#">techydevs.com</a></li>
+                            </ul>
+                             <ul class="list-items flex-grow-1">
+                                <li><h3 class="title">عمليات التحقق</h3></li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">هاتف</span><span class="theme-btn theme-btn-small theme-btn-rgb theme-btn-danger-rgb">لم يتم التحقق منها</span></li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">البريد الإلكتروني</span><span class="theme-btn theme-btn-small theme-btn-rgb">تم التحقق</span></li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">بطاقة التعريف</span><span class="theme-btn theme-btn-small theme-btn-rgb">تم التحقق</span></li>
+                                <li class="d-flex justify-content-between align-items-center"><span class="color-text-2 font-weight-medium mr-2">شهادة سفر</span><span class="theme-btn theme-btn-small theme-btn-rgb">تم التحقق</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- end card-item -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+        <div class="row padding-top-70px">
+            <div class="col-lg-9">
+                <h3 class="title font-size-24">خدمة الشريك</h3>
+                <div class="section-tab section-tab-3 pt-4 pb-5">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="my-hotel-tab" data-toggle="tab" href="#my-hotel" role="tab" aria-controls="my-hotel" aria-selected="true">
+                                الفندق
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="my-tour-tab" data-toggle="tab" href="#my-tour" role="tab" aria-controls="my-tour" aria-selected="false">
+                                جولة
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="my-activity-tab" data-toggle="tab" href="#my-activity" role="tab" aria-controls="my-activity" aria-selected="false">
+                                نشاط
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="my-car-tab" data-toggle="tab" href="#my-car" role="tab" aria-controls="my-car" aria-selected="false">
+                                سيارة
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="my-flight-tab" data-toggle="tab" href="#my-flight" role="tab" aria-controls="my-flight" aria-selected="false">
+                                طيران
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="my-review-tab" data-toggle="tab" href="#my-review" role="tab" aria-controls="my-review" aria-selected="false">
+                                المراجعات
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- end section-tab -->
+                <div class="tab-content margin-bottom-40px" id="myTabcontent">
+                    <div class="tab-pane fade show active" id="my-hotel" role="tabpanel" aria-labelledby="my-hotel-tab">
+                        <div class="my-service-list">
+                            <div class="card-item card-item-list">
+                                <div class="card-img">
+                                    <a href="hotel-single.html" class="d-block">
+                                        <img src="images/img1.jpg" alt="hotel-img">
+                                    </a>
+                                    <span class="badge">متميز</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="hotel-single.html">ميلينيوم هيلتون نيويورك</a></h3>
+                                    <p class="card-meta">124 شارع لافيستا ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-1">
+                                        <span class="rating__text">نجمة الفندق</span>
+                                        <span class="ratings d-flex align-items-center mx-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text">5 من 5</span>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$00.00</span>
+                                        </p>
+                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list">
+                                <div class="card-img">
+                                    <a href="hotel-single.html" class="d-block">
+                                        <img src="images/img2.jpg" alt="hotel-img">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="hotel-single.html">حياة سنتريك تايمز سكوير نيويورك</a></h3>
+                                    <p class="card-meta">6782 Sarasea Circle، Siesta Key، Paris</p>
+                                    <div class="card-rating d-flex align-items-center pt-1">
+                                        <span class="rating__text">نجمة الفندق</span>
+                                        <span class="ratings d-flex align-items-center mx-2">
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                        </span>
+                                        <span class="rating__text">0 of 5</span>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$00.00</span>
+                                        </p>
+                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list">
+                                <div class="card-img">
+                                    <a href="hotel-single.html" class="d-block">
+                                        <img src="images/img3.jpg" alt="hotel-img">
+                                    </a>
+                                    <span class="badge">متميز</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="hotel-single.html">فندق WBF Kitasemba WEST</a></h3>
+                                    <p class="card-meta">6782 Sarasea Circle, Siesta Key, Paris</p>
+                                    <div class="card-rating d-flex align-items-center pt-1">
+                                        <span class="rating__text">نجمة الفندق</span>
+                                        <span class="ratings d-flex align-items-center mx-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text">5 of 5</span>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$00.00</span>
+                                        </p>
+                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list">
+                                <div class="card-img">
+                                    <a href="hotel-single.html" class="d-block">
+                                        <img src="images/img4.jpg" alt="hotel-img">
+                                    </a>
+                                    <span class="badge">متميز</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="hotel-single.html">فندق مونتيري لو فرير أوساكا</a></h3>
+                                    <p class="card-meta">124 شارع لافيستا ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-1">
+                                        <span class="rating__text">نجمة الفندق</span>
+                                        <span class="ratings d-flex align-items-center mx-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text">5 of 5</span>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$00.00</span>
+                                        </p>
+                                        <a href="hotel-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                        </div><!-- end my-service-list -->
+                        <nav aria-label="Page navigation example" class="pt-4">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end tab-pane -->
+                    <div class="tab-pane fade" id="my-tour" role="tabpanel" aria-labelledby="my-tour-tab">
+                        <div class="my-service-list">
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img9.jpg" alt="Destination-img">
+                                    </a>
+                                    <span class="badge">متميز</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">نزهة في باريس لا تنسى</a></h3>
+                                    <p class="card-meta">124 شارع لافيستا ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(3 تعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>المسافرون:</span>30 شخصا</li>
+                                        <li><span>تاريخ:</span>12 يونيو 2020</li>
+                                        <li><span>تفاصيل الحجز:</span> 0 مستخدم حجز</li>
+                                    </ul>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img10.jpg" alt="Destination-img">
+                                    </a>
+                                    <span class="badge badge-ribbon">وفر 39٪</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">من لندن إلى فلورنسا في 10 أيام</a></h3>
+                                    <p class="card-meta">124 شارع لافيستا ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(3 تعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>المسافرون:</span>10 أشخاص</li>
+                                        <li><span>تفاصيل الحجز:</span> 0 مستخدم حجز</li>
+                                    </ul>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$950.00</span>
+                                            <span class="price__num before-price color-text-3">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img11.jpg" alt="Destination-img">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">جولة نهر كروز على نهر السين</a></h3>
+                                    <p class="card-meta">124 شارع لافيستا ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(3 تعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>المسافرون:</span>30 شخصا</li>
+                                        <li><span>تاريخ:</span>12 يونيو 2020</li>
+                                        <li><span>تفاصيل الحجز:</span> 0 مستخدم حجز</li>
+                                    </ul>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img12.jpg" alt="Destination-img">
+                                    </a>
+                                    <span class="badge">متميز</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">3 أيام Loire Mer Extraordinaire</a></h3>
+                                    <p class="card-meta">الشانزليزيه ، 8 5 شارع بري</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(1 تعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>المسافرون:</span>30 شخصا</li>
+                                        <li><span>تاريخ:</span>12 يونيو 2020</li>
+                                        <li><span>تفاصيل الحجز:</span> 0 مستخدم حجز</li>
+                                    </ul>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                        </div><!-- end my-service-list -->
+                        <nav aria-label="Page navigation example" class="pt-4">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end tab-pane -->
+                    <div class="tab-pane fade" id="my-activity" role="tabpanel" aria-labelledby="my-activity-tab">
+                        <div class="my-service-list">
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img13.jpg" alt="Destination-img">
+                                    </a>
+                                    <span class="badge">متميز</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">أفق مانهاتن</a></h3>
+                                    <p class="card-meta">شارع الأمريكتين ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(3 التعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>نوع النشاط:</span>تاريخ معين</li>
+                                    </ul>
+                                    <p class="card-meta">تابع قصة نمو شبل الأسد سيمبا في هذا المكان الملون والملون المناسب للعائلة ...</p>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img14.jpg" alt="Destination-img">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">أفضل يوم للتنزه</a></h3>
+                                    <p class="card-meta">الفنون الجميلة ، باريس فرنسا</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(3 التعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>نوع النشاط:</span>النشاط اليومي</li>
+                                    </ul>
+                                    <p class="card-meta">تابع قصة نمو شبل الأسد سيمبا في هذا المكان الملون والملون المناسب للعائلة ...</p>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img15.jpg" alt="Destination-img">
+                                    </a>
+                                    <span class="badge">متميز</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">إطلالة رائعة على الأفق</a></h3>
+                                    <p class="card-meta">شارع الأمريكتين ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(3 التعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>نوع النشاط:</span>تاريخ معين</li>
+                                    </ul>
+                                    <p class="card-meta">تابع قصة نمو شبل الأسد سيمبا في هذا المكان الملون والملون المناسب للعائلة ...</p>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item card-item-list card-item--list">
+                                <div class="card-img">
+                                    <a href="tour-details.html" class="d-block">
+                                        <img src="images/img16.jpg" alt="Destination-img">
+                                    </a>
+                                    <span class="badge badge-ribbon">وفر 39٪</span>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><a href="tour-details.html">نزهة في البلدة الصغيرة القديمة</a></h3>
+                                    <p class="card-meta">شارع الأمريكتين ، نيويورك</p>
+                                    <div class="card-rating d-flex align-items-center pt-0">
+                                        <span class="ratings d-flex align-items-center mr-2">
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                            <i class="la la-star"></i>
+                                        </span>
+                                        <span class="rating__text mr-2">4.5 من 5</span>
+                                        <span class="rating__text">(3 التعليقات)</span>
+                                    </div>
+                                    <ul class="list-items list-items-2">
+                                        <li><span>نوع النشاط:</span>تاريخ معين</li>
+                                    </ul>
+                                    <p class="card-meta">تابع قصة نمو شبل الأسد سيمبا في هذا المكان الملون والملون المناسب للعائلة ...</p>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$950.00</span>
+                                            <span class="price__num before-price color-text-3">$989.00</span>
+                                        </p>
+                                        <a href="tour-details.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                        </div><!-- end my-service-list -->
+                        <nav aria-label="Page navigation example" class="pt-4">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end tab-pane -->
+                    <div class="tab-pane fade " id="my-car" role="tabpanel" aria-labelledby="my-car-tab">
+                        <div class="my-service-list">
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="car-single.html" class="d-block">
+                                        <img src="images/car-img.png" alt="car-img" class="h-auto">
+                                    </a>
+                                    <span class="badge">الأكثر مبيعا</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">SUV مدمجة</p>
+                                    <h3 class="card-title"><a href="car-single.html">تويوتا كورولا أو ما شابه ذلك</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">معدل</span>
+                                        <span class="rating__text">(30 التعليقات)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="ركاب"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="أمتعة"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$23.00</span>
+                                            <span class="price__text">في اليوم</span>
+                                        </p>
+                                        <a href="car-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="car-single.html" class="d-block">
+                                        <img src="images/car-img2.png" alt="car-img" class="h-auto">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">بيلشارلز كار</p>
+                                    <h3 class="card-title"><a href="car-single.html">فولكس فاجن جيتا 2 أبواب أو ما شابه ذلك</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">معدل</span>
+                                        <span class="rating__text">(30 التعليقات)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="ركاب"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="أمتعة"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$23.00</span>
+                                            <span class="price__text">في اليوم</span>
+                                        </p>
+                                        <a href="car-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="car-single.html" class="d-block">
+                                        <img src="images/car-img3.png" alt="car-img" class="h-auto">
+                                    </a>
+                                    <span class="badge">الأكثر مبيعا</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">لامبورغيني</p>
+                                    <h3 class="card-title"><a href="car-single.html">مرسيدس الفئة E أو ما شابه ذلك</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">معدل</span>
+                                        <span class="rating__text">(30 التعليقات)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="ركاب"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="أمتعة"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$23.00</span>
+                                            <span class="price__text">في اليوم</span>
+                                        </p>
+                                        <a href="car-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                            <div class="card-item car-card card-item-list">
+                                <div class="card-img padding-top-40px">
+                                    <a href="car-single.html" class="d-block">
+                                        <img src="images/car-img4.png" alt="car-img" class="h-auto">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-meta">سيارة بيلشار</p>
+                                    <h3 class="card-title"><a href="car-single.html">فيات فييستا 2 باب أو مشابه</a></h3>
+                                    <div class="card-rating">
+                                        <span class="badge text-white">4.4/5</span>
+                                        <span class="review__text">معدل</span>
+                                        <span class="rating__text">(30 التعليقات)</span>
+                                    </div>
+                                    <div class="card-attributes">
+                                        <ul class="d-flex align-items-center">
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="ركاب"><i class="la la-users"></i><span>4</span></li>
+                                            <li class="d-flex align-items-center" data-toggle="tooltip" data-placement="top" title="أمتعة"><i class="la la-suitcase"></i><span>2</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-price d-flex align-items-center justify-content-between">
+                                        <p>
+                                            <span class="price__from">السعر يبدأ من</span>
+                                            <span class="price__num">$23.00</span>
+                                            <span class="price__text">في اليوم</span>
+                                        </p>
+                                        <a href="car-single.html" class="theme-btn theme-btn-small">احجز الآن</a>
+                                    </div>
+                                </div>
+                            </div><!-- end card-item -->
+                        </div><!-- end my-service-list -->
+                        <nav aria-label="Page navigation example" class="pt-4">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end tab-pane -->
+                    <div class="tab-pane fade" id="my-flight" role="tabpanel" aria-labelledby="my-flight-tab">
+                        <div class="my-service-list">
+                            <div class="card-item flight-card flight--card card-item-list card-item-list-2">
+                                <div class="card-img">
+                                    <img src="images/airline-img7.png" alt="flight-logo-img">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-top-title d-flex justify-content-between">
+                                        <div>
+                                            <h3 class="card-title font-size-17">سان فرانسيسكو (SFO) - سيدني (SYD)</h3>
+                                            <p class="card-meta font-size-14">رحلة ذهاب فقط</p>
+                                        </div>
+                                        <div>
+                                            <div class="text-right">
+                                                <span class="font-weight-regular font-size-14 d-block">الشخص العادي</span>
+                                                <h6 class="font-weight-bold text-black">$350.00</h6>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-top-title -->
+                                    <ul class="list-items list-items-2 py-2">
+                                        <li><span>نوع الرحلة:</span>مباشرة</li>
+                                        <li><span>وقت المغادرة:</span>12:00 مساء</li>
+                                        <li><span>الوقت الكلي:</span> ساعتان و 30 دقيقة</li>
+                                    </ul>
+                                    <div class="btn-box text-center">
+                                        <a href="flight-single.html" class="theme-btn theme-btn-small w-100">احجز الآن</a>
+                                    </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card-item -->
+                             <div class="card-item flight-card flight--card card-item-list card-item-list-2">
+                                <div class="card-img">
+                                    <img src="images/airline-img8.png" alt="flight-logo-img">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-top-title d-flex justify-content-between">
+                                        <div>
+                                            <h3 class="card-title font-size-17">سان فرانسيسكو (SFO) - برلين (BER)</h3>
+                                            <p class="card-meta font-size-14">رحلة ذهاب فقط</p>
+                                        </div>
+                                        <div>
+                                            <div class="text-right">
+                                                <span class="font-weight-regular font-size-14 d-block">الشخص العادي</span>
+                                                <h6 class="font-weight-bold text-black">$299.00</h6>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-top-title -->
+                                    <ul class="list-items list-items-2 py-2">
+                                        <li><span>نوع الرحلة:</span>مباشرة</li>
+                                        <li><span>وقت المغادرة:</span>12:00 مساء</li>
+                                        <li><span>الوقت الكلي:</span> ساعتان و 30 دقيقة</li>
+                                    </ul>
+                                    <div class="btn-box text-center">
+                                        <a href="flight-single.html" class="theme-btn theme-btn-small w-100">احجز الآن</a>
+                                    </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card-item -->
+                             <div class="card-item flight-card flight--card card-item-list card-item-list-2">
+                                <div class="card-img">
+                                    <img src="images/airline-img9.png" alt="flight-logo-img">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-top-title d-flex justify-content-between">
+                                        <div>
+                                            <h3 class="card-title font-size-17">Ha Noi (نعم) - باريس (كاداج)</h3>
+                                            <p class="card-meta font-size-14">رحلة ذهاب فقط</p>
+                                        </div>
+                                        <div>
+                                            <div class="text-right">
+                                                <span class="font-weight-regular font-size-14 d-block">الشخص العادي</span>
+                                                <h6 class="font-weight-bold text-black">$399.00</h6>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-top-title -->
+                                    <ul class="list-items list-items-2 py-2">
+                                        <li><span>نوع الرحلة:</span>مباشرة</li>
+                                        <li><span>وقت المغادرة:</span>12:00 مساء</li>
+                                        <li><span>الوقت الكلي:</span> 12 ساعة و 30 دقيقة</li>
+                                    </ul>
+                                    <div class="btn-box text-center">
+                                        <a href="flight-single.html" class="theme-btn theme-btn-small w-100">احجز الآن</a>
+                                    </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card-item -->
+                             <div class="card-item flight-card flight--card card-item-list card-item-list-2">
+                                <div class="card-img">
+                                    <img src="images/airline-img10.png" alt="flight-logo-img">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-top-title d-flex justify-content-between">
+                                        <div>
+                                            <h3 class="card-title font-size-17">مدينة نيويورك (JFK) - باريس (CDG)</h3>
+                                            <p class="card-meta font-size-14">رحلة ذهابا وإيابا</p>
+                                        </div>
+                                        <div>
+                                            <div class="text-right">
+                                                <span class="font-weight-regular font-size-14 d-block">الشخص العادي</span>
+                                                <h6 class="font-weight-bold text-black">$750.00</h6>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-top-title -->
+                                    <ul class="list-items list-items-2 py-2">
+                                        <li><span>نوع الرحلة:</span>2 توقف</li>
+                                        <li><span>وقت المغادرة:</span>12:00 مساء</li>
+                                        <li><span>الوقت الكلي:</span> 4 ساعات و 30 دقيقة</li>
+                                    </ul>
+                                    <div class="btn-box text-center">
+                                        <a href="flight-single.html" class="theme-btn theme-btn-small w-100">احجز الآن</a>
+                                    </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card-item -->
+                        </div><!-- end my-service-list -->
+                        <nav aria-label="Page navigation example" class="pt-4">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link page-link-nav" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end tab-pane -->
+                    <div class="tab-pane fade" id="my-review" role="tabpanel" aria-labelledby="my-review-tab">
+                        <div class="my-service-list">
+                            <div class="review-bars padding-bottom-30px">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="progress-item">
+                                            <h3 class="progressbar-title">الخدمات</h3>
+                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+                                                <div class="progressbar-box flex-shrink-0">
+                                                    <div class="progressbar-line" data-percent="70%">
+                                                        <div class="progressbar-line-item bar-bg-1"></div>
+                                                    </div> <!-- End Skill Bar -->
+                                                </div>
+                                                <div class="bar-percent">4.6</div>
+                                            </div>
+                                        </div><!-- end progress-item -->
+                                    </div><!-- end col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <div class="progress-item">
+                                            <h3 class="progressbar-title">موقعك</h3>
+                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+                                                <div class="progressbar-box flex-shrink-0">
+                                                    <div class="progressbar-line" data-percent="55%">
+                                                        <div class="progressbar-line-item bar-bg-2"></div>
+                                                    </div> <!-- End Skill Bar -->
+                                                </div>
+                                                <div class="bar-percent">4.7</div>
+                                            </div>
+                                        </div><!-- end progress-item -->
+                                    </div><!-- end col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <div class="progress-item">
+                                            <h3 class="progressbar-title">قيمة المال</h3>
+                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+                                                <div class="progressbar-box flex-shrink-0">
+                                                    <div class="progressbar-line" data-percent="40%">
+                                                        <div class="progressbar-line-item bar-bg-3"></div>
+                                                    </div> <!-- End Skill Bar -->
+                                                </div>
+                                                <div class="bar-percent">2.6</div>
+                                            </div>
+                                        </div><!-- end progress-item -->
+                                    </div><!-- end col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <div class="progress-item">
+                                            <h3 class="progressbar-title">النظافة</h3>
+                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+                                                <div class="progressbar-box flex-shrink-0">
+                                                    <div class="progressbar-line" data-percent="60%">
+                                                        <div class="progressbar-line-item bar-bg-4"></div>
+                                                    </div> <!-- End Skill Bar -->
+                                                </div>
+                                                <div class="bar-percent">3.6</div>
+                                            </div>
+                                        </div><!-- end progress-item -->
+                                    </div><!-- end col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <div class="progress-item">
+                                            <h3 class="progressbar-title">مرافق</h3>
+                                            <div class="progressbar-content line-height-20 d-flex align-items-center justify-content-between">
+                                                <div class="progressbar-box flex-shrink-0">
+                                                    <div class="progressbar-line" data-percent="50%">
+                                                        <div class="progressbar-line-item bar-bg-5"></div>
+                                                    </div> <!-- End Skill Bar -->
+                                                </div>
+                                                <div class="bar-percent">2.6</div>
+                                            </div>
+                                        </div><!-- end progress-item -->
+                                    </div><!-- end col-lg-6 -->
+                                </div><!-- end row -->
+                            </div>
+                            <div class="section-block"></div>
+                            <div class="review-box padding-top-45px">
+                                <h3 class="title font-size-20">قائمة المراجعات</h3>
+                                <div class="comments-list padding-top-40px">
+                                    <div class="comment">
+                                        <div class="comment-avatar">
+                                            <a href="#" class="d-block">
+                                                <img class="avatar__img" alt="" src="images/team8.jpg">
+                                            </a>
+                                            <h3 class="title font-size-16 pt-3">بوب مارلي</h3>
+                                            <a href="#" class="color-text font-size-14">30 التعليقات</a>
+                                        </div>
+                                        <div class="comment-body">
+                                            <div class="meta-data">
+                                                <h3 class="comment__meta font-size-18 pb-2">"جيد جدا"</h3>
+                                                <h3 class="comment__author font-size-15 font-weight-medium">مراجعة <a href="#" class="color-text"> شقق جراند بلازا </a></h3>
+                                                <div class="meta-data-inner d-flex">
+                                                    <span class="ratings d-flex align-items-center mr-1">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                    </span>
+                                                    <p class="comment__date">5 أبريل 2019</p>
+                                                </div>
+                                            </div>
+                                            <p class="comment-content font-size-15 line-height-24">
+                                                Lorem ipsum dolor sit amet، consectetur adipiscing elit. التمرين الذي ستكون نتيجته هروب هذا الكدح ، ولن يتم رفض أحدنا أبدًا للآخر من الجسد وفي نفس الشيء.
+                                            </p>
+                                            <div class="comment-reply">
+                                                <div class="reviews-reaction">
+                                                    <span class="font-size-15 mr-1">هل كانت هذه المراجعة مفيدة؟</span>
+                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
+                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment">
+                                        <div class="comment-avatar">
+                                            <a href="#" class="d-block">
+                                                <img class="avatar__img" alt="" src="images/team9.jpg">
+                                            </a>
+                                            <h3 class="title font-size-16 pt-3">جوش بورديال</h3>
+                                            <a href="#" class="color-text font-size-14">44 التعليقات</a>
+                                        </div>
+                                        <div class="comment-body">
+                                            <div class="meta-data">
+                                                <h3 class="comment__meta font-size-18 pb-2">"ممتاز"</h3>
+                                                <h3 class="comment__author font-size-15 font-weight-medium">مراجعة <a href="#" class="color-text"> Park Hyatt Paris-Vendome </a></h3>
+                                                <div class="meta-data-inner d-flex">
+                                                    <span class="ratings d-flex align-items-center mr-1">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                    </span>
+                                                    <p class="comment__date">5 أبريل 2019</p>
+                                                </div>
+                                            </div>
+                                            <p class="comment-content font-size-15 line-height-24">
+                                                Lorem ipsum dolor sit amet، consectetur adipiscing elit. التمرين الذي ستكون نتيجته هروب هذا الكدح ، ولن يتم رفض أحدنا أبدًا للآخر من الجسد وفي نفس الشيء.
+                                            </p>
+                                            <div class="comment-reply">
+                                                <div class="reviews-reaction">
+                                                    <span class="font-size-15 mr-1">هل كانت هذه المراجعة مفيدة؟</span>
+                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
+                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment">
+                                        <div class="comment-avatar">
+                                            <a href="#" class="d-block">
+                                                <img class="avatar__img" alt="" src="images/team10.jpg">
+                                            </a>
+                                            <h3 class="title font-size-16 pt-3">عدي بورديلا</h3>
+                                            <a href="#" class="color-text font-size-14">12 التعليقات</a>
+                                        </div>
+                                        <div class="comment-body">
+                                            <div class="meta-data">
+                                                <h3 class="comment__meta font-size-18 pb-2">"رائعة حقا"</h3>
+                                                <h3 class="comment__author font-size-15 font-weight-medium">مراجعة فندق <a href="#" class="color-text"> Wellington Hotel </a></h3>
+                                                <div class="meta-data-inner d-flex">
+                                                    <span class="ratings d-flex align-items-center mr-1">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                    </span>
+                                                    <p class="comment__date">5 أبريل 2019</p>
+                                                </div>
+                                            </div>
+                                            <p class="comment-content font-size-15 line-height-24">
+                                                Lorem ipsum dolor sit amet، consectetur adipiscing elit. التمرين الذي ستكون نتيجته هروب هذا الكدح ، ولن يتم رفض أحدنا أبدًا للآخر من الجسد وفي نفس الشيء.
+                                            </p>
+                                            <div class="comment-reply">
+                                                <div class="reviews-reaction">
+                                                    <span class="font-size-15 mr-1">هل كانت هذه المراجعة مفيدة؟</span>
+                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
+                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment">
+                                        <div class="comment-avatar">
+                                            <a href="#" class="d-block">
+                                                <img class="avatar__img" alt="" src="images/team11.jpg">
+                                            </a>
+                                            <h3 class="title font-size-16 pt-3">ماركوس ناي</h3>
+                                            <a href="#" class="color-text font-size-14">23 التعليقات</a>
+                                        </div>
+                                        <div class="comment-body">
+                                            <div class="meta-data">
+                                                <h3 class="comment__meta font-size-18 pb-2">"حسن"</h3>
+                                                <h3 class="comment__author font-size-15 font-weight-medium">مراجعة <a href="#" class="color-text"> The Pearl Hotel NewYork City </a></h3>
+                                                <div class="meta-data-inner d-flex">
+                                                    <span class="ratings d-flex align-items-center mr-1">
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                        <i class="la la-star"></i>
+                                                    </span>
+                                                    <p class="comment__date">5 أبريل 2019</p>
+                                                </div>
+                                            </div>
+                                            <p class="comment-content font-size-15 line-height-24">
+                                                Lorem ipsum dolor sit amet، consectetur adipiscing elit. التمرين الذي ستكون نتيجته هروب هذا الكدح ، ولن يتم رفض أحدنا أبدًا للآخر من الجسد وفي نفس الشيء.
+                                            </p>
+                                            <div class="comment-reply">
+                                                <div class="reviews-reaction">
+                                                    <span class="font-size-15 mr-1">هل كانت هذه المراجعة مفيدة؟</span>
+                                                    <a href="#" class="comment-like"><i class="la la-thumbs-up"></i> 13</a>
+                                                    <a href="#" class="comment-dislike"><i class="la la-thumbs-down"></i> 2</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end comments-list -->
+                            </div>
+                            <nav aria-label="Page navigation example" class="pt-4">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link page-link-nav" href="#" aria-label="Previous">
+                                            <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link page-link-nav" href="#">1</a></li>
+                                    <li class="page-item active">
+                                        <a class="page-link page-link-nav" href="#">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link page-link-nav" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link page-link-nav" href="#" aria-label="Next">
+                                            <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div><!-- end tab-pane -->
+                </div>
+            </div><!-- end col-lg-9 -->
+            <div class="col-lg-3">
+                <div class="review-summary mt-2 section-bg">
+                    <p>متوسط ​​تقييم</p>
+                    <h2>4.5<span>/5</span></h2>
+                    <span class="ratings d-flex justify-content-center align-items-center font-size-17">
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star"></i>
+                        <i class="la la-star-half-alt"></i>
+                    </span>
+                    <span class="font-size-14">(مرتكز على 199 تقييمات)</span>
+                </div><!-- end review-summary -->
+                <div class="form-box margin-top-30px mb-0">
+                    <div class="form-title-wrap">
+                        <h3 class="title">تواصل مع الشريك</h3>
+                    </div>
+                    <div class="form-content">
+                        <div class="contact-form-action">
+                            <form method="post">
+                                <div class="input-box">
+                                    <label class="label-text">اسمك</label>
+                                    <div class="form-group">
+                                        <span class="la la-user form-icon"></span>
+                                        <input class="form-control" type="text" name="text" placeholder="اسمك">
+                                    </div>
+                                </div>
+                                <div class="input-box">
+                                    <label class="label-text">بريدك الالكتروني</label>
+                                    <div class="form-group">
+                                        <span class="la la-envelope-o form-icon"></span>
+                                        <input class="form-control" type="email" name="email" placeholder="بريدك الالكتروني">
+                                    </div>
+                                </div>
+                                <div class="input-box">
+                                    <label class="label-text">رسالة</label>
+                                    <div class="form-group">
+                                        <span class="la la-pencil form-icon"></span>
+                                        <textarea class="message-control form-control" name="message" placeholder="اكتب رسالة"></textarea>
+                                    </div>
+                                </div>
+                                <div class="btn-box">
+                                    <button type="submit" class="theme-btn">أرسل رسالة</button>
+                                </div>
+                            </form>
+                        </div><!-- end contact-form-action -->
+                    </div><!-- end form-content -->
+                </div><!-- end form-box -->
+            </div><!-- end col-lg-3 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end user-area -->
+<!-- ================================
+    END USER AREA
+================================= -->
+
+<!-- ================================
+       START FOOTER AREA
+================================= -->
+<section class="footer-area section-bg padding-top-100px padding-bottom-30px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <div class="footer-logo padding-bottom-30px">
+                        <a href="index.html" class="foot__logo"><img src="images/logo.png" alt="logo"></a>
+                    </div><!-- end logo -->
+                    <p class="footer__desc">كرة القدم شرب الوادي لسحب وعاء. تصوير Maecenas</p>
+                    <ul class="list-items pt-3">
+                        <li>3015 Grand Ave، Coconut Grove، <br> Carrick Way، FL 12345</li>
+                        <li>+123-456-789</li>
+                        <li><a href="#">trizen@yourwebsite.com</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">شركة</h4>
+                    <ul class="list-items list--items">
+                        <li><a href="about.html">معلومات عنا</a></li>
+                        <li><a href="services.html">خدمات</a></li>
+                        <li><a href="#">وظائف</a></li>
+                        <li><a href="blog-grid.html">أخبار</a></li>
+                        <li><a href="contact.html">الدعم</a></li>
+                        <li><a href="#">إعلان</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">خدمات أخرى</h4>
+                    <ul class="list-items list--items">
+                        <li><a href="#">علاقات المستثمرين</a></li>
+                        <li><a href="#">مكافآت Trizen.com</a></li>
+                        <li><a href="#">شركاء</a></li>
+                        <li><a href="#">قائمة فندقي</a></li>
+                        <li><a href="#">جميع الفنادق</a></li>
+                        <li><a href="#">الإعلانات التلفزيونية</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4 class="title curve-shape pb-3 margin-bottom-20px" data-text="curvs">روابط أخرى</h4>
+                    <ul class="list-items list--items">
+                        <li><a href="#">حزم عطلة الولايات المتحدة الأمريكية</a></li>
+                        <li><a href="#">رحلات طيران الولايات المتحدة الأمريكية</a></li>
+                        <li><a href="#">فنادق الولايات المتحدة الأمريكية</a></li>
+                        <li><a href="#">الولايات المتحدة الأمريكية تأجير السيارات</a></li>
+                        <li><a href="#">انشئ حساب</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+        </div><!-- end row -->
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="term-box footer-item">
+                    <ul class="list-items list--items d-flex align-items-center">
+                        <li><a href="#">البنود و الظروف</a></li>
+                        <li><a href="#">سياسة خاصة</a></li>
+                        <li><a href="#">مركز المساعدة</a></li>
+                    </ul>
+                </div>
+            </div><!-- end col-lg-8 -->
+            <div class="col-lg-4">
+                <div class="footer-social-box text-right">
+                    <ul class="social-profile">
+                        <li><a href="#"><i class="lab la-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="lab la-twitter"></i></a></li>
+                        <li><a href="#"><i class="lab la-instagram"></i></a></li>
+                        <li><a href="#"><i class="lab la-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div><!-- end col-lg-4 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+    <div class="section-block mt-4"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="copy-right padding-top-30px">
+                    <p class="copy__desc">
+                        &copy; Copyright Trizen 2020. Made with
+                        <span class="la la-heart"></span> by <a href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a>
+                    </p>
+                </div><!-- end copy-right -->
+            </div><!-- end col-lg-7 -->
+            <div class="col-lg-5">
+                <div class="copy-right-content d-flex align-items-center justify-content-end padding-top-30px">
+                    <h3 class="title font-size-15 pr-2">نحن نقبل</h3>
+                    <img src="images/payment-img.png" alt="">
+                </div><!-- end copy-right-content -->
+            </div><!-- end col-lg-5 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end footer-area -->
+<!-- ================================
+       START FOOTER AREA
+================================= -->
+
+<!-- start back-to-top -->
+<div id="back-to-top">
+    <i class="la la-angle-up" title="Go top"></i>
+</div>
+<!-- end back-to-top -->
+
+<!-- end modal-shared -->
+<div class="modal-popup">
+    <div class="modal fade" id="signupPopupForm" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title title" id="exampleModalLongTitle">سجل</h5>
+                        <p class="font-size-14">مرحبا! مرحبًا ، قم بإنشاء حساب جديد</p>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="la la-close"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="contact-form-action">
+                        <form method="post">
+                            <div class="input-box">
+                                <label class="label-text">اسم المستخدم</label>
+                                <div class="form-group">
+                                    <span class="la la-user form-icon"></span>
+                                    <input class="form-control" type="text" name="text" placeholder="اكتب اسم المستخدم الخاص بك">
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box">
+                                <label class="label-text">عنوان البريد الالكترونى</label>
+                                <div class="form-group">
+                                    <span class="la la-envelope form-icon"></span>
+                                    <input class="form-control" type="text" name="text" placeholder="اكتب بريدك الإلكتروني">
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box">
+                                <label class="label-text">كلمه السر</label>
+                                <div class="form-group">
+                                    <span class="la la-lock form-icon"></span>
+                                    <input class="form-control" type="text" name="text" placeholder="أكتب كلمة المرور">
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box">
+                                <label class="label-text">اعد كلمة السر</label>
+                                <div class="form-group">
+                                    <span class="la la-lock form-icon"></span>
+                                    <input class="form-control" type="text" name="text" placeholder="اكتب كلمة المرور مرة أخرى">
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="btn-box pt-3 pb-4">
+                                <button type="button" class="theme-btn w-100">تسجيل حساب</button>
+                            </div>
+                            <div class="action-box text-center">
+                                <p class="font-size-14">أو قم بالتسجيل باستخدام</p>
+                                <ul class="social-profile py-3">
+                                    <li><a href="#" class="bg-5 text-white"><i class="lab la-facebook-f"></i></a></li>
+                                    <li><a href="#" class="bg-6 text-white"><i class="lab la-twitter"></i></a></li>
+                                    <li><a href="#" class="bg-7 text-white"><i class="lab la-instagram"></i></a></li>
+                                    <li><a href="#" class="bg-5 text-white"><i class="lab la-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div><!-- end contact-form-action -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- end modal-popup -->
+
+<!-- end modal-shared -->
+<div class="modal-popup">
+    <div class="modal fade" id="loginPopupForm" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title title" id="exampleModalLongTitle2">تسجيل الدخول</h5>
+                        <p class="font-size-14">مرحبا! مرحبا بك في حسابك</p>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="la la-close"></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="contact-form-action">
+                        <form method="post">
+                            <div class="input-box">
+                                <label class="label-text">اسم المستخدم</label>
+                                <div class="form-group">
+                                    <span class="la la-user form-icon"></span>
+                                    <input class="form-control" type="text" name="text" placeholder="اكتب اسم المستخدم الخاص بك">
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box">
+                                <label class="label-text">كلمه السر</label>
+                                <div class="form-group mb-2">
+                                    <span class="la la-lock form-icon"></span>
+                                    <input class="form-control" type="text" name="text" placeholder="اكتب كلمة المرور الخاصة بك">
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="custom-checkbox mb-0">
+                                        <input type="checkbox" id="rememberchb">
+                                        <label for="rememberchb">تذكرنى</label>
+                                    </div>
+                                    <p class="forgot-password">
+                                        <a href="recover.html">هل نسيت كلمة المرور؟</a>
+                                    </p>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="btn-box pt-3 pb-4">
+                                <button type="button" class="theme-btn w-100">تسجيل الدخول</button>
+                            </div>
+                            <div class="action-box text-center">
+                                <p class="font-size-14">أو تسجيل الدخول باستخدام</p>
+                                <ul class="social-profile py-3">
+                                    <li><a href="#" class="bg-5 text-white"><i class="lab la-facebook-f"></i></a></li>
+                                    <li><a href="#" class="bg-6 text-white"><i class="lab la-twitter"></i></a></li>
+                                    <li><a href="#" class="bg-7 text-white"><i class="lab la-instagram"></i></a></li>
+                                    <li><a href="#" class="bg-5 text-white"><i class="lab la-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div><!-- end contact-form-action -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- end modal-popup -->
+
+<!-- Template JS Files -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/daterangepicker.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.countTo.min.js"></script>
+<script src="js/animated-headline.js"></script>
+<script src="js/jquery.filer.min.js"></script>
+<script src="js/jquery.ripples-min.js"></script>
+<script src="js/main-rtl.js"></script>
+</body>
+</html>
