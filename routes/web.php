@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Home;
 use App\Http\Controllers\Register;
+use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::group(['middleware' => 'revalidate'], function () {
     // Register
     Route::get('/register', [Register::class, 'index'])->name('register');
     Route::post('/register', [Register::class, 'prosesRegister']);
+
+    // Login
+    Route::get('/login', [Login::class, 'index'])->name('login');
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');

@@ -17,9 +17,12 @@
                         <div class="header-right d-flex align-items-center justify-content-end">
                             <div class="header-right-action">
                                 @if ($title === 'Register')
-                                    <a href="#" class="theme-btn theme-btn-small" data-toggle="modal" data-target="#loginPopupForm">Login</a>
+                                    <a href="#" class="theme-btn theme-btn-small" >Login</a>
                                 @elseif ($title === 'Login')
                                     <a href="/register" class="theme-btn theme-btn-small theme-btn-transparent mr-1">Register</a>
+                                @else
+                                    <a href="/register" class="theme-btn theme-btn-small theme-btn-transparent mr-1">Register</a>
+                                    <a href="/login" class="theme-btn theme-btn-small" >Login</a>
                                 @endif
                             </div>
                         </div>
@@ -35,7 +38,7 @@
                     <div class="menu-wrapper">
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="index-2.html"><img src="{{ asset('template/images/logo.png') }}" alt="logo"></a>
+                            <a href="/"><img src="{{ asset('template/images/logo.png') }}" alt="logo"></a>
                             <div class="menu-toggler">
                                 <i class="la la-bars"></i>
                                 <i class="la la-times"></i>

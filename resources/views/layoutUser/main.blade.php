@@ -6,7 +6,7 @@
     <meta name="author" content="TechyDevs">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sistem Booking | </title>
+    <title>@if ($title) Sistem Booking | {{$title}} @else Sistem Booking @endif </title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('template/images/favicon.png') }}">
 
@@ -63,14 +63,6 @@
     <i class="la la-angle-up" title="Go top"></i>
 </div>
 <!-- end back-to-top -->
-
-{{-- Register --}}
-{{-- @include('auth.register') --}}
-{{-- End Register --}}
-
-{{-- Login --}}
-@include('auth.login')
-{{-- End Login --}}
 
 <!-- Template JS Files -->
 <script src="{{ asset('template/js/jquery-3.4.1.min.js') }}"></script>
