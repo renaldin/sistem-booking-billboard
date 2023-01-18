@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Login;
@@ -25,10 +26,16 @@ Route::group(['middleware' => 'revalidate'], function () {
     Route::get('/register', [Register::class, 'index'])->name('register');
     Route::post('/register', [Register::class, 'prosesRegister']);
 
-    // Login
+    // Login User
     Route::get('/login', [Login::class, 'index'])->name('login');
+    Route::post('/login', [Login::class, 'prosesLogin']);
+    // Login Admin
+    Route::get('/admin', [Login::class, 'admin'])->name('admin');
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+    // Logout
+    Route::get('/logout', [Login::class, 'logout'])->name('logout');
+
+    Route::group(['middleware' => 'admin'], function () {
+        Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
     });
 });

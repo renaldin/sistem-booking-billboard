@@ -14,4 +14,14 @@ class ModelAuth extends Model
     {
         DB::table('user')->insert($data);
     }
+
+    public function cekEmailUser($email)
+    {
+        return DB::table('user')->where('email', $email)->first();
+    }
+
+    public function cekEmailAdmin($email)
+    {
+        return DB::table('admin')->where('email', $email)->first();
+    }
 }

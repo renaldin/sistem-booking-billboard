@@ -4,7 +4,7 @@
 <section class="info-area padding-top-50px padding-bottom-70px">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 responsive-column">
+            <div class="col-lg-6 responsive-column">
                 <div class="card box-shadow" style="box-shadow: 3px 3px 3px #e8e7e7;">
                     <div class="card-header">
                         <div>

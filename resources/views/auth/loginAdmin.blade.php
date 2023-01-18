@@ -8,7 +8,7 @@
                 <div class="card box-shadow" style="box-shadow: 3px 3px 3px #e8e7e7;">
                     <div class="card-header">
                         <div>
-                            <h5 class="modal-title title" id="exampleModalLongTitle">Login</h5>
+                            <h5 class="modal-title title" id="exampleModalLongTitle">Login Admin</h5>
                             <p class="font-size-14">Hello! Silahkan login!</p>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                                             <label class="label-text">Email</label>
                                             <div class="form-group">
                                                 <span class="la la-envelope form-icon"></span>
-                                                <input class="form-control" type="hidden" name="status" value="User">
+                                                <input class="form-control" type="hidden" name="status" value="Admin">
                                                 <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}">
                                             </div>
                                             @error('email')

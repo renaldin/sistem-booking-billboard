@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelAuth;
+
 class Register extends Controller
 {
+
+    private $ModelAuth;
 
     public function __construct()
     {
@@ -16,7 +18,11 @@ class Register extends Controller
     public function index()
     {
         if (Session()->get('email')) {
-            return redirect()->route('home');
+            if (Session()->get('status') === 'User') {
+                return redirect()->route('home');
+            } else {
+                return redirect()->route('dashboard');
+            }
         }
 
         $data = [
@@ -26,7 +32,7 @@ class Register extends Controller
         return view('auth.register', $data);
     }
 
-    public function prosesRegister(Request $request)
+    public function prosesRegister()
     {
         Request()->validate([
             'nama'              => 'required',
@@ -36,13 +42,13 @@ class Register extends Controller
             'alamat_perusahaan' => 'required',
             'email'             => 'required|unique:user,email|email',
             'password'          => 'min:6|required',
-        ],[
+        ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
             'nomor_telepon.numeric'     => 'Nomor telepon harus angka!',
             'alamat.required'           => 'Alamat harus diisi!',
             'nama_perusahaan.required'  => 'Nama perusahaan harus diisi!',
-            'alamat_perusahaan.required'=> 'Alamat perusahaan harus diisi!',
+            'alamat_perusahaan.required' => 'Alamat perusahaan harus diisi!',
             'email.required'            => 'Email harus diisi!',
             'email.unique'              => 'Email sudah digunakan!',
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',

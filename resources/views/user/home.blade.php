@@ -21,7 +21,7 @@
     <div class="bread-svg-box">
         <svg class="bread-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><polygon points="100 0 50 10 0 0 0 10 100 10"></polygon></svg>
     </div><!-- end bread-svg -->
-</section><!-- end breadcrumb-area -->
+</section>
 <!-- ================================
     END BREADCRUMB AREA
 ================================= -->

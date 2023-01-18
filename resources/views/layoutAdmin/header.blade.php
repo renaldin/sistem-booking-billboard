@@ -55,7 +55,7 @@
                                         </div><!-- end msg-body -->
                                     </a>
                                     <div class="section-block"></div>
-                                    <a href="index-2.html" class="list-group-item list-group-item-action">
+                                    <a href="/logout" class="list-group-item list-group-item-action">
                                         <div class="msg-body">
                                             <div class="msg-content">
                                                 <h3 class="title"><i class="la la-power-off mr-2"></i>Logout</h3>
