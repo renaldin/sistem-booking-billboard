@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\KelolaAdmin;
+use App\Http\Controllers\KelolaUser;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
@@ -46,5 +47,14 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/edit-admin/{id}', [KelolaAdmin::class, 'edit'])->name('edit-admin');
         Route::post('/edit-admin/{id}', [KelolaAdmin::class, 'prosesEdit']);
         Route::get('/hapus-admin/{id}', [KelolaAdmin::class, 'prosesHapus']);
+
+        // Kelola User
+        Route::get('/kelola-user', [KelolaUser::class, 'index'])->name('kelola-user');
+        Route::get('/tambah-user', [KelolaUser::class, 'tambah'])->name('tambah-user');
+        Route::post('/tambah-user', [KelolaUser::class, 'prosesTambah']);
+        Route::get('/edit-user/{id}', [KelolaUser::class, 'edit'])->name('edit-user');
+        Route::post('/edit-user/{id}', [KelolaUser::class, 'prosesEdit']);
+        Route::get('/detail-user/{id}', [KelolaUser::class, 'detail'])->name('detail-user');
+        Route::get('/hapus-user/{id}', [KelolaUser::class, 'prosesHapus']);
     });
 });
