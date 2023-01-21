@@ -15,7 +15,7 @@ class ModelAdmin extends Model
         return DB::table('admin')->orderBy('id_admin', 'DESC')->get();
     }
 
-    public function dataAdminById($id_admin)
+    public function detail($id_admin)
     {
         return DB::table('admin')->where('id_admin', $id_admin)->first();
     }

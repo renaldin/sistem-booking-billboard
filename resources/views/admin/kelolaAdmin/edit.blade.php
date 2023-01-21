@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-content">
                     <div class="contact-form-action">
-                        <form action="/tambah-admin" method="Post">
+                        <form action="/edit-admin/{{ $admin->id_admin }}" method="Post">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
@@ -21,7 +21,7 @@
                                         <label class="label-text">Nama Lengkap</label>
                                         <div class="form-group">
                                             <span class="la la-user form-icon"></span>
-                                            <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" value="{{ old('nama') }}" autofocus>
+                                            <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" value="{{ $admin->nama }}" autofocus>
                                         </div>
                                         @error('nama')
                                         <div style="margin-top: -16px">
@@ -35,7 +35,7 @@
                                         <label class="label-text">No. Telepon</label>
                                         <div class="form-group">
                                             <span class="la la-user form-icon"></span>
-                                            <input class="form-control" type="text" name="nomor_telepon" placeholder="Masukkan Nomor Telepon" value="{{ old('nomor_telepon') }}">
+                                            <input class="form-control" type="text" name="nomor_telepon" placeholder="Masukkan Nomor Telepon" value="{{ $admin->nomor_telepon }}">
                                         </div>
                                         @error('nomor_telepon')
                                         <div style="margin-top: -16px">
@@ -49,7 +49,7 @@
                                         <label class="label-text">Email</label>
                                         <div class="form-group">
                                             <span class="la la-envelope form-icon"></span>
-                                            <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}">
+                                            <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ $admin->email }}">
                                         </div>
                                         @error('email')
                                         <div style="margin-top: -16px">

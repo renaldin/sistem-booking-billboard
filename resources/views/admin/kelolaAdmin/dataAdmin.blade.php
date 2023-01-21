@@ -50,7 +50,7 @@
                                                 <span class="badge badge-warning py-1 px-2">Ini Akun Anda</span>
                                             @else
                                                 <div class="table-content">
-                                                    <a href="#" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Edit"><i class="la la-edit"></i></a>
+                                                    <a href="/edit-admin/{{ $item->id_admin }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Edit"><i class="la la-edit"></i></a>
                                                     <a href="/hapus-admin/{{ $item->id_admin }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="return confirm('Anda yakin akan menghapus data ini?')"><i class="la la-trash"></i></a>
                                                 </div>
                                             @endif
@@ -64,23 +64,5 @@
             </div><!-- end form-box -->
         </div><!-- end col-lg-12 -->
     </div><!-- end row -->
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 @endsection
