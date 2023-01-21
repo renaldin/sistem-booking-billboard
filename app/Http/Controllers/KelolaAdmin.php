@@ -74,4 +74,10 @@ class KelolaAdmin extends Controller
         $this->ModelAdmin->tambah($data);
         return redirect()->route('kelola-admin')->with('berhasil', 'Data admin berhasil ditambahkan !');
     }
+
+    public function prosesHapus($id_admin)
+    {
+        $this->ModelAdmin->hapus($id_admin);
+        return redirect()->route('kelola-admin')->with('berhasil', 'Data admin berhasil dihapus !');
+    }
 }

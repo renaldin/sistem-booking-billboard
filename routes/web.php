@@ -43,5 +43,6 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/kelola-admin', [KelolaAdmin::class, 'index'])->name('kelola-admin');
         Route::get('/tambah-admin', [KelolaAdmin::class, 'tambah'])->name('tambah-admin');
         Route::POST('/tambah-admin', [KelolaAdmin::class, 'prosesTambah']);
+        Route::get('/hapus-admin/{id}', [KelolaAdmin::class, 'prosesHapus']);
     });
 });
