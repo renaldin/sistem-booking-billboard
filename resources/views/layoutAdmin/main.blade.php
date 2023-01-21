@@ -6,7 +6,7 @@
     <meta name="author" content="TechyDevs">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sistem Booking</title>
+    <title>@if ($title) Sistem Booking | {{$title}} @else Sistem Booking @endif</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('template/images/favicon.png') }}">
 
@@ -26,6 +26,11 @@
     <link rel="stylesheet" href="{{ asset('template/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="template/datatables/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="template/datatables/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="template/datatables/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 <body class="section-bg">
 
@@ -50,41 +55,26 @@
                     <div class="notification-item">
                         <a href="user-dashboard-profile.html" class="dropdown-item">
                             <div class="d-flex align-items-center">
-                                <div class="avatar avatar-sm flex-shrink-0 mr-2"><img src="{{ asset('template/images/team8.jpg') }}" alt="team-img"></div>
-                                <span class="font-size-14 font-weight-bold">Ali Tufan</span>
+                                <span class="font-size-14 font-weight-bold">{{ Session()->get('nama') }}</span>
                             </div>
                         </a>
                         <div class="list-group drop-reveal-list user-drop-reveal-list">
                             <a href="user-dashboard-profile.html" class="list-group-item list-group-item-action">
                                 <div class="msg-body">
                                     <div class="msg-content">
-                                        <h3 class="title"><i class="la la-user mr-2"></i>My Profile</h3>
+                                        <h3 class="title"><i class="la la-user mr-2"></i>Profile</h3>
                                     </div>
                                 </div><!-- end msg-body -->
                             </a>
                             <a href="user-dashboard-booking.html" class="list-group-item list-group-item-action">
                                 <div class="msg-body">
                                     <div class="msg-content">
-                                        <h3 class="title"><i class="la la-shopping-cart mr-2"></i>My Booking</h3>
-                                    </div>
-                                </div><!-- end msg-body -->
-                            </a>
-                            <a href="user-dashboard-reviews.html" class="list-group-item list-group-item-action">
-                                <div class="msg-body">
-                                    <div class="msg-content">
-                                        <h3 class="title"><i class="la la-heart mr-2"></i>My Reviews</h3>
-                                    </div>
-                                </div><!-- end msg-body -->
-                            </a>
-                            <a href="user-dashboard-settings.html" class="list-group-item list-group-item-action">
-                                <div class="msg-body">
-                                    <div class="msg-content">
-                                        <h3 class="title"><i class="la la-gear mr-2"></i>Settings</h3>
+                                        <h3 class="title"><i class="la la-shopping-cart mr-2"></i>Orders</h3>
                                     </div>
                                 </div><!-- end msg-body -->
                             </a>
                             <div class="section-block"></div>
-                            <a href="index-2.html" class="list-group-item list-group-item-action">
+                            <a href="/logout" class="list-group-item list-group-item-action">
                                 <div class="msg-body">
                                     <div class="msg-content">
                                         <h3 class="title"><i class="la la-power-off mr-2"></i>Logout</h3>
@@ -162,5 +152,33 @@
 <script src="{{ asset('template/js/animated-headline.js') }}"></script>
 <script src="{{ asset('template/js/jquery.ripples-min.js') }}"></script>
 <script src="{{ asset('template/js/main.js') }}"></script>
+
+<!-- Datatbles -->
+<script src="template/datatables/datatables/jquery.dataTables.min.js"></script>
+<script src="template/datatables/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="template/datatables/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="template/datatables/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="template/datatables/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="template/datatables/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="template/datatables/jszip/jszip.min.js"></script>
+<script src="template/datatables/pdfmake/pdfmake.min.js"></script>
+<script src="template/datatables/pdfmake/vfs_fonts.js"></script>
+<script src="template/datatables/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="template/datatables/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="template/datatables/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
+    });
+</script>
 </body>
 </html>

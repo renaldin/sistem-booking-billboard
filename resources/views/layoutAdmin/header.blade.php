@@ -17,8 +17,7 @@
                         <div class="dropdown">
                             <a href="#" class="dropdown-toggle" id="userDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="d-flex align-items-center">
-                                    <div class="avatar avatar-sm flex-shrink-0 mr-2"><img src="{{ asset('template/images/team8.jpg') }}" alt="team-img"></div>
-                                    <span class="font-size-14 font-weight-bold">Royel Admin</span>
+                                    <span class="font-size-14 font-weight-bold">{{ Session()->get('nama') }}</span>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-reveal dropdown-menu-md dropdown-menu-right">
@@ -29,7 +28,7 @@
                                     <a href="admin-dashboard-settings.html" class="list-group-item list-group-item-action">
                                         <div class="msg-body">
                                             <div class="msg-content">
-                                                <h3 class="title"><i class="la la-user mr-2"></i> Edit Profile</h3>
+                                                <h3 class="title"><i class="la la-user mr-2"></i>Profile</h3>
                                             </div>
                                         </div>
                                     </a>
@@ -37,20 +36,6 @@
                                         <div class="msg-body">
                                             <div class="msg-content">
                                                 <h3 class="title"><i class="la la-shopping-cart mr-2"></i>Orders</h3>
-                                            </div>
-                                        </div><!-- end msg-body -->
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="msg-body">
-                                            <div class="msg-content">
-                                                <h3 class="title"><i class="la la-bell mr-2"></i>Messages</h3>
-                                            </div>
-                                        </div><!-- end msg-body -->
-                                    </a>
-                                    <a href="admin-dashboard-settings.html" class="list-group-item list-group-item-action">
-                                        <div class="msg-body">
-                                            <div class="msg-content">
-                                                <h3 class="title"><i class="la la-gear mr-2"></i>Settings</h3>
                                             </div>
                                         </div><!-- end msg-body -->
                                     </a>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Home;
+use App\Http\Controllers\KelolaAdmin;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,6 @@ Route::group(['middleware' => 'revalidate'], function () {
 
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
+        Route::get('/kelola-admin', [KelolaAdmin::class, 'index'])->name('kelola-admin');
     });
 });
