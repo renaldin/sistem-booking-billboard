@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class ModelKelolaAdmin extends Model
+class ModelAdmin extends Model
 {
     use HasFactory;
 

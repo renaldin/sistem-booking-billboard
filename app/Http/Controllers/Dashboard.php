@@ -16,7 +16,8 @@ class Dashboard extends Controller
         }
 
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'subTitle' => null,
         ];
         return view('admin.dashboard', $data);
     }
