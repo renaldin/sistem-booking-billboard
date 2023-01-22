@@ -10,7 +10,7 @@
         </div>
         <div class="sidebar-menu-wrap">
             <ul class="sidebar-menu toggle-menu list-items">
-                <li class="@if($title === 'Dashboard') page-active @endif"><a href=""><i class="la la-dashboard mr-2"></i>Dashboard</a></li>
+                <li class="@if($title === 'Dashboard') page-active @endif"><a href="/dashboard"><i class="la la-dashboard mr-2"></i>Dashboard</a></li>
                 <li><a href=""><i class="la la-box mr-2"></i>Data Reklame</a></li>
                 <li><a href=""><i class="la la-check mr-2"></i>Konfirmasi Pemesanan</a></li>
                 <li class="@if($title === 'Data Admin') page-active @endif"><a href="/kelola-admin"><i class="la la-users mr-2"></i>Data Admin</a></li>

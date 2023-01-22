@@ -34,4 +34,9 @@ class ModelAdmin extends Model
     {
         DB::table('admin')->where('id_admin', $id_admin)->delete();
     }
+
+    public function jumlahAdmin()
+    {
+        return DB::table('admin')->count();
+    }
 }

@@ -34,4 +34,9 @@ class ModelUser extends Model
     {
         DB::table('user')->where('id_member', $id_member)->delete();
     }
+
+    public function jumlahUser()
+    {
+        return DB::table('user')->count();
+    }
 }
