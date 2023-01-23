@@ -6,6 +6,7 @@ use App\Http\Controllers\KelolaAdmin;
 use App\Http\Controllers\KelolaUser;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Login;
+use App\Http\Controllers\Reklame;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,5 +57,14 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::post('/edit-user/{id}', [KelolaUser::class, 'prosesEdit']);
         Route::get('/detail-user/{id}', [KelolaUser::class, 'detail'])->name('detail-user');
         Route::get('/hapus-user/{id}', [KelolaUser::class, 'prosesHapus']);
+
+        // Kelola Reklame
+        Route::get('/kelola-reklame', [Reklame::class, 'index'])->name('kelola-reklame');
+        Route::get('/tambah-reklame', [Reklame::class, 'tambah'])->name('tambah-reklame');
+        Route::post('/tambah-reklame', [Reklame::class, 'prosesTambah']);
+        Route::get('/edit-reklame/{id}', [Reklame::class, 'edit'])->name('edit-reklame');
+        Route::post('/edit-reklame/{id}', [Reklame::class, 'prosesEdit']);
+        Route::get('/detail-reklame/{id}', [Reklame::class, 'detail'])->name('detail-reklame');
+        Route::get('/hapus-reklame/{id}', [Reklame::class, 'hapus']);
     });
 });
