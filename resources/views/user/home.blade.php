@@ -46,10 +46,9 @@
                             </div>
                             <div class="counter-content">
                                 <div>
-                                    <span class="counter" data-from="0" data-to="200"  data-refresh-interval="5">0</span>
-                                    <span class="count-symbol">+</span>
+                                    <span class="counter" data-from="0" data-to="{{ $jumlahPartner }}"  data-refresh-interval="5">0</span>
                                 </div>
-                                <p class="counter__title">Partners</p>
+                                <p class="counter__title">Partner</p>
                             </div><!-- end counter-content -->
                         </div><!-- end counter-item -->
                     </div><!-- end col-lg-3 -->
@@ -60,24 +59,22 @@
                             </div>
                             <div class="counter-content">
                                 <div>
-                                    <span class="counter" data-from="0" data-to="3"  data-refresh-interval="5">0</span>
-                                    <span class="count-symbol">k</span>
+                                    <span class="counter" data-from="0" data-to="{{ $jumlahReklame }}"  data-refresh-interval="5">0</span>
                                 </div>
-                                <p class="counter__title">Properties</p>
+                                <p class="counter__title">Reklame</p>
                             </div><!-- end counter-content -->
                         </div><!-- end counter-item -->
                     </div><!-- end col-lg-3 -->
                     <div class="col-lg-6 responsive-column">
                         <div class="counter-item counter-item-layout-2 d-flex">
                             <div class="counter-icon flex-shrink-0">
-                                <i class="la la-globe"></i>
+                                <i class="la la-user"></i>
                             </div>
                             <div class="counter-content">
                                 <div>
-                                    <span class="counter" data-from="0" data-to="400"  data-refresh-interval="5">0</span>
-                                    <span class="count-symbol">+</span>
+                                    <span class="counter" data-from="0" data-to="{{ $jumlahUser }}"  data-refresh-interval="5">0</span>
                                 </div>
-                                <p class="counter__title">Destinations</p>
+                                <p class="counter__title">User</p>
                             </div><!-- end counter-content -->
                         </div><!-- end counter-item -->
                     </div><!-- end col-lg-3 -->
@@ -88,10 +85,9 @@
                             </div>
                             <div class="counter-content">
                                 <div>
-                                    <span class="counter" data-from="0" data-to="40"  data-refresh-interval="5">0</span>
-                                    <span class="count-symbol">k</span>
+                                    <span class="counter" data-from="0" data-to="{{ $jumlahOrder }}"  data-refresh-interval="5">0</span>
                                 </div>
-                                <p class="counter__title">Booking</p>
+                                <p class="counter__title">Order</p>
                             </div><!-- end counter-content -->
                         </div><!-- end counter-item -->
                     </div><!-- end col-lg-3 -->
