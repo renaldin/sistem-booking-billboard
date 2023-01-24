@@ -9,6 +9,7 @@ use App\Http\Controllers\Register;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\Order;
 use App\Http\Controllers\Reklame;
+use App\Http\Controllers\Partner;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,6 +69,15 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::post('/edit-reklame/{id}', [Reklame::class, 'prosesEdit']);
         Route::get('/detail-reklame/{id}', [Reklame::class, 'detail'])->name('detail-reklame');
         Route::get('/hapus-reklame/{id}', [Reklame::class, 'hapus']);
+
+        // Kelola Partner
+        Route::get('/kelola-partner', [Partner::class, 'index'])->name('kelola-partner');
+        Route::get('/tambah-partner', [Partner::class, 'tambah'])->name('tambah-partner');
+        Route::post('/tambah-partner', [Partner::class, 'prosesTambah']);
+        Route::get('/edit-partner/{id}', [Partner::class, 'edit'])->name('edit-partner');
+        Route::post('/edit-partner/{id}', [Partner::class, 'prosesEdit']);
+        Route::get('/detail-partner/{id}', [Partner::class, 'detail'])->name('detail-partner');
+        Route::get('/hapus-partner/{id}', [Partner::class, 'hapus']);
 
         // Profil Admin
         Route::get('/profil-admin', [KelolaAdmin::class, 'profil'])->name('profil-admin');
