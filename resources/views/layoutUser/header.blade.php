@@ -60,17 +60,11 @@
                                         <a href="/">Home</a>
                                     </li>
                                     <li>
-                                        <a href="#">Tour <i class="la la-angle-down"></i></a>
-                                        <ul class="dropdown-menu-item">
-                                            <li><a href="tour-fullwidth.html">Tour Full width</a></li>
-                                            <li><a href="tour-grid.html">Tour Grid</a></li>
-                                            <li><a href="tour-list.html">Tour List</a></li>
-                                            <li><a href="tour-left-sidebar.html">Tour Left Sidebar</a></li>
-                                            <li><a href="tour-right-sidebar.html">Tour Right Sidebar</a></li>
-                                            <li><a href="tour-details.html">Tour details</a></li>
-                                            <li><a href="tour-booking.html">Tour Booking</a></li>
-                                            <li><a href="tour-search-result.html">Tour Search Result</a></li>
-                                        </ul>
+                                        <a href="/">Reklame</a>
+                                    </li>
+                                    </li>
+                                    <li>
+                                        <a href="/">Booking Saya</a>
                                     </li>
                                 </ul>
                             </nav>
