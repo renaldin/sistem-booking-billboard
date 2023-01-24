@@ -22,13 +22,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-reveal dropdown-menu-md dropdown-menu-right">
                                 <div class="dropdown-item drop-reveal-header user-reveal-header">
-                                    <h6 class="title text-uppercase">Welcome!</h6>
+                                    <h6 class="title text-uppercase">Selamat Datang!</h6>
                                 </div>
                                 <div class="list-group drop-reveal-list user-drop-reveal-list">
-                                    <a href="admin-dashboard-settings.html" class="list-group-item list-group-item-action">
+                                    <a href="/profil-admin" class="list-group-item list-group-item-action">
                                         <div class="msg-body">
                                             <div class="msg-content">
-                                                <h3 class="title"><i class="la la-user mr-2"></i>Profile</h3>
+                                                <h3 class="title"><i class="la la-user mr-2"></i>Profil</h3>
                                             </div>
                                         </div>
                                     </a>

@@ -9,7 +9,10 @@
     <div class="col-lg-6">
         <div class="breadcrumb-list text-right">
             <ul class="list-items">
+                @if ($title)
                 <li>{{ $title }}</li>
+                @endif
+
                 @if ($subTitle)
                     <li>{{ $subTitle }}</li>
                 @endif

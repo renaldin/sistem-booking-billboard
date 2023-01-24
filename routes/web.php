@@ -66,5 +66,10 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::post('/edit-reklame/{id}', [Reklame::class, 'prosesEdit']);
         Route::get('/detail-reklame/{id}', [Reklame::class, 'detail'])->name('detail-reklame');
         Route::get('/hapus-reklame/{id}', [Reklame::class, 'hapus']);
+
+        // Profil Admin
+        Route::get('/profil-admin', [KelolaAdmin::class, 'profil'])->name('profil-admin');
+        Route::post('/profil-admin/{id}', [KelolaAdmin::class, 'ubahProfil']);
+        Route::post('/ubah-password/{id}', [KelolaAdmin::class, 'ubahPassword']);
     });
 });
