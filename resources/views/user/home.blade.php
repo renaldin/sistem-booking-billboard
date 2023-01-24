@@ -164,50 +164,18 @@
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
         <div class="row padding-top-100px justify-content-center">
+            @foreach ($partner as $item)
             <div class="col-lg-4 responsive-column">
                 <div class="card-item team-card">
-                    <div class="card-img">
-                        <img src="{{ asset('template/images/team1.jpg') }}" alt="team-img">
+                    <div class="card-img" style="padding-top: 60px">
+                        <img src="{{ asset('foto_partner/'.$item->gambar) }}" style="width: 60%; height: 50%; border-radius: 0;"  alt="team-img">
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">David Roberts</h3>
-                        <p class="card-meta">Founder & Director</p>
+                        <h3 class="card-title">{{ $item->nama_partner }}</h3>
                     </div>
                 </div><!-- end card-item -->
             </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item team-card">
-                    <div class="card-img">
-                        <img src="{{ asset('template/images/team1.jpg') }}" alt="team-img">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">David Roberts</h3>
-                        <p class="card-meta">Founder & Director</p>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item team-card">
-                    <div class="card-img">
-                        <img src="{{ asset('template/images/team1.jpg') }}" alt="team-img">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">David Roberts</h3>
-                        <p class="card-meta">Founder & Director</p>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            <div class="col-lg-4 responsive-column">
-                <div class="card-item team-card">
-                    <div class="card-img">
-                        <img src="{{ asset('template/images/team1.jpg') }}" alt="team-img">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">David Roberts</h3>
-                        <p class="card-meta">Founder & Director</p>
-                    </div>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
+            @endforeach
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end info-area -->
