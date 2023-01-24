@@ -27,8 +27,8 @@ class Dashboard extends Controller
         }
 
         $data = [
-            'title'         => 'Dashboard',
-            'subTitle'      => null,
+            'title'         => null,
+            'subTitle'      => 'Dashboard',
             'jumlahAdmin'   => $this->ModelAdmin->jumlahAdmin(),
             'jumlahUser'    => $this->ModelUser->jumlahUser(),
         ];

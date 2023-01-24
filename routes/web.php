@@ -4,8 +4,10 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\KelolaAdmin;
 use App\Http\Controllers\KelolaUser;
+use App\Http\Controllers\KonfirmasiPembayaran;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\Login;
+use App\Http\Controllers\Order;
 use App\Http\Controllers\Reklame;
 use Illuminate\Support\Facades\Route;
 
@@ -71,5 +73,11 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/profil-admin', [KelolaAdmin::class, 'profil'])->name('profil-admin');
         Route::post('/profil-admin/{id}', [KelolaAdmin::class, 'ubahProfil']);
         Route::post('/ubah-password/{id}', [KelolaAdmin::class, 'ubahPassword']);
+
+        // Data Order
+        Route::get('/kelola-order', [Order::class, 'index'])->name('kelola-order');
+
+        // Data Konfirmasi Pembayaran
+        Route::get('/konfirmasi-pembayaran', [KonfirmasiPembayaran::class, 'index'])->name('konfirmasi-pembayaran');
     });
 });
