@@ -124,7 +124,7 @@
         <?php $no = 1;?>
         @foreach ($reklame as $item)
         <div class="full-width-slide-item">
-            <a class="d-block" data-fancybox="gallery" href="" data-caption="Showing image {{ $no++ }}">
+            <a class="d-block" href="/reklame/{{ $item->id_reklame }}" data-caption="Showing image {{ $no++ }}">
                 <img src="{{ asset('foto_reklame/'.$item->gambar) }}" alt="{{ $item->lokasi }}">
             </a>
         </div><!-- end full-width-slide-item -->
@@ -134,7 +134,7 @@
         <div class="row mt-3">
             <div class="col-lg-12">
                 <div class="section-heading text-center">
-                    <a href="">
+                    <a href="/reklame">
                         <p><b>Lihat Semua</b> <i class="la la-share icon-element"></i></p>
                     </a>
                 </div><!-- end section-heading -->

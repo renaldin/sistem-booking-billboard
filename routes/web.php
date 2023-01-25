@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Booking;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\KelolaAdmin;
@@ -40,6 +41,15 @@ Route::group(['middleware' => 'revalidate'], function () {
 
     // Logout
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
+
+    Route::group(['middleware' => 'user'], function () {
+        // Reklame
+        Route::get('/reklame', [Reklame::class, 'reklameUser'])->name('reklame');
+        Route::get('/reklame/{id}', [Reklame::class, 'detailReklameUser']);
+
+        // booking
+        Route::get('/booking', [Booking::class, 'index'])->name('booking');
+    });
 
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');

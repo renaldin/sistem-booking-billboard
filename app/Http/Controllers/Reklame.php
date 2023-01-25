@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Models\ModelReklame;
-use Illuminate\Contracts\Session\Session;
+use App\Models\ModelUser;
 
 class Reklame extends Controller
 {
 
     private $ModelReklame;
+    private $ModelUser;
 
     public function __construct()
     {
         $this->ModelReklame = new ModelReklame();
+        $this->ModelUser = new ModelUser();
     }
 
     public function index()
@@ -212,5 +212,36 @@ class Reklame extends Controller
         }
         $this->ModelReklame->hapus($id_reklame);
         return redirect()->route('kelola-reklame')->with('berhasil', 'Data Berhasil Dihapus !');
+    }
+
+
+    // User
+    public function reklameUser()
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('login');
+        }
+
+        $data = [
+            'title'     => 'Daftar Reklame',
+            'reklame'   => $this->ModelReklame->dataReklame()
+        ];
+
+        return view('user.reklame.dataReklame', $data);
+    }
+
+    public function detailReklameUser($id_reklame)
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('login');
+        }
+
+        $data = [
+            'title'     => 'Detail Reklame',
+            'reklame'   => $this->ModelReklame->detail($id_reklame),
+            'user'      => $this->ModelUser->detail(Session()->get('id_member'))
+        ];
+
+        return view('user.reklame.detail', $data);
     }
 }

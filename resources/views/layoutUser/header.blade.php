@@ -60,11 +60,11 @@
                                         <a href="/">Home</a>
                                     </li>
                                     <li>
-                                        <a href="/">Reklame</a>
+                                        <a href="/reklame">Reklame</a>
                                     </li>
                                     </li>
                                     <li>
-                                        <a href="/">Booking Saya</a>
+                                        <a href="/booking">Booking Saya</a>
                                     </li>
                                 </ul>
                             </nav>
