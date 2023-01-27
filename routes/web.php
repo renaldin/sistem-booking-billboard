@@ -56,6 +56,9 @@ Route::group(['middleware' => 'revalidate'], function () {
 
         // Profil User
         Route::get('/profil', [KelolaUser::class, 'profil'])->name('profil');
+        Route::post('/edit-profil-user/{id}', [KelolaUser::class, 'editProfil']);
+        Route::get('/ubah-password/{id}', [KelolaUser::class, 'ubahPassword']);
+        Route::post('/ubah-password-user/{id}', [KelolaUser::class, 'prosesUbahPassword']);
     });
 
     Route::group(['middleware' => 'admin'], function () {

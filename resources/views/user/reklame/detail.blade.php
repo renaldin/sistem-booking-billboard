@@ -55,7 +55,7 @@
                                                 </div>
                                             @endif
                                             @if (session('gagal'))    
-                                                <div class="alert bg-primary text-white alert-dismissible">
+                                                <div class="alert bg-danger text-white alert-dismissible">
                                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                                     {{ session('gagal') }}
                                                 </div>

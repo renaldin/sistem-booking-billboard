@@ -180,9 +180,9 @@ class KelolaAdmin extends Controller
             'passwordBaru'  => 'required|min:6',
         ], [
             'passwordLama.required' => 'Password Lama harus diisi!',
-            'passwordLama.max'      => 'Password Lama minimal 6 karakter!',
+            'passwordLama.min'      => 'Password Lama minimal 6 karakter!',
             'passwordBaru.required' => 'Password Baru harus diisi!',
-            'passwordBaru.max'      => 'Password Baru minimal 6 karakter!',
+            'passwordBaru.min'      => 'Password Baru minimal 6 karakter!',
         ]);
 
         $admin = $this->ModelAdmin->detail($id_admin);
