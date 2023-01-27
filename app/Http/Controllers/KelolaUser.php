@@ -168,4 +168,18 @@ class KelolaUser extends Controller
         $this->ModelUser->hapus($id_member);
         return redirect()->route('kelola-user')->with('berhasil', 'Data user berhasil dihapus !');
     }
+
+    public function profil()
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('login');
+        }
+
+        $data = [
+            'title'     => 'Profil',
+            'user'      => $this->ModelUser->detail(Session()->get('id_member'))
+        ];
+
+        return view('user.profil.profil', $data);
+    }
 }

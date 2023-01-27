@@ -224,10 +224,24 @@ class Reklame extends Controller
 
         $data = [
             'title'     => 'Daftar Reklame',
-            'reklame'   => $this->ModelReklame->dataReklame()
+            'reklame'   => $this->ModelReklame->dataReklameDuaStatus('Belum Dipesan', 'Sudah Dibooking')
         ];
 
         return view('user.reklame.dataReklame', $data);
+    }
+
+    public function reklameBookingUser()
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('login');
+        }
+
+        $data = [
+            'title'     => 'Daftar Reklame',
+            'reklame'   => $this->ModelReklame->dataReklameStatus('Belum Dipesan')
+        ];
+
+        return view('user.reklame.dataBookingReklame', $data);
     }
 
     public function detailReklameUser($id_reklame)

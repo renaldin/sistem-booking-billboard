@@ -15,6 +15,19 @@ class ModelReklame extends Model
         return DB::table('reklame')->orderBy('id_reklame', 'DESC')->get();
     }
 
+    public function dataReklameStatus($status)
+    {
+        return DB::table('reklame')->where('status', $status)->orderBy('id_reklame', 'DESC')->get();
+    }
+
+    public function dataReklameDuaStatus($statusSatu, $statusDua)
+    {
+        return DB::table('reklame')
+            ->where('status', $statusSatu)
+            ->orWhere('status', $statusDua)
+            ->get();
+    }
+
     public function detail($id_reklame)
     {
         return DB::table('reklame')->where('id_reklame', $id_reklame)->first();
@@ -40,8 +53,8 @@ class ModelReklame extends Model
         return DB::table('reklame')->count();
     }
 
-    public function dataReklameLimit($limit)
+    public function dataReklameLimit($limit, $status)
     {
-        return DB::table('reklame')->orderBy('id_reklame', 'ASC')->limit($limit)->get();
+        return DB::table('reklame')->where('status', $status)->orderBy('id_reklame', 'ASC')->limit($limit)->get();
     }
 }

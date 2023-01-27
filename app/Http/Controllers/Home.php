@@ -27,7 +27,7 @@ class Home extends Controller
     {
         $data = [
             'title'             => 'Home',
-            'reklame'           => $this->ModelReklame->dataReklameLimit(4),
+            'reklame'           => $this->ModelReklame->dataReklameLimit(4, 'Belum Dipesan'),
             'partner'           => $this->ModelPartner->dataPartner(4),
             'jumlahPartner'     => $this->ModelPartner->jumlahPartner(),
             'jumlahReklame'     => $this->ModelReklame->jumlahReklame(),

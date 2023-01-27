@@ -45,10 +45,17 @@ Route::group(['middleware' => 'revalidate'], function () {
     Route::group(['middleware' => 'user'], function () {
         // Reklame
         Route::get('/reklame', [Reklame::class, 'reklameUser'])->name('reklame');
+        Route::get('/reklame-booking', [Reklame::class, 'reklameBookingUser'])->name('reklame-booking');
         Route::get('/reklame/{id}', [Reklame::class, 'detailReklameUser']);
 
         // booking
         Route::get('/booking', [Booking::class, 'index'])->name('booking');
+        Route::post('/booking/{id}', [Booking::class, 'prosesBooking']);
+        Route::get('/detail-booking/{id}', [Booking::class, 'detailBooking']);
+        Route::get('/batal-booking/{id}', [Booking::class, 'batalBooking']);
+
+        // Profil User
+        Route::get('/profil', [KelolaUser::class, 'profil'])->name('profil');
     });
 
     Route::group(['middleware' => 'admin'], function () {

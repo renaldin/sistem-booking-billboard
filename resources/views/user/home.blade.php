@@ -187,13 +187,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2 class="sec__title mb-3 text-white">Interested in a career <br> at Trizen.</h2>
-                    <p class="sec__desc text-white">We’re always looking for talented individuals and
-                        <br> people who are hungry to do great work.
+                    <p class="sec__desc text-white">
+                        Pilih reklame billboard dan langsung booking agar tidak dibooking orang lain.
                     </p>
                 </div><!-- end section-heading -->
                 <div class="btn-box padding-top-35px">
-                    <a href="#" class="theme-btn border-0">Booking Sekarang</a>
+                    <a href="/reklame" class="theme-btn border-0">Booking Sekarang</a>
                 </div>
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->

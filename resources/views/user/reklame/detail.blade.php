@@ -43,7 +43,7 @@
                     </div><!-- form-title-wrap -->
                     <div class="form-content ">
                         <div class="contact-form-action">
-                            <form action="/booking/{{ $reklame->id_reklame }}" method="post">
+                            <form>
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -51,8 +51,13 @@
                                             @if (session('berhasil'))    
                                                 <div class="alert bg-primary text-white alert-dismissible">
                                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                    <h4><i class="icon fa fa-ban"></i> Berhasil!</h4>
                                                     {{ session('berhasil') }}
+                                                </div>
+                                            @endif
+                                            @if (session('gagal'))    
+                                                <div class="alert bg-primary text-white alert-dismissible">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                    {{ session('gagal') }}
                                                 </div>
                                             @endif
                                         </div>
@@ -64,7 +69,7 @@
                                             <label class="label-text">Nama Lengkap</label>
                                             <div class="form-group">
                                                 <span class="la la-user form-icon"></span>
-                                                <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" value="{{ $user->nama }}" autofocus>
+                                                <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" value="{{ $user->nama }}" autofocus disabled required>
                                                 @error('nama')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>
@@ -78,7 +83,7 @@
                                             <label class="label-text">Email</label>
                                             <div class="form-group">
                                                 <span class="la la-envelope-o form-icon"></span>
-                                                <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ $user->email }}">
+                                                <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ $user->email }}" disabled required>
                                                 @error('email')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>
@@ -92,7 +97,7 @@
                                             <label class="label-text">Nama Perusahaan</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input class="form-control" type="text" name="nama_perusahaan" placeholder="Masukkan Nama Perusahaan" value="{{ $user->nama_perusahaan }}">
+                                                <input class="form-control" type="text" name="nama_perusahaan" placeholder="Masukkan Nama Perusahaan" value="{{ $user->nama_perusahaan }}" disabled required>
                                                 @error('nama_perusahaan')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>
@@ -106,7 +111,7 @@
                                             <label class="label-text">Alamat Perusahaan</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input class="form-control" type="text" name="alamat_perusahaan" placeholder="Masukkan Alamat Perusahaan" value="{{ $user->alamat_perusahaan }}">
+                                                <input class="form-control" type="text" name="alamat_perusahaan" placeholder="Masukkan Alamat Perusahaan" value="{{ $user->alamat_perusahaan }}" disabled required>
                                                 @error('alamat_perusahaan')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>
@@ -117,6 +122,7 @@
                                     </div><!-- end col-lg-6 -->
                                     <br>
                                 </div>
+                            </form>
                         </div><!-- end contact-form-action -->
                     </div><!-- end form-content -->
                 </div><!-- end form-box -->
@@ -128,6 +134,8 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="credit-card" role="tabpanel" aria-labelledby="credit-card-tab">
                                 <div class="contact-form-action">
+                                    <form  action="/booking/{{ $reklame->id_reklame }}" method="POST">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="input-box">

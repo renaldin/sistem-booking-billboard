@@ -19,12 +19,12 @@
 
                                 @if (Session()->get('email'))
                                     <ul class="list-items">
-                                        <li><a href="#"><i class="la la-user mr-1"></i>{{ Session()->get('nama') }}</a></li>
+                                        <li><a href="/profil"><i class="la la-user mr-1"></i>{{ Session()->get('nama') }}</a></li>
                                         <a href="/logout" class="theme-btn theme-btn-small">Logout</a>
                                     </ul>
                                 @else 
                                     @if ($title === 'Register')
-                                        <a href="#" class="theme-btn theme-btn-small" >Login</a>
+                                        <a href="/login" class="theme-btn theme-btn-small" >Login</a>
                                     @elseif ($title === 'Login' || $title === 'Login Admin')
                                         <a href="/register" class="theme-btn theme-btn-small theme-btn-transparent mr-1">Register</a>
                                     @else

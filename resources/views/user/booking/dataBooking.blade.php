@@ -50,10 +50,10 @@
                                         <tr>
                                             <th scope="row">
                                                 <div class="table-content">
-                                                    <h3 class="title">Total Booking</h3>
+                                                    <h3 class="title">Total Pesanan</h3>
                                                 </div>
                                             </th>
-                                            <td>2</td>
+                                            <td>{{ $jumlahOrder }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -64,6 +64,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <div class="mb-2">
+                                @if (session('berhasil'))    
+                                    <div class="alert bg-primary text-white alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        {{ session('berhasil') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    @foreach ($booking as $item)
                     <div class="table-form table-responsive mb-3">
                         <table class="table">
                             <thead>
@@ -77,37 +90,38 @@
                             <tr>
                                 <th scope="row">
                                     <div class="table-content product-content d-flex align-items-center">
-                                        <a href="room-details.html" class="d-block">
-                                            <img src="{{ asset('template/images/small-img12.jpg') }}" alt="" class="flex-shrink-0">
+                                        <a href="#" class="d-block">
+                                            <img src="{{ asset('foto_reklame/'.$item->gambar) }}" alt="" class="flex-shrink-0">
                                         </a>
                                        <div class="product-content">
-                                           <a href="room-details.html" class="title">Premium Lake View Room</a>
+                                           <a href="room-details.html" class="title">Lokasi: {{ $item->lokasi }}</a>
                                            <div class="product-info-wrap">
                                                <div class="product-info line-height-24">
-                                                   <span class="product-info-label">Reservation:</span>
-                                                       <span class="product-info-value">
-                                                       <span class="product-check-in">July 12, 2020</span>
-                                                       <span class="product-mark">/</span>
-                                                       <span class="product-check-out">July 13, 2020</span>
-                                                       <span class="product-nights">(1 night)</span>
-                                                    </span>
+                                                   <span class="product-info-label">Ukuran:</span>
+                                                   <span class="product-info-value">{{ $item->ukuran }}</span>
                                                </div><!-- end product-info -->
                                                <div class="product-info line-height-24">
-                                                   <span class="product-info-label">Guests:</span>
-                                                   <span class="product-info-value">2 Adults</span>
+                                                   <span class="product-info-label">Orientation Page:</span>
+                                                   <span class="product-info-value">{{ $item->orientation_page }}</span>
                                                </div><!-- end product-info -->
                                                <div class="product-info line-height-24">
-                                                   <span class="product-info-label">Extra Services:</span>
-                                                   <span class="product-info-value">cleaning-fee, airport-pickup, breakfast, parking</span>
+                                                   <span class="product-info-label">Target Audiens:</span>
+                                                   <span class="product-info-value">{{ $item->target_audiens }}</span>
                                                </div><!-- end product-info -->
                                            </div>
                                        </div>
                                     </div>
                                 </th>
-                                <td>$110.00</td>
                                 <td>
-                                    <a href="/detail-booking/" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
-                                    <a href="/hapus-booking/" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="return confirm('Anda yakin akan menghapus data ini?')"><i class="la la-trash"></i></a>
+                                    @if ($item->harga !== null)
+                                        <?= 'Rp ' . number_format($item->harga, 2, ',', '.'); ?>
+                                    @else
+                                        Menunggu verifikasi dari Admin
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="/detail-booking/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
+                                    <a href="/batal-booking/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Batal" onclick="return confirm('Anda yakin akan membatalkan data ini?')"><i class="la la-trash"></i></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -119,6 +133,7 @@
                             <a href="#" class="theme-btn">Konfirmasi Pembayaran</a>
                         </div>
                     </div>
+                    @endforeach
                 </div><!-- end cart-wrap -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
