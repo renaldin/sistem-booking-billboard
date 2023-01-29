@@ -55,6 +55,10 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/batal-booking/{id}', [Booking::class, 'batalBooking']);
         Route::get('/riwayat-booking', [Booking::class, 'riwayatBooking'])->name('riwayat-booking');
 
+        // Konfirmasi Pembayarans
+        Route::get('/pembayaran/{id}', [KonfirmasiPembayaran::class, 'pembayaran']);
+        Route::post('/pembayaran/{id}', [KonfirmasiPembayaran::class, 'prosesPembayaran']);
+
         // Profil User
         Route::get('/profil', [KelolaUser::class, 'profil'])->name('profil');
         Route::post('/edit-profil-user/{id}', [KelolaUser::class, 'editProfil']);

@@ -140,7 +140,7 @@
                     <div class="section-block"></div>
                     <div class="cart-actions d-flex justify-content-end align-items-center pt-4 pb-5">
                         <div class="btn-box">
-                            <a href="#" class="theme-btn">Konfirmasi Pembayaran</a>
+                            <a href="/pembayaran/{{ $item->id_pesanan }}" class="theme-btn">Konfirmasi Pembayaran</a>
                         </div>
                     </div>
                     @endforeach
