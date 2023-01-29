@@ -26,6 +26,11 @@
     <link rel="stylesheet" href="{{ asset('template/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('template/datatables/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/datatables/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/datatables/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 </head>
 <body>
 <!-- start cssload-loader -->
@@ -78,5 +83,33 @@
 <script src="{{ asset('template/js/animated-headline.js') }}"></script>
 <script src="{{ asset('template/js/jquery.ripples-min.js') }}"></script>
 <script src="{{ asset('template/js/main.js') }}"></script>
+
+<!-- Datatbles -->
+<script src="{{ asset('template/datatables/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('template/datatables/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('template/datatables/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('template/datatables/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('template/datatables/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
+    });
+</script>
 </body>
 </html>

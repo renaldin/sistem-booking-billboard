@@ -59,7 +59,7 @@
                                 </table>
                                 <div class="section-block"></div>
                                 <div class="btn-box text-right pt-4">
-                                    <a href="" class="theme-btn">Lihat Semua</a>
+                                    <a href="/riwayat-booking" class="theme-btn">Lihat Semua</a>
                                 </div>
                             </div>
                         </div>

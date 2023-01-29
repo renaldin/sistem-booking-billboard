@@ -53,6 +53,7 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::post('/booking/{id}', [Booking::class, 'prosesBooking']);
         Route::get('/detail-booking/{id}', [Booking::class, 'detailBooking']);
         Route::get('/batal-booking/{id}', [Booking::class, 'batalBooking']);
+        Route::get('/riwayat-booking', [Booking::class, 'riwayatBooking'])->name('riwayat-booking');
 
         // Profil User
         Route::get('/profil', [KelolaUser::class, 'profil'])->name('profil');

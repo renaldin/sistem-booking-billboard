@@ -82,4 +82,14 @@ class ModelOrder extends Model
             ->Where('order.status_order', $status_order)
             ->get();
     }
+
+    public function dataBookingByMember($id_member)
+    {
+        return DB::table('order')
+            ->join('user', 'user.id_member', '=', 'order.id_member', 'left')
+            ->join('reklame', 'reklame.id_reklame', '=', 'order.id_reklame', 'left')
+            ->orderBy('id_pesanan', 'DESC')
+            ->where('order.id_member', $id_member)
+            ->get();
+    }
 }

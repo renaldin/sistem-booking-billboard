@@ -116,4 +116,19 @@ class Booking extends Controller
         $this->ModelOrder->edit($data);
         return redirect()->route('booking')->with('berhasil', 'Anda Berhasil Membatalkan Booking Reklame Billboard Yang Berlokasi di ' . $dataOrder->lokasi);
     }
+
+    public function riwayatBooking()
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('login');
+        }
+
+        $data = [
+            'title'         => 'Riwayat Booking',
+            'jumlahOrder'   => $this->ModelOrder->jumlahOrderMember(Session()->get('id_member')),
+            'booking'       => $this->ModelOrder->dataBookingByMember(Session()->get('id_member'))
+        ];
+
+        return view('user.booking.riwayatBooking', $data);
+    }
 }
