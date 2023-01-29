@@ -15,7 +15,7 @@ class ModelOrder extends Model
         return DB::table('order')
             ->join('user', 'user.id_member', '=', 'order.id_member', 'left')
             ->join('reklame', 'reklame.id_reklame', '=', 'order.id_reklame', 'left')
-            ->orderBy('id_pesanan', 'DESC')
+            ->orderBy('tanggal', 'DESC')
             ->get();
     }
 
