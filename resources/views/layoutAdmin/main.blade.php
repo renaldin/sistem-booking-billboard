@@ -53,7 +53,7 @@
             <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                 <div class="user-action-wrap user-sidebar-panel">
                     <div class="notification-item">
-                        <a href="user-dashboard-profile.html" class="dropdown-item">
+                        <a href="#" class="dropdown-item">
                             <div class="d-flex align-items-center">
                                 <span class="font-size-14 font-weight-bold">{{ Session()->get('nama') }}</span>
                             </div>
@@ -66,7 +66,7 @@
                                     </div>
                                 </div><!-- end msg-body -->
                             </a>
-                            <a href="user-dashboard-booking.html" class="list-group-item list-group-item-action">
+                            <a href="/kelola-order" class="list-group-item list-group-item-action">
                                 <div class="msg-body">
                                     <div class="msg-content">
                                         <h3 class="title"><i class="la la-shopping-cart mr-2"></i>Orders</h3>

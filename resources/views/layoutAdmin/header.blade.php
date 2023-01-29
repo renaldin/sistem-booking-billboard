@@ -32,7 +32,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a href="admin-dashboard-orders.html" class="list-group-item list-group-item-action">
+                                    <a href="/kelola-order" class="list-group-item list-group-item-action">
                                         <div class="msg-body">
                                             <div class="msg-content">
                                                 <h3 class="title"><i class="la la-shopping-cart mr-2"></i>Orders</h3>
