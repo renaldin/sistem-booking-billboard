@@ -30,7 +30,7 @@
                     </div><!-- end info-icon-->
                 </div>
                 <div class="section-block"></div>
-                <a href="" class="d-flex align-items-center justify-content-between view-all">View All <i class="la la-angle-right"></i></a>
+                <a href="/kelola-order" class="d-flex align-items-center justify-content-between view-all">View All <i class="la la-angle-right"></i></a>
             </div>
         </div><!-- end col-lg-3 -->
         <div class="col-lg-3 responsive-column-l">

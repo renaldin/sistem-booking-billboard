@@ -67,7 +67,7 @@
                                         <th>{{ $item->id_pesanan }}</th>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->lokasi }}</td>
-                                        <td>{{ $item->tanggal }}</td>
+                                        <td>{{ date('d F Y', strtotime($item->tanggal)) }}</td>
                                         <td>{{ $item->jam_harga }}</td>
                                         <td>
                                             @if ($item->harga === NULL)

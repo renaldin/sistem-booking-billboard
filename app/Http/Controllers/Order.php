@@ -5,16 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelOrder;
+use App\Models\ModelReklame;
+use App\Models\ModelUser;
 use Illuminate\Contracts\Session\Session;
 
 class Order extends Controller
 {
 
     private $ModelOrder;
+    private $ModelReklame;
+    private $ModelUser;
 
     public function __construct()
     {
         $this->ModelOrder = new ModelOrder();
+        $this->ModelReklame = new ModelReklame();
+        $this->ModelUser = new ModelUser();
     }
 
     public function index()
@@ -35,6 +41,10 @@ class Order extends Controller
 
     public function beriHarga($id_pesanan)
     {
+        if (!Session()->get('email')) {
+            return redirect()->route('admin');
+        }
+
         $data = [
             'title'     => 'Data Order',
             'subTitle'  => 'Beri Harga',
@@ -64,6 +74,10 @@ class Order extends Controller
 
     public function editHarga($id_pesanan)
     {
+        if (!Session()->get('email')) {
+            return redirect()->route('admin');
+        }
+
         $data = [
             'title'     => 'Data Order',
             'subTitle'  => 'Edit Harga',
@@ -72,5 +86,24 @@ class Order extends Controller
         ];
 
         return view('admin.order.formHarga', $data);
+    }
+
+    public function detail($id_pesanan)
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('admin');
+        }
+
+        $dataOrder = $this->ModelOrder->detail($id_pesanan);
+
+        $data = [
+            'title'             => 'Data Order',
+            'subTitle'          => 'Detail Order',
+            'order'             => $dataOrder,
+            'reklame'           => $this->ModelReklame->detail($dataOrder->id_reklame),
+            'user'              => $this->ModelUser->detail($dataOrder->id_member)
+        ];
+
+        return view('admin.order.detail', $data);
     }
 }

@@ -109,6 +109,7 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/beri-harga/{id}', [Order::class, 'beriHarga']);
         Route::get('/edit-harga/{id}', [Order::class, 'editHarga']);
         Route::post('/beri-harga/{id}', [Order::class, 'prosesBeriHarga']);
+        Route::get('/detail-order/{id}', [Order::class, 'detail']);
 
         // Data Konfirmasi Pembayaran
         Route::get('/konfirmasi-pembayaran', [KonfirmasiPembayaran::class, 'index'])->name('konfirmasi-pembayaran');
