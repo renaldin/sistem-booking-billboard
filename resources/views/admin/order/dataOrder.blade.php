@@ -54,6 +54,7 @@
                                     <th scope="col">Member</th>
                                     <th scope="col">Reklame</th>
                                     <th scope="col">Tanggal</th>
+                                    <th scope="col">Batas Beri Harga</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
@@ -67,6 +68,7 @@
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->lokasi }}</td>
                                         <td>{{ $item->tanggal }}</td>
+                                        <td>{{ $item->jam_harga }}</td>
                                         <td>
                                             @if ($item->harga === NULL)
                                                 Menunggu Harga <br>
