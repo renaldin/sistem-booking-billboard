@@ -53,6 +53,10 @@ class Booking extends Controller
         if ($dataReklame->status !== 'Sudah Dibooking') {
             $id_pesanan = 'PO-' . date('Ymdhs');
 
+            $time_sekarang = time();
+            date_default_timezone_set('Asia/Jakarta');
+            $jamHarga = date("h:i:s", strtotime("+60 minutes", $time_sekarang));
+
             $data = [
                 'id_pesanan'    => $id_pesanan,
                 'id_member'     => Session()->get('id_member'),
@@ -62,7 +66,8 @@ class Booking extends Controller
                 'tambah_cetak'  => Request()->tambah_cetak,
                 'tanggal'       => date('Y-m-d'),
                 'harga'         => null,
-                'status_order'        => 'Dibooking'
+                'jam_harga'     => $jamHarga,
+                'status_order'  => 'Dibooking'
             ];
 
             $dataReklame = [
@@ -99,7 +104,7 @@ class Booking extends Controller
 
         $data = [
             'id_pesanan'    => $id_pesanan,
-            'status'        => "Batal"
+            'status_order'        => "Batal"
         ];
 
         $dataReklame = [

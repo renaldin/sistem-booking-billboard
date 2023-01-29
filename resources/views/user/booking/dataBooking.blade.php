@@ -1,6 +1,7 @@
 @extends('layoutUser.main')
 
 @section('content')
+
 <!-- ================================
     START BREADCRUMB AREA
 ================================= -->
@@ -64,6 +65,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-2 justify-content-end">
+                        <div class="col-lg-2">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white text-center">
+                                    <b>Jam : <span id="jam"></span>:<span id="menit"></span>:<span id="detik"></span></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-2">
                         <div class="col-lg-12">
                             <div class="mb-2">
@@ -116,7 +126,8 @@
                                     @if ($item->harga !== null)
                                         <?= 'Rp ' . number_format($item->harga, 2, ',', '.'); ?>
                                     @else
-                                        Menunggu verifikasi dari Admin
+                                        Menunggu verifikasi dari Admin. Tunggu maksimal sampai jam <b>{{ $item->jam_harga }}</b>. <br>
+                                        
                                     @endif
                                 </td>
                                 <td>
@@ -142,5 +153,16 @@
 <!-- ================================
     END CART AREA
 ================================= -->
+<script>
+    window.setTimeout("waktu()", 1000);
+
+    function waktu() {
+        var waktu = new Date();
+        setTimeout("waktu()", 1000);
+        document.getElementById("jam").innerHTML = waktu.getHours();
+        document.getElementById("menit").innerHTML = waktu.getMinutes();
+        document.getElementById("detik").innerHTML = waktu.getSeconds();
+    }
+</script>
 
 @endsection
