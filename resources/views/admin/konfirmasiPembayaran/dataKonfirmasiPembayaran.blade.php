@@ -44,9 +44,7 @@
                                         <td>{{ $item->tanggal_bayar }}</td>
                                         <td>
                                             <div class="table-content">
-                                                <a href="/detail-order/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
-                                                <a href="/edit-order/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Edit"><i class="la la-edit"></i></a>
-                                                <a href="/hapus-order/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Hapus" onclick="return confirm('Anda yakin akan menghapus data ini?')"><i class="la la-trash"></i></a>
+                                                <a href="/detail-pembayaran/{{ $item->id_konfirmasi_pembayaran }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
                                             </div>
                                         </td>
                                     </tr>

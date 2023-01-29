@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jan 2023 pada 20.00
+-- Waktu pembuatan: 29 Jan 2023 pada 10.30
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -65,12 +65,21 @@ CREATE TABLE `data_order` (
 
 CREATE TABLE `konfirmasi_pembayaran` (
   `id_konfirmasi_pembayaran` int(11) NOT NULL,
-  `id_pesanan` int(11) NOT NULL,
+  `id_pesanan` varchar(30) NOT NULL,
   `id_member` int(11) NOT NULL,
   `id_reklame` int(11) NOT NULL,
   `tanggal_bayar` date NOT NULL,
   `upload_BT` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `konfirmasi_pembayaran`
+--
+
+INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi_pembayaran`, `id_pesanan`, `id_member`, `id_reklame`, `tanggal_bayar`, `upload_BT`) VALUES
+(1, 'PO-202301270852', 1, 11, '2023-01-29', '01292023090400PO-202301270852.png'),
+(2, 'PO-202301270655', 1, 10, '2023-01-29', '01292023090531PO-202301270655.png'),
+(3, 'PO-202301270624', 1, 1, '2023-01-29', '01292023090615PO-202301270624.png');
 
 -- --------------------------------------------------------
 
@@ -79,7 +88,7 @@ CREATE TABLE `konfirmasi_pembayaran` (
 --
 
 CREATE TABLE `order` (
-  `id_pesanan` varchar(10) NOT NULL,
+  `id_pesanan` varchar(20) NOT NULL,
   `id_member` int(11) NOT NULL,
   `id_reklame` int(11) NOT NULL,
   `cekin_pasang` varchar(11) NOT NULL,
@@ -87,15 +96,21 @@ CREATE TABLE `order` (
   `tambah_cetak` varchar(100) NOT NULL,
   `tanggal` date NOT NULL,
   `harga` int(11) DEFAULT NULL,
-  `status` varchar(20) NOT NULL
+  `jam_harga` time NOT NULL,
+  `status_order` enum('Dibooking','Batal','Dibayar') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `order`
 --
 
-INSERT INTO `order` (`id_pesanan`, `id_member`, `id_reklame`, `cekin_pasang`, `cekout_pasang`, `tambah_cetak`, `tanggal`, `harga`, `status`) VALUES
-('PO0001', 1, 11, 'Ya', 'Ya', 'Ya', '2023-01-26', NULL, 'Dibooking');
+INSERT INTO `order` (`id_pesanan`, `id_member`, `id_reklame`, `cekin_pasang`, `cekout_pasang`, `tambah_cetak`, `tanggal`, `harga`, `jam_harga`, `status_order`) VALUES
+('PO-202301270624', 1, 1, 'Ya', 'Ya', 'Ya', '2023-01-27', 5000000, '04:50:52', 'Dibayar'),
+('PO-202301270646', 3, 3, 'Ya', 'Ya', 'Tidak', '2023-01-27', 5000000, '04:50:52', 'Dibooking'),
+('PO-202301270655', 1, 10, 'Ya', 'Ya', 'Ya', '2023-01-27', 5000000, '04:50:52', 'Dibayar'),
+('PO-202301270656', 1, 11, 'Ya', 'Ya', 'Ya', '2023-01-27', 10000000, '04:50:52', 'Batal'),
+('PO-202301270852', 1, 11, 'Ya', 'Ya', 'Ya', '2023-01-28', 10000000, '04:50:52', 'Dibayar'),
+('PO-202301290745', 4, 9, 'Ya', 'Ya', 'Ya', '2023-01-29', NULL, '03:42:45', 'Dibooking');
 
 -- --------------------------------------------------------
 
@@ -139,7 +154,7 @@ CREATE TABLE `reklame` (
   `target_audiens` varchar(100) NOT NULL,
   `google_maps` text NOT NULL,
   `gambar` varchar(255) NOT NULL,
-  `status` enum('Sudah Dipesan','Belum Dipesan') NOT NULL DEFAULT 'Belum Dipesan'
+  `status` enum('Sudah Dipesan','Belum Dipesan','Sudah Dibooking') NOT NULL DEFAULT 'Belum Dipesan'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -147,16 +162,16 @@ CREATE TABLE `reklame` (
 --
 
 INSERT INTO `reklame` (`id_reklame`, `lokasi`, `ukuran`, `orientation_page`, `penerangan`, `jarak_pandang`, `jumlah_sisi`, `situasi_lalulintas`, `situasi_sekitar`, `target_audiens`, `google_maps`, `gambar`, `status`) VALUES
-(1, 'Lokasi 1', 'Ukuran 1', 'A4', 'Penerangan 1', 'Jarak Pandang 1', 'Jumlah Sisi 1', 'Lalu Lintas 1', 'Sekitar 1', 'Audiens 1', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01232023102801Lokasi 1.jpg', 'Belum Dipesan'),
-(3, 'Lokasi 2', 'Ukuran 2', 'A4', 'Penerangan 2', 'Jarak Pandang 2', 'Jumlah Sisi 2', 'Lalu Lintas 2', 'Sekitar 2', 'Audiens 2', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01232023122849Lokasi 2.jpg', 'Belum Dipesan'),
+(1, 'Lokasi 1', 'Ukuran 1', 'A4', 'Penerangan 1', 'Jarak Pandang 1', 'Jumlah Sisi 1', 'Lalu Lintas 1', 'Sekitar 1', 'Audiens 1', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01232023102801Lokasi 1.jpg', 'Sudah Dipesan'),
+(3, 'Lokasi 2', 'Ukuran 2', 'A4', 'Penerangan 2', 'Jarak Pandang 2', 'Jumlah Sisi 2', 'Lalu Lintas 2', 'Sekitar 2', 'Audiens 2', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01232023122849Lokasi 2.jpg', 'Sudah Dibooking'),
 (4, 'Lokasi 3', 'Ukuran 3', 'Potrait', 'Penerangan 3', 'Jarak Pandang 3', 'Jumlah Sisi 3', 'Lalu Lintas 3', 'Sekitar 3', 'Audiens 3', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023081754Lokasi 3.jpg', 'Belum Dipesan'),
 (5, 'Lokasi 4', 'Ukuran 4', 'Lanscape', 'Penerangan 4', 'Jarak Pandang 4', 'Jumlah Sisi 4', 'Lalu Lintas 4', 'Sekitar 4', 'Audiens 4', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023081925Lokasi 4.jpg', 'Belum Dipesan'),
 (6, 'Lokasi 5', 'Ukuran 5', 'Potrait', 'Penerangan 5', 'Jarak Pandang 5', 'Jumlah Sisi 5', 'Lalu Lintas 5', 'Sekitar 5', 'Audiens 5', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082030Lokasi 5.jpg', 'Belum Dipesan'),
 (7, 'Lokasi 6', 'Ukuran 6', 'Potrait', 'Penerangan 6', 'Jarak Pandang 6', 'Jumlah Sisi 6', 'Lalu Lintas 6', 'Sekitar 6', 'Audiens 6', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082125Lokasi 6.jpg', 'Belum Dipesan'),
 (8, 'Lokasi 7', 'Ukuran 7', 'Potrait', 'Penerangan 7', 'Jarak Pandang 7', 'Jumlah Sisi 7', 'Lalu Lintas 7', 'Sekitar 7', 'Audiens 7', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082213Lokasi 7.jpg', 'Belum Dipesan'),
-(9, 'Lokasi 8', 'Ukuran 8', 'Potrait', 'Penerangan 8', 'Jarak Pandang 8', 'Jumlah Sisi 8', 'Lalu Lintas 8', 'Sekitar 8', 'Audiens 8', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082301Lokasi 8.jpg', 'Belum Dipesan'),
-(10, 'Lokasi 9', 'Ukuran 9', 'Potrait', 'Penerangan 9', 'Jarak Pandang 9', 'Jumlah Sisi 9', 'Lalu Lintas 9', 'Sekitar 9', 'Audiens 9', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082347Lokasi 9.jpg', 'Belum Dipesan'),
-(11, 'Lokasi 10', 'Ukuran 10', 'Potrait', 'Penerangan 10', 'Jarak Pandang 10', 'Jumlah Sisi 10', 'Lalu Lintas 10', 'Sekitar 10', 'Audiens 10', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082434Lokasi 10.jpg', 'Belum Dipesan');
+(9, 'Lokasi 8', 'Ukuran 8', 'Potrait', 'Penerangan 8', 'Jarak Pandang 8', 'Jumlah Sisi 8', 'Lalu Lintas 8', 'Sekitar 8', 'Audiens 8', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082301Lokasi 8.jpg', 'Sudah Dibooking'),
+(10, 'Lokasi 9', 'Ukuran 9', 'Potrait', 'Penerangan 9', 'Jarak Pandang 9', 'Jumlah Sisi 9', 'Lalu Lintas 9', 'Sekitar 9', 'Audiens 9', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082347Lokasi 9.jpg', 'Sudah Dipesan'),
+(11, 'Lokasi 10', 'Ukuran 10', 'Potrait', 'Penerangan 10', 'Jarak Pandang 10', 'Jumlah Sisi 10', 'Lalu Lintas 10', 'Sekitar 10', 'Audiens 10', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082434Lokasi 10.jpg', 'Sudah Dipesan');
 
 -- --------------------------------------------------------
 
@@ -173,15 +188,18 @@ CREATE TABLE `user` (
   `nomor_telepon` varchar(30) NOT NULL,
   `nama_perusahaan` varchar(50) NOT NULL,
   `alamat_perusahaan` varchar(100) NOT NULL,
-  `status` enum('User') NOT NULL DEFAULT 'User'
+  `status` enum('User') NOT NULL DEFAULT 'User',
+  `tanggal_daftar` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_telepon`, `nama_perusahaan`, `alamat_perusahaan`, `status`) VALUES
-(1, 'Renaldi', 'renaldi@gmail.com', '$2y$10$K.CZi5pAZwaUGoEmgNFGWOi9g.OnSReKiWqMCG2Z14zNvRKmPeotK', 'Bandung', '089886763', 'Perusahaan 1', 'Alamat Perusahaan 1', 'User');
+INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_telepon`, `nama_perusahaan`, `alamat_perusahaan`, `status`, `tanggal_daftar`) VALUES
+(1, 'Renaldi', 'renaldi@gmail.com', '$2y$10$6BJ0mhGr3yIKsdmBFbemruUFMCJJm56DkxSD0.B4sa9gvV3V6nNI2', 'Bandung', '0898867631', 'Perusahaan 1', 'Alamat Perusahaan 1', 'User', '2023-01-27'),
+(3, 'Renaldi 2', 'renaldi2@gmail.com', '$2y$10$M5xJPKfF7.gKz5WOkOQEs.3EaU1PUU03vLHt5OFjioT/4XxDAvP3K', 'Bandung', '08989786444', 'Perusahaan 2', 'Alamat Perusahaan 2', 'User', '2023-01-27'),
+(4, 'Renaldi 3', 'renaldi3@gmail.com', '$2y$10$H60vdJc3uoKIZlDMHQgtwey1pMSsdz.2zTfpj8JVzW/GIJE/GuZju', 'Bandung', '08989786444', 'Perusahaan 3', 'Alamat Perusahaan 3', 'User', '2023-01-29');
 
 --
 -- Indexes for dumped tables
@@ -237,7 +255,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
-  MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `partner`
@@ -255,7 +273,7 @@ ALTER TABLE `reklame`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

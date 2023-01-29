@@ -118,5 +118,6 @@ Route::group(['middleware' => 'revalidate'], function () {
 
         // Data Konfirmasi Pembayaran
         Route::get('/konfirmasi-pembayaran', [KonfirmasiPembayaran::class, 'index'])->name('konfirmasi-pembayaran');
+        Route::get('/detail-pembayaran/{id}', [KonfirmasiPembayaran::class, 'detail']);
     });
 });

@@ -40,6 +40,26 @@ class KonfirmasiPembayaran extends Controller
         return view('admin.konfirmasiPembayaran.dataKonfirmasiPembayaran', $data);
     }
 
+    public function detail($id_konfirmasi_pembayaran)
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('admin');
+        }
+
+        $detailBayar = $this->ModelKonfirmasiPembayaran->detail($id_konfirmasi_pembayaran);
+
+        $data = [
+            'title'     => 'Data Konfirmasi Pembayaran',
+            'subTitle'  => 'Detail',
+            'pembayaran' => $detailBayar,
+            'order'     => $this->ModelOrder->detail($detailBayar->id_pesanan),
+            'reklame'   => $this->ModelReklame->detail($detailBayar->id_reklame),
+            'user'      => $this->ModelUser->detail($detailBayar->id_member)
+        ];
+
+        return view('admin.konfirmasiPembayaran.detail', $data);
+    }
+
     public function pembayaran($id_pesanan)
     {
         if (!Session()->get('email')) {
