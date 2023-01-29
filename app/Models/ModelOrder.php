@@ -62,6 +62,10 @@ class ModelOrder extends Model
     {
         return DB::table('order')->count();
     }
+    public function jumlahTungguHarga()
+    {
+        return DB::table('order')->where('harga', NULL)->count();
+    }
 
     public function jumlahOrderMember($id_member)
     {
