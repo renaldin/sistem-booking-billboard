@@ -31,7 +31,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Lokasi</th>
                                     <th scope="col">Ukuran</th>
-                                    <th scope="col">Orientation Page</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -42,7 +42,14 @@
                                         <th scope="row">{{ $no++ }}</th>
                                         <td>{{ $item->lokasi }}</td>
                                         <td>{{ $item->ukuran }}</td>
-                                        <td>{{ $item->orientation_page }}</td>
+                                        <td>
+                                            @if ($item->status === 'Belum Dipesan')
+                                                <span class="badge badge-success">{{ $item->status }}</td></span>
+                                            @elseif ($item->status === 'Sudah Dipesan')
+                                                <span class="badge badge-danger">{{ $item->status }}</td></span>
+                                            @elseif ($item->status === 'Sudah Dibooking')
+                                                <span class="badge badge-primary">{{ $item->status }}</td></span>
+                                            @endif
                                         <td>
                                             <div class="table-content">
                                                 <a href="/detail-reklame/{{ $item->id_reklame }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
