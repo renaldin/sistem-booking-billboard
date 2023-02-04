@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jan 2023 pada 10.30
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 8.0.19
+-- Generation Time: Feb 01, 2023 at 02:59 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`, `nomor_telepon`, `status`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`, `nomor_telepon`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_order`
+-- Table structure for table `data_order`
 --
 
 CREATE TABLE `data_order` (
@@ -60,7 +60,7 @@ CREATE TABLE `data_order` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konfirmasi_pembayaran`
+-- Table structure for table `konfirmasi_pembayaran`
 --
 
 CREATE TABLE `konfirmasi_pembayaran` (
@@ -73,7 +73,7 @@ CREATE TABLE `konfirmasi_pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `konfirmasi_pembayaran`
+-- Dumping data for table `konfirmasi_pembayaran`
 --
 
 INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi_pembayaran`, `id_pesanan`, `id_member`, `id_reklame`, `tanggal_bayar`, `upload_BT`) VALUES
@@ -84,7 +84,7 @@ INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi_pembayaran`, `id_pesanan`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -101,7 +101,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`id_pesanan`, `id_member`, `id_reklame`, `cekin_pasang`, `cekout_pasang`, `tambah_cetak`, `tanggal`, `harga`, `jam_harga`, `status_order`) VALUES
@@ -115,7 +115,7 @@ INSERT INTO `order` (`id_pesanan`, `id_member`, `id_reklame`, `cekin_pasang`, `c
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `partner`
+-- Table structure for table `partner`
 --
 
 CREATE TABLE `partner` (
@@ -125,7 +125,7 @@ CREATE TABLE `partner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `partner`
+-- Dumping data for table `partner`
 --
 
 INSERT INTO `partner` (`id_partner`, `nama_partner`, `gambar`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `partner` (`id_partner`, `nama_partner`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `reklame`
+-- Table structure for table `reklame`
 --
 
 CREATE TABLE `reklame` (
@@ -158,7 +158,7 @@ CREATE TABLE `reklame` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `reklame`
+-- Dumping data for table `reklame`
 --
 
 INSERT INTO `reklame` (`id_reklame`, `lokasi`, `ukuran`, `orientation_page`, `penerangan`, `jarak_pandang`, `jumlah_sisi`, `situasi_lalulintas`, `situasi_sekitar`, `target_audiens`, `google_maps`, `gambar`, `status`) VALUES
@@ -176,7 +176,7 @@ INSERT INTO `reklame` (`id_reklame`, `lokasi`, `ukuran`, `orientation_page`, `pe
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -193,7 +193,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_telepon`, `nama_perusahaan`, `alamat_perusahaan`, `status`, `tanggal_daftar`) VALUES
@@ -206,71 +206,71 @@ INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_t
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `konfirmasi_pembayaran`
+-- Indexes for table `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
   ADD PRIMARY KEY (`id_konfirmasi_pembayaran`);
 
 --
--- Indeks untuk tabel `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id_pesanan`);
 
 --
--- Indeks untuk tabel `partner`
+-- Indexes for table `partner`
 --
 ALTER TABLE `partner`
   ADD PRIMARY KEY (`id_partner`);
 
 --
--- Indeks untuk tabel `reklame`
+-- Indexes for table `reklame`
 --
 ALTER TABLE `reklame`
   ADD PRIMARY KEY (`id_reklame`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_member`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `konfirmasi_pembayaran`
+-- AUTO_INCREMENT for table `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
   MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `partner`
+-- AUTO_INCREMENT for table `partner`
 --
 ALTER TABLE `partner`
   MODIFY `id_partner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `reklame`
+-- AUTO_INCREMENT for table `reklame`
 --
 ALTER TABLE `reklame`
   MODIFY `id_reklame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

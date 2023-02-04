@@ -29,6 +29,8 @@
                                         <span class="badge badge-danger text-white">{{ $order->status_order }}</td></span>
                                     @elseif ($order->status_order === 'Dibooking')
                                         <span class="badge badge-primary text-white">{{ $order->status_order }}</td></span>
+                                    @elseif ($order->status_order === 'Dibayar')
+                                        <span class="badge badge-success text-white">{{ $order->status_order }}</td></span>
                                     @endif
                                 </li>
                                 <li>
@@ -40,6 +42,22 @@
                                             Menunggu verifikasi dari Admin
                                         @endif
                                     </b>
+                                </li>
+                                <li>
+                                    <span>Star:</span>
+                                    @if ($order->star !== NULL)
+                                        {{$order ->star}}
+                                    @else
+                                        Belum Ada
+                                    @endif
+                                </li>
+                                <li>
+                                    <span>Review Dari Customer:</span> 
+                                    @if ($order->review  !== NULL)
+                                        {{ $order->review }}
+                                    @else
+                                        Belum Ada
+                                    @endif
                                 </li>
                             </ul>
                         </div>
