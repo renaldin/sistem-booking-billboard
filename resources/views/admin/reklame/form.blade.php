@@ -46,6 +46,20 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-box">
+                                        <label class="label-text">Alamat Lengkap</label>
+                                        <div class="form-group">
+                                            <span class="la la-circle form-icon"></span>
+                                            <input class="form-control" type="text" name="alamat" placeholder="Masukkan Alamat Lengkap" @if($form === 'Edit') value="{{ $reklame->alamat }}" @elseif($form === 'Detail') value="{{ $reklame->alamat }}" disabled @elseif($form === 'Tambah') value="{{ old('alamat') }}" @endif>
+                                        </div>
+                                        @error('alamat')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
                                         <label class="label-text">Orientation Page</label>
                                         <div class="form-group">
                                             <span class="la la-circle form-icon"></span>

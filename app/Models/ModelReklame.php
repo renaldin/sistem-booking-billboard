@@ -53,8 +53,8 @@ class ModelReklame extends Model
         return DB::table('reklame')->count();
     }
 
-    public function dataReklameLimit($limit, $status)
+    public function dataReklameLimit($limit, $status, $orderBy = 'ASC')
     {
-        return DB::table('reklame')->where('status', $status)->orderBy('id_reklame', 'ASC')->limit($limit)->get();
+        return DB::table('reklame')->where('status', $status)->orderBy('id_reklame', $orderBy)->limit($limit)->get();
     }
 }

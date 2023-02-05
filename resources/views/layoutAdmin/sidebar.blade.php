@@ -16,6 +16,7 @@
                 <li class="@if($title === 'Data Konfirmasi Pembayaran') page-active @endif"><a href="/konfirmasi-pembayaran"><i class="la la-check mr-2"></i>Konfirmasi Pembayaran</a></li>
                 <li class="@if($title === 'Data Admin') page-active @endif"><a href="/kelola-admin"><i class="la la-users mr-2"></i>Data Admin</a></li>
                 <li class="@if($title === 'Data Partner') page-active @endif"><a href="/kelola-partner"><i class="la la-building mr-2"></i>Data Partner</a></li>
+                <li class="@if($title === 'Data FAQ') page-active @endif" ><a href="/kelola-faq"><i class="la la-question mr-2"></i>Data FAQ</a></li>
                 <li class="@if($title === 'Data User') page-active @endif" ><a href="/kelola-user"><i class="la la-user mr-2"></i>Data User</a></li>
                 <li><a href="/logout"><i class="la la-power-off mr-2"></i>Logout</a></li>
             </ul>

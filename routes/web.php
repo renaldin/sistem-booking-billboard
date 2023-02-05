@@ -11,6 +11,7 @@ use App\Http\Controllers\Login;
 use App\Http\Controllers\Order;
 use App\Http\Controllers\Reklame;
 use App\Http\Controllers\Partner;
+use App\Http\Controllers\Faq;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,9 @@ Route::group(['middleware' => 'revalidate'], function () {
 
     // Home
     Route::get('/', [Home::class, 'index'])->name('home');
+
+    // FAQ
+    Route::post('/pertanyaan', [Faq::class, 'tambahFaqUser']);
 
     // Register
     Route::get('/register', [Register::class, 'index'])->name('register');
@@ -103,6 +107,14 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::post('/edit-partner/{id}', [Partner::class, 'prosesEdit']);
         Route::get('/detail-partner/{id}', [Partner::class, 'detail'])->name('detail-partner');
         Route::get('/hapus-partner/{id}', [Partner::class, 'hapus']);
+
+        // Kelola faq
+        Route::get('/kelola-faq', [Faq::class, 'index'])->name('kelola-faq');
+        Route::get('/tambah-faq', [Faq::class, 'tambah'])->name('tambah-faq');
+        Route::post('/tambah-faq', [Faq::class, 'prosesTambah']);
+        Route::get('/edit-faq/{id}', [Faq::class, 'edit'])->name('edit-faq');
+        Route::post('/edit-faq/{id}', [Faq::class, 'prosesEdit']);
+        Route::get('/hapus-faq/{id}', [Faq::class, 'hapus']);
 
         // Profil Admin
         Route::get('/profil-admin', [KelolaAdmin::class, 'profil'])->name('profil-admin');

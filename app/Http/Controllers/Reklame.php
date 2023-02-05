@@ -52,6 +52,7 @@ class Reklame extends Controller
         Request()->validate([
             'lokasi'                => 'required',
             'ukuran'                => 'required',
+            'alamat'                => 'required',
             'orientation_page'      => 'required',
             'penerangan'            => 'required',
             'jarak_pandang'         => 'required',
@@ -64,6 +65,7 @@ class Reklame extends Controller
         ], [
             'lokasi.required'             => 'Lokasi harus diisi!',
             'ukuran.required'             => 'Ukuran harus diisi!',
+            'alamat.required'             => 'Alamat Lengkap harus diisi!',
             'orientation_page.required'   => 'Orientation Page harus diisi!',
             'penerangan.required'         => 'Penerangan harus diisi!',
             'jarak_pandang.required'      => 'Jarak Pandang harus diisi!',
@@ -84,6 +86,7 @@ class Reklame extends Controller
         $data = [
             'lokasi'                => Request()->lokasi,
             'ukuran'                => Request()->ukuran,
+            'alamat'                => Request()->alamat,
             'orientation_page'      => Request()->orientation_page,
             'penerangan'            => Request()->penerangan,
             'jarak_pandang'         => Request()->jarak_pandang,
@@ -120,6 +123,7 @@ class Reklame extends Controller
         Request()->validate([
             'lokasi'                => 'required',
             'ukuran'                => 'required',
+            'alamat'                => 'required',
             'orientation_page'      => 'required',
             'penerangan'            => 'required',
             'jarak_pandang'         => 'required',
@@ -132,6 +136,7 @@ class Reklame extends Controller
         ], [
             'lokasi.required'             => 'Lokasi harus diisi!',
             'ukuran.required'             => 'Ukuran harus diisi!',
+            'alamat.required'             => 'Alamat Lengkap harus diisi!',
             'orientation_page.required'   => 'Orientation Page harus diisi!',
             'penerangan.required'         => 'Penerangan harus diisi!',
             'jarak_pandang.required'      => 'Jarak Pandang harus diisi!',
@@ -158,6 +163,7 @@ class Reklame extends Controller
                 'id_reklame'            => $id_reklame,
                 'lokasi'                => Request()->lokasi,
                 'ukuran'                => Request()->ukuran,
+                'alamat'                => Request()->alamat,
                 'orientation_page'      => Request()->orientation_page,
                 'penerangan'            => Request()->penerangan,
                 'jarak_pandang'         => Request()->jarak_pandang,
@@ -173,6 +179,7 @@ class Reklame extends Controller
                 'id_reklame'            => $id_reklame,
                 'lokasi'                => Request()->lokasi,
                 'ukuran'                => Request()->ukuran,
+                'alamat'                => Request()->alamat,
                 'orientation_page'      => Request()->orientation_page,
                 'penerangan'            => Request()->penerangan,
                 'jarak_pandang'         => Request()->jarak_pandang,
