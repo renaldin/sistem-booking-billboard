@@ -71,6 +71,8 @@ class Login extends Controller
                     Session()->put('id_member', $cekEmail->id_member);
                     Session()->put('nama', $cekEmail->nama);
                     Session()->put('email', $cekEmail->email);
+                    Session()->put('nama_perusahaan', $cekEmail->nama_perusahaan);
+                    Session()->put('alamat_perusahaan', $cekEmail->alamat_perusahaan);
                     Session()->put('status', $cekEmail->status);
                     Session()->put('log', true);
 
@@ -107,6 +109,8 @@ class Login extends Controller
         if (Session()->get('status') === "User") {
             Session()->forget('id_member');
             Session()->forget('nama');
+            Session()->forget('nama_perusahaan');
+            Session()->forget('alamat_perusahaan');
             Session()->forget('email');
             Session()->forget('status');
             Session()->forget('log');

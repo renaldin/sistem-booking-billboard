@@ -225,10 +225,6 @@ class Reklame extends Controller
     // User
     public function reklameUser()
     {
-        if (!Session()->get('email')) {
-            return redirect()->route('login');
-        }
-
         $data = [
             'title'     => 'Daftar Reklame',
             'reklame'   => $this->ModelReklame->dataReklameDuaStatus('Belum Dipesan', 'Sudah Dibooking')
@@ -239,10 +235,6 @@ class Reklame extends Controller
 
     public function reklameBookingUser()
     {
-        if (!Session()->get('email')) {
-            return redirect()->route('login');
-        }
-
         $data = [
             'title'     => 'Daftar Reklame',
             'reklame'   => $this->ModelReklame->dataReklameStatus('Belum Dipesan')
@@ -253,14 +245,9 @@ class Reklame extends Controller
 
     public function detailReklameUser($id_reklame)
     {
-        if (!Session()->get('email')) {
-            return redirect()->route('login');
-        }
-
         $data = [
             'title'     => 'Detail Reklame',
             'reklame'   => $this->ModelReklame->detail($id_reklame),
-            'user'      => $this->ModelUser->detail(Session()->get('id_member'))
         ];
 
         return view('user.reklame.detail', $data);

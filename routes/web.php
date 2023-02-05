@@ -30,6 +30,11 @@ Route::group(['middleware' => 'revalidate'], function () {
     // Home
     Route::get('/', [Home::class, 'index'])->name('home');
 
+    // Reklame
+    Route::get('/reklame', [Reklame::class, 'reklameUser'])->name('reklame');
+    Route::get('/reklame-booking', [Reklame::class, 'reklameBookingUser'])->name('reklame-booking');
+    Route::get('/reklame/{id}', [Reklame::class, 'detailReklameUser']);
+
     // FAQ
     Route::post('/pertanyaan', [Faq::class, 'tambahFaqUser']);
 
@@ -47,10 +52,6 @@ Route::group(['middleware' => 'revalidate'], function () {
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
 
     Route::group(['middleware' => 'user'], function () {
-        // Reklame
-        Route::get('/reklame', [Reklame::class, 'reklameUser'])->name('reklame');
-        Route::get('/reklame-booking', [Reklame::class, 'reklameBookingUser'])->name('reklame-booking');
-        Route::get('/reklame/{id}', [Reklame::class, 'detailReklameUser']);
 
         // booking
         Route::get('/booking', [Booking::class, 'index'])->name('booking');

@@ -69,7 +69,7 @@
                                             <label class="label-text">Nama Lengkap</label>
                                             <div class="form-group">
                                                 <span class="la la-user form-icon"></span>
-                                                <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" value="{{ $user->nama }}" autofocus disabled required>
+                                                <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" @if(Session()->get('nama'))value="{{ Session()->get('nama') }}" disabled @endif autofocus  required>
                                                 @error('nama')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>
@@ -83,7 +83,7 @@
                                             <label class="label-text">Email</label>
                                             <div class="form-group">
                                                 <span class="la la-envelope-o form-icon"></span>
-                                                <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ $user->email }}" disabled required>
+                                                <input class="form-control" type="email" name="email" placeholder="Masukkan Email" @if(Session()->get('email'))value="{{ Session()->get('email') }}" disabled @endif  required>
                                                 @error('email')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>
@@ -97,7 +97,7 @@
                                             <label class="label-text">Nama Perusahaan</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input class="form-control" type="text" name="nama_perusahaan" placeholder="Masukkan Nama Perusahaan" value="{{ $user->nama_perusahaan }}" disabled required>
+                                                <input class="form-control" type="text" name="nama_perusahaan" placeholder="Masukkan Nama Perusahaan" @if(Session()->get('nama_perusahaan'))value="{{ Session()->get('nama_perusahaan') }}" disabled @endif  required>
                                                 @error('nama_perusahaan')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>
@@ -111,7 +111,7 @@
                                             <label class="label-text">Alamat Perusahaan</label>
                                             <div class="form-group">
                                                 <span class="la la-phone form-icon"></span>
-                                                <input class="form-control" type="text" name="alamat_perusahaan" placeholder="Masukkan Alamat Perusahaan" value="{{ $user->alamat_perusahaan }}" disabled required>
+                                                <input class="form-control" type="text" name="alamat_perusahaan" placeholder="Masukkan Alamat Perusahaan" @if(Session()->get('alamat_perusahaan'))value="{{ Session()->get('alamat_perusahaan') }}" disabled @endif required>
                                                 @error('alamat_perusahaan')
                                                 <div style="margin-top: -16px">
                                                     <small class="text-danger">{{ $message }}</small>

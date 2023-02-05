@@ -62,10 +62,14 @@
                                     <li>
                                         <a href="/reklame">Reklame</a>
                                     </li>
-                                    </li>
+                                    @if (Session()->get('email'))
                                     <li>
                                         <a href="/booking">Booking Saya</a>
                                     </li>
+                                    <li>
+                                        <a href="/faq">FAQ</a>
+                                    </li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div><!-- end main-menu-content -->
