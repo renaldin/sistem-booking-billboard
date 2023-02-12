@@ -32,11 +32,15 @@ Route::group(['middleware' => 'revalidate'], function () {
 
     // Reklame
     Route::get('/reklame', [Reklame::class, 'reklameUser'])->name('reklame');
+    Route::post('/reklame', [Reklame::class, 'reklameUser']);
     Route::get('/reklame-booking', [Reklame::class, 'reklameBookingUser'])->name('reklame-booking');
     Route::get('/reklame/{id}', [Reklame::class, 'detailReklameUser']);
+    Route::get('/review/{id}', [Reklame::class, 'review']);
 
     // FAQ
     Route::post('/pertanyaan', [Faq::class, 'tambahFaqUser']);
+    // FAQ
+    Route::get('/faq', [Faq::class, 'faqUser']);
 
     // Register
     Route::get('/register', [Register::class, 'index'])->name('register');
@@ -59,6 +63,7 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/detail-booking/{id}', [Booking::class, 'detailBooking']);
         Route::get('/batal-booking/{id}', [Booking::class, 'batalBooking']);
         Route::get('/riwayat-booking', [Booking::class, 'riwayatBooking'])->name('riwayat-booking');
+        Route::get('/download-invoice/{id}', [Booking::class, 'downloadInvoice']);
 
         // Konfirmasi Pembayarans
         Route::get('/pembayaran/{id}', [KonfirmasiPembayaran::class, 'pembayaran']);

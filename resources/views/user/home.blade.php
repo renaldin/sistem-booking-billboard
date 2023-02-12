@@ -116,7 +116,7 @@
                                 <img src="{{ asset('foto_reklame/'.$item->gambar) }}" alt="destination-img">
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="/reklame/{{ $item->id_reklame }}">{{ $item->lokasi }}</a></h3>
+                                <h3 class="card-title"><a href="/reklame/{{ $item->id_reklame }}">{{ $item->lokasi }} ({{$item->ukuran}})</a></h3>
                                 <div class="card-rating d-flex align-items-center">
                                     <span class="rating__text">{{ $item->alamat }}</span>
                                 </div>
@@ -146,7 +146,7 @@
                                 <img src="{{ asset('foto_reklame/'.$item->gambar) }}" style="height: 300px;" alt="destination-img">
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="/reklame/{{ $item->id_reklame }}">{{ $item->lokasi }}r</a></h3>
+                                <h3 class="card-title"><a href="/reklame/{{ $item->id_reklame }}">{{ $item->lokasi }} ({{$item->ukuran}})</a></h3>
                                 <div class="card-rating d-flex align-items-center">
                                     <span class="rating__text">{{ $item->alamat }}</span>
                                 </div>
@@ -284,7 +284,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="card-title"><a href="hotel-single.html">{{ $item->lokasi }}</a></h3>
+                                <h3 class="card-title"><a href="hotel-single.html">{{ $item->lokasi }} ({{$item->ukuran}})</a></h3>
                                 <p class="card-meta">{{ $item->alamat }}</p>
                                 <div class="card-price mt-3 d-flex align-items-center justify-content-between">
                                     <p>

@@ -15,9 +15,14 @@ class ModelFaq extends Model
         return DB::table('faq')->orderBy('id_faq', 'DESC')->get();
     }
 
+    public function dataFaqUser()
+    {
+        return DB::table('faq')->where('tampil', 'Ya')->orderBy('id_faq', 'DESC')->get();
+    }
+
     public function dataFaqLimit($limit)
     {
-        return DB::table('faq')->orderBy('id_faq', 'ASC')->limit($limit)->get();
+        return DB::table('faq')->where('tampil', 'Ya')->orderBy('id_faq', 'ASC')->limit($limit)->get();
     }
 
     public function detail($id_faq)

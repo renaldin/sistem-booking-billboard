@@ -51,11 +51,13 @@ class Faq extends Controller
             'email'         => 'required',
             'pertanyaan'    => 'required',
             'jawaban'       => 'required',
+            'tampil'        => 'required',
         ], [
             'nama.required'         => 'Nama harus diisi!',
             'email.required'        => 'Email harus diisi!',
             'pertanyaan.required'   => 'Pertanyaan harus diisi!',
             'jawaban.required'      => 'Jawaban harus diisi!',
+            'tampil.required'       => 'Tampil harus diisi!',
         ]);
 
         $data = [
@@ -63,6 +65,7 @@ class Faq extends Controller
             'email'         => Request()->email,
             'pertanyaan'    => Request()->pertanyaan,
             'jawaban'       => Request()->jawaban,
+            'tampil'        => Request()->tampil,
         ];
 
         $this->ModelFaq->tambah($data);
@@ -91,12 +94,12 @@ class Faq extends Controller
             'nama'          => 'required',
             'email'         => 'required',
             'pertanyaan'    => 'required',
-            'jawaban'       => 'required',
+            'tampil'       => 'required',
         ], [
             'nama.required'         => 'Nama harus diisi!',
             'email.required'        => 'Email harus diisi!',
             'pertanyaan.required'   => 'Pertanyaan harus diisi!',
-            'jawaban.required'      => 'Jawaban harus diisi!',
+            'tampil.required'       => 'Tampil harus diisi!',
         ]);
 
         $data = [
@@ -105,6 +108,7 @@ class Faq extends Controller
             'email'         => Request()->email,
             'pertanyaan'    => Request()->pertanyaan,
             'jawaban'       => Request()->jawaban,
+            'tampil'        => Request()->tampil,
         ];
 
         $this->ModelFaq->edit($data);
@@ -153,5 +157,16 @@ class Faq extends Controller
 
         $this->ModelFaq->tambah($data);
         return redirect()->route('home')->with('berhasil', 'Anda Berhasil Mengirim Pertanyaan !');
+    }
+
+    public function faqUser()
+    {
+
+        $data = [
+            'title'     => 'FAQ',
+            'faq'       => $this->ModelFaq->dataFaqUser()
+        ];
+
+        return view('user.faq.dataFaq', $data);
     }
 }

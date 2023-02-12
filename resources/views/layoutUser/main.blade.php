@@ -82,6 +82,9 @@
 <script src="{{ asset('template/js/jquery.countTo.min.js') }}"></script>
 <script src="{{ asset('template/js/animated-headline.js') }}"></script>
 <script src="{{ asset('template/js/jquery.ripples-min.js') }}"></script>
+<script src="{{ asset('template/js/quantity-input.js') }}"></script>
+<script src="{{ asset('template/js/copy-text-script.js') }}"></script>
+<script src="{{ asset('template/js/navbar-sticky.js') }}"></script>
 <script src="{{ asset('template/js/main.js') }}"></script>
 
 <!-- Datatbles -->

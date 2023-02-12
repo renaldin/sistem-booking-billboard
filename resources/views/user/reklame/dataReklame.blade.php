@@ -32,30 +32,86 @@
 <!-- ================================
     START GALLERY AREA
 ================================= -->
-<section class="gallery-area section--padding">
-    <div class="container">
+<section class="card-area section--padding padding-right-100px padding-left-100px">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="section-heading text-center">
-                    <h2 class="sec__title">Semua Reklame</h2>
-                    <p class="sec__desc pt-2">Semua reklame billboard ada di halaman ini. Untuk melihat detail, bisa klik gambarnya.</p>
-                </div><!-- end section-heading -->
+                <div class="filter-wrap margin-bottom-30px">
+                    <div class="filter-top d-flex align-items-center justify-content-between pb-4">
+                        <div>
+                            <h3 class="title font-size-24">{{ $jumlahReklame }} Reklame Billboard</h3>
+                            <p class="font-size-14 line-height-20 pt-1">Silahkan pilih dan lakukan booking.</p>
+                        </div>
+                    </div><!-- end filter-top -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- ================================
+                                START CTA AREA
+                            ================================= -->
+                            <section class="cta-area subscriber-area section-bg-2 padding-top-60px padding-bottom-60px">
+                                <div class="container">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-7">
+                                            <div class="section-heading">
+                                                @if($keyword !== NULL)<h4 class="sec__title font-size-20 text-white"> Hasil pencarian: {{$keyword}}</h4>@endif
+                                            </div><!-- end section-heading -->
+                                        </div><!-- end col-lg-7 -->
+                                        <div class="col-lg-5">
+                                            <div class="subscriber-box">
+                                                <div class="contact-form-action">
+                                                    <form action="/reklame" method="POST">
+                                                        @csrf
+                                                        <div class="input-box">
+                                                            <div class="form-group mb-0">
+                                                                <input class="form-control" type="text" name="keyword" placeholder="Masukkan Lokasi, Ukuran, atau Alamat" @if($keyword !== NULL)value="{{$keyword}}"@endif>
+                                                                <button class="theme-btn theme-btn-small submit-btn" type="submit">Cari</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div><!-- end section-heading -->
+                                        </div><!-- end col-lg-5 -->
+                                    </div><!-- end row -->
+                                </div><!-- end container -->
+                            </section><!-- end cta-area -->
+                            <!-- ================================
+                                END CTA AREA
+                            ================================= -->
+
+                        </div>
+                    </div><!-- end filter-bar -->
+                </div><!-- end filter-wrap -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
-        <div class="row padding-top-50px">
-            <?php $no=1;?>
-            @foreach ($reklame as $item)
-            <div class="col-lg-4">
-                <div class="gallery-card">
-                    <a class="d-block" href="/reklame/{{ $item->id_reklame }}" data-caption="Showing image {{ $no++ }}">
-                        <img src="{{ asset('foto_reklame/'.$item->gambar) }}">
+       <div class="row">
+        @foreach ($reklame as $item)
+        @if($item->status === 'Belum Dipesan' || $item->status === 'Sudah Dibooking')
+        <div class="col-lg-4 responsive-column">
+            <div class="card-item ">
+                <div class="card-img">
+                    <a href="/reklame/{{ $item->id_reklame }}" class="d-block">
+                        <img src="{{ asset('foto_reklame/'.$item->gambar) }}" alt="{{ $item->ukuran }}">
                     </a>
-                </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
-            @endforeach
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end gallery-area -->
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title"><a href="/reklame/{{ $item->id_reklame }}">{{ $item->lokasi }} ({{$item->ukuran}})</a></h3>
+                    <p class="card-meta">{{ $item->alamat }}</p>
+                    <div class="card-price mt-3 d-flex align-items-center justify-content-between">
+                        <p>
+                            <span class="price__from">Harga?</span>
+                            <span class="price__num">Booking Dulu!</span>
+                        </p>
+                        <a href="/reklame/{{ $item->id_reklame }}" class="btn-text">Booking<i class="la la-angle-right"></i></a>
+                    </div>
+                </div>
+            </div><!-- end card-item -->
+        </div><!-- end col-lg-4 -->
+        @endif
+        @endforeach
+       </div><!-- end row -->
+    </div><!-- end container-fluid -->
+</section><!-- end card-area -->
+<!-- ================================
 <!-- ================================
     END GALLERY AREA
 ================================= -->

@@ -72,6 +72,27 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Tampil?</label>
+                                        <div class="form-group select-contain w-100">
+                                            <select class="select-contain-select" name="tampil" @if($form === 'Detail')  disabled @endif>
+                                                @if ($form === 'Edit' || $form === 'Detail')
+                                                <option value="{{$faq->tampil}}">{{$faq->tampil}}</option>
+                                                @else
+                                                <option value="">--Pilih--</option>
+                                                @endif
+                                                <option value="Ya">Ya</option>
+                                                <option value="Tidak">Tidak</option>
+                                            </select>
+                                        </div>
+                                        @error('tampil')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             @if ($form !== 'Detail')
                             <div class="btn-box pt-3 pb-4">

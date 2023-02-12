@@ -104,8 +104,15 @@
                                             <img src="{{ asset('foto_reklame/'.$item->gambar) }}" alt="" class="flex-shrink-0">
                                         </a>
                                        <div class="product-content">
-                                           <a href="room-details.html" class="title">Lokasi: {{ $item->lokasi }}</a>
                                            <div class="product-info-wrap">
+                                               <div class="product-info line-height-24">
+                                                   <span class="product-info-label"><strong>ID Pesanan:</strong></span>
+                                                   <span class="product-info-value"><strong>{{ $item->id_pesanan }}</strong></span>
+                                               </div><!-- end product-info -->
+                                               <div class="product-info line-height-24">
+                                                   <span class="product-info-label">Lokasi:</span>
+                                                   <span class="product-info-value">{{ $item->lokasi }}</span>
+                                               </div><!-- end product-info -->
                                                <div class="product-info line-height-24">
                                                    <span class="product-info-label">Ukuran:</span>
                                                    <span class="product-info-value">{{ $item->ukuran }}</span>
@@ -130,6 +137,9 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if ($item->status_invoice === 'Sudah')
+                                    <a href="/download-invoice/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Download Invoice"><i class="la la-print"></i></a>
+                                    @endif
                                     <a href="/detail-booking/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
                                     <a href="/batal-booking/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Batal" onclick="return confirm('Anda yakin akan membatalkan data ini?')"><i class="la la-trash"></i></a>
                                 </td>
@@ -140,7 +150,13 @@
                     <div class="section-block"></div>
                     <div class="cart-actions d-flex justify-content-end align-items-center pt-4 pb-5">
                         <div class="btn-box">
-                            <a href="/pembayaran/{{ $item->id_pesanan }}" class="theme-btn">Konfirmasi Pembayaran</a>
+                            @if ($item->status_invoice === 'Tidak')
+                            <a href="/download-invoice/{{ $item->id_pesanan }}" class="theme-btn" onclick="return confirm('Penting! Setelah melakukan download, lakukan refresh halaman agar mendapatkan informasi baru!')">
+                                Download Invoice
+                            </a>
+                            @else
+                            <a href="/pembayaran/{{ $item->id_pesanan }}" class="theme-btn" disabled>Konfirmasi Pembayaran</a>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -162,6 +178,7 @@
         document.getElementById("menit").innerHTML = waktu.getMinutes();
         document.getElementById("detik").innerHTML = waktu.getSeconds();
     }
+    
 </script>
 
 @endsection

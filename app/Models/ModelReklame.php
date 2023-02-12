@@ -28,6 +28,15 @@ class ModelReklame extends Model
             ->get();
     }
 
+    public function cariReklame($keyword)
+    {
+        return DB::table('reklame')
+            ->orWhere('lokasi', 'like', "%" . $keyword . "%")
+            ->orWhere('ukuran', 'like', "%" . $keyword . "%")
+            ->orWhere('alamat', 'like', "%" . $keyword . "%")
+            ->get();
+    }
+
     public function detail($id_reklame)
     {
         return DB::table('reklame')->where('id_reklame', $id_reklame)->first();
@@ -51,6 +60,11 @@ class ModelReklame extends Model
     public function jumlahReklame()
     {
         return DB::table('reklame')->count();
+    }
+
+    public function totalReklame($statusSatu, $statusDua)
+    {
+        return DB::table('reklame')->where('status', $statusSatu)->orWhere('status', $statusDua)->count();
     }
 
     public function dataReklameLimit($limit, $status, $orderBy = 'ASC')

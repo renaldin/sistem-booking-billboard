@@ -88,6 +88,11 @@
                                                 <li><span>Situasi Lalu Lintas:</span>{{ $booking->situasi_lalulintas }}</li>
                                                 <li><span>Situasi Sekitar:</span>{{ $booking->situasi_sekitar }}</li>
                                                 <li><span>Target Audiens:</span>{{ $booking->target_audiens }}</li>
+                                                <li><span>ID Pesanan:</span>{{ $booking->id_pesanan }}</li>
+                                                <li><span>Tanggal:</span>{{ date('d F Y', strtotime($booking->tanggal)) }}</li>
+                                                <li><span>Checkin Pasang:</span>{{ date('d F Y', strtotime($booking->cekin_pasang)) }}</li>
+                                                <li><span>Checkout Pasang:</span>{{ date('d F Y', strtotime($booking->cekout_pasang)) }}</li>
+                                                <li><span>Tambah Cetak:</span>{{ $booking->tambah_cetak }}</li>
                                                 <li>
                                                     <b>
                                                         <span>Harga:</span>

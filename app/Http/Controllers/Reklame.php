@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModelReklame;
+use App\Models\ModelOrder;
 use App\Models\ModelUser;
+use GuzzleHttp\Psr7\Request;
 
 class Reklame extends Controller
 {
 
     private $ModelReklame;
+    private $ModelOrder;
     private $ModelUser;
 
     public function __construct()
     {
         $this->ModelReklame = new ModelReklame();
+        $this->ModelOrder = new ModelOrder();
         $this->ModelUser = new ModelUser();
     }
 
@@ -225,10 +229,21 @@ class Reklame extends Controller
     // User
     public function reklameUser()
     {
-        $data = [
-            'title'     => 'Daftar Reklame',
-            'reklame'   => $this->ModelReklame->dataReklameDuaStatus('Belum Dipesan', 'Sudah Dibooking')
-        ];
+        if (Request()->keyword) {
+            $data = [
+                'title'         => 'Daftar Reklame',
+                'jumlahReklame' => $this->ModelReklame->totalReklame('Belum Dipesan', 'Sudah Dibooking'),
+                'keyword'       => Request()->keyword,
+                'reklame'       => $this->ModelReklame->cariReklame(Request()->keyword)
+            ];
+        } else {
+            $data = [
+                'title'         => 'Daftar Reklame',
+                'jumlahReklame' => $this->ModelReklame->totalReklame('Belum Dipesan', 'Sudah Dibooking'),
+                'keyword'       => NULL,
+                'reklame'       => $this->ModelReklame->dataReklameDuaStatus('Belum Dipesan', 'Sudah Dibooking')
+            ];
+        }
 
         return view('user.reklame.dataReklame', $data);
     }
@@ -245,11 +260,45 @@ class Reklame extends Controller
 
     public function detailReklameUser($id_reklame)
     {
+        $jumlahOrderReklame = $this->ModelOrder->jumlahOrderReklame($id_reklame);
+        if ($jumlahOrderReklame !== 0) {
+            $totalStar = $this->ModelOrder->totalStar($id_reklame);
+            $star = number_format($totalStar / $jumlahOrderReklame, 1);
+        } else {
+            $star = 0;
+        }
+
+
         $data = [
-            'title'     => 'Detail Reklame',
-            'reklame'   => $this->ModelReklame->detail($id_reklame),
+            'title'         => 'Detail Reklame',
+            'star'          => $star,
+            'jumlahOrder'   => $jumlahOrderReklame,
+            'order'         => $this->ModelOrder->detailReklame($id_reklame, 3),
+            'reklame'       => $this->ModelReklame->detail($id_reklame),
         ];
 
         return view('user.reklame.detail', $data);
+    }
+
+    public function review($id_reklame)
+    {
+        $jumlahOrderReklame = $this->ModelOrder->jumlahOrderReklame($id_reklame);
+        if ($jumlahOrderReklame !== 0) {
+            $totalStar = $this->ModelOrder->totalStar($id_reklame);
+            $star = number_format($totalStar / $jumlahOrderReklame, 1);
+        } else {
+            $star = 0;
+        }
+
+
+        $data = [
+            'title'         => 'Review Reklame',
+            'star'          => $star,
+            'jumlahOrder'   => $jumlahOrderReklame,
+            'order'         => $this->ModelOrder->detailReklame($id_reklame),
+            'reklame'       => $this->ModelReklame->detail($id_reklame),
+        ];
+
+        return view('user.reklame.review', $data);
     }
 }

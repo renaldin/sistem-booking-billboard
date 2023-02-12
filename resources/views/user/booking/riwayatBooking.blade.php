@@ -60,7 +60,7 @@
                                 </table>
                                 <div class="section-block"></div>
                                 <div class="btn-box text-right pt-4">
-                                    <a href="/booking" class="theme-btn">Kembali</a>
+                                    <a href="/booking" class="theme-btn">Booking Saya</a>
                                 </div>
                             </div>
                         </div>

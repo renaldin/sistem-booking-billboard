@@ -20,8 +20,8 @@
                                 <li><span>Alamat Perusahaan:</span>{{ $user->alamat_perusahaan }}</li><br>
                                 <li><span>ID Pesanan:</span>{{ $order->id_pesanan }}</li>
                                 <li><span>Tanggal:</span>{{ date('d F Y', strtotime($order->tanggal)) }}</li>
-                                <li><span>Checkin Pasang:</span>{{ $order->cekin_pasang }}</li>
-                                <li><span>Checkout Pasang:</span>{{ $order->cekout_pasang }}</li>
+                                <li><span>Checkin Pasang:</span>{{ date('d F Y', strtotime($order->cekin_pasang)) }}</li>
+                                <li><span>Checkout Pasang:</span>{{ date('d F Y', strtotime($order->cekout_pasang)) }}</li>
                                 <li><span>Tambah Cetak:</span>{{ $order->tambah_cetak }}</li>
                                 <li>
                                     <span>Status:</span>

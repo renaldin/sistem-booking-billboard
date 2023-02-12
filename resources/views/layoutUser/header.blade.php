@@ -67,9 +67,12 @@
                                         <a href="/booking">Booking Saya</a>
                                     </li>
                                     <li>
-                                        <a href="/faq">FAQ</a>
+                                        <a href="/riwayat-booking">Riwayat Order</a>
                                     </li>
                                     @endif
+                                    <li>
+                                        <a href="/faq">FAQ</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div><!-- end main-menu-content -->
