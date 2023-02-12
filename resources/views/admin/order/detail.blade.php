@@ -46,13 +46,24 @@
                                 <li>
                                     <span>Star:</span>
                                     @if ($order->star !== NULL)
-                                        {{$order ->star}}
+                                    <span class="ratings align-items-center">
+                                        <?php for ($i=0; $i < $order->star; $i++) { ?>
+                                            <i class="la la-star"></i>
+                                        <?php } ?>
+                                        <?php for ($i=0; $i < 5-$order->star; $i++) { ?>
+                                            <i class="la la-star-o"></i>
+                                        <?php } ?>
+                                    </span>
                                     @else
                                         Belum Ada
                                     @endif
                                 </li>
                                 <li>
                                     <span>Review Dari Customer:</span> 
+                                    
+                                </li>
+                                <li>
+                                    
                                     @if ($order->review  !== NULL)
                                         {{ $order->review }}
                                     @else

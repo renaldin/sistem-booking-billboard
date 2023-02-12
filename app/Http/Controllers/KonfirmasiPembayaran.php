@@ -82,7 +82,9 @@ class KonfirmasiPembayaran extends Controller
     {
         Request()->validate([
             'upload_BT' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'star'      => 'required',
         ], [
+            'star.required'         => 'Tolong beri star rating!',
             'upload_BT.required'       => 'Upload Bukti harus diisi!',
             'upload_BT.mimes'          => 'Format Upload Bukti harus jpg/jpeg/png/bmp!',
             'upload_BT.max'            => 'Ukuran Upload Bukti maksimal 5 mb',
@@ -109,7 +111,9 @@ class KonfirmasiPembayaran extends Controller
 
         $dataPesan = [
             'id_pesanan'    => $id_pesanan,
-            'status_order'  => 'Dibayar'
+            'status_order'  => 'Dibayar',
+            'review'        => Request()->review,
+            'star'          => Request()->star,
         ];
 
         $this->ModelOrder->edit($dataPesan);

@@ -124,13 +124,49 @@
                                                                 </div>
                                                             </div>
                                                         </div><!-- end col-lg-6 -->
-                                                        <div class="col-lg-6 responsive-column">
+                                                        <div class="col-lg-12 responsive-column">
                                                             <div class="input-box">
                                                                 <label class="label-text">Upload Bukti Pembayaran</label>
                                                                 <div class="form-group">
                                                                     <span class="la la-user form-icon"></span>
                                                                     <input class="form-control" type="file" name="upload_BT" required>
                                                                     @error('upload_BT')
+                                                                    <div style="margin-top: -16px">
+                                                                        <small class="text-danger">{{ $message }}</small>
+                                                                    </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end col-lg-6 -->
+                                                        <div class="col-lg-12 responsive-column">
+                                                            <div class="rate-option-item">
+                                                                <label>Beri Rating Order</label>
+                                                                <div class="rate-stars-option">
+                                                                    <input type="checkbox" name="star" id="lst1" value="5">
+                                                                    <label for="lst1"></label>
+                                                                    <input type="checkbox" name="star" id="lst2" value="4">
+                                                                    <label for="lst2"></label>
+                                                                    <input type="checkbox" name="star" id="lst3" value="3">
+                                                                    <label for="lst3"></label>
+                                                                    <input type="checkbox" name="star" id="lst4" value="2">
+                                                                    <label for="lst4"></label>
+                                                                    <input type="checkbox" name="star" id="lst5" value="1">
+                                                                    <label for="lst5"></label>
+                                                                </div>
+                                                                @error('star')
+                                                                <div style="margin-top: -16px">
+                                                                    <small class="text-danger">{{ $message }}</small>
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div><!-- end col-lg-6 -->
+                                                        <div class="col-lg-12 responsive-column">
+                                                            <div class="input-box">
+                                                                <label class="label-text">Beri Pesan Review</label>
+                                                                <div class="form-group">
+                                                                    <span class="la la-pencil form-icon"></span>
+                                                                    <textarea class="message-control form-control" name="review" placeholder="Pesan Review Order" required></textarea>
+                                                                    @error('recview')
                                                                     <div style="margin-top: -16px">
                                                                         <small class="text-danger">{{ $message }}</small>
                                                                     </div>

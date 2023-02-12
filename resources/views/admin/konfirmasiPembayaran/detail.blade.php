@@ -20,8 +20,8 @@
                                 <li><span>Alamat Perusahaan:</span>{{ $user->alamat_perusahaan }}</li><br>
                                 <li><span>ID Pesanan:</span>{{ $order->id_pesanan }}</li>
                                 <li><span>Tanggal:</span>{{ date('d F Y', strtotime($order->tanggal)) }}</li>
-                                <li><span>Checkin Pasang:</span>{{ $order->cekin_pasang }}</li>
-                                <li><span>Checkout Pasang:</span>{{ $order->cekout_pasang }}</li>
+                                <li><span>Checkin Pasang:</span>{{ date('d F Y', strtotime($order->cekin_pasang)) }}</li>
+                                <li><span>Checkout Pasang:</span>{{ date('d F Y', strtotime($order->cekout_pasang)) }}</li>
                                 <li><span>Tambah Cetak:</span>{{ $order->tambah_cetak }}</li>
                                 <li>
                                     <span>Status:</span>
@@ -40,7 +40,35 @@
                                             Menunggu verifikasi dari Admin
                                         @endif
                                     </b>
-                                </li><br>
+                                </li>
+                                <li>
+                                    <span>Star:</span>
+                                    @if ($order->star !== NULL)
+                                    <span class="ratings align-items-center">
+                                        <?php for ($i=0; $i < $order->star; $i++) { ?>
+                                            <i class="la la-star"></i>
+                                        <?php } ?>
+                                        <?php for ($i=0; $i < 5-$order->star; $i++) { ?>
+                                            <i class="la la-star-o"></i>
+                                        <?php } ?>
+                                    </span>
+                                    @else
+                                        Belum Ada
+                                    @endif
+                                </li>
+                                <li>
+                                    <span>Review Dari Customer:</span> 
+                                    
+                                </li>
+                                <li>
+                                    
+                                    @if ($order->review  !== NULL)
+                                        {{ $order->review }}
+                                    @else
+                                        Belum Ada
+                                    @endif
+                                </li>
+                                <br>
                                 <li><span>Tanggal Pembayaran:</span>{{ date('d F Y', strtotime($pembayaran->tanggal_bayar)) }}</li>
                             </ul>
                             <span>Bukti Pembayaran</span>
