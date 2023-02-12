@@ -72,10 +72,12 @@
                                         <td>
                                             @if ($item->harga === NULL)
                                                 Menunggu Harga <br>
-                                                <a href="/beri-harga/{{ $item->id_pesanan }}" class="btn btn-sm btn-flat btn-primary">Beri Harga</a>
+                                                {{-- <a href="/beri-harga/{{ $item->id_pesanan }}" class="btn btn-sm btn-flat btn-primary">Beri Harga</a> --}}
+                                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambahBeriHarga{{$item->id_pesanan}}">Beri Harga</button>
                                             @else
                                                 <?= 'Rp ' . number_format($item->harga, 2, ',', '.'); ?> <br>
-                                                <a href="/edit-harga/{{ $item->id_pesanan }}" class="btn btn-sm btn-flat btn-success">Edit Harga</a>
+                                                {{-- <a href="/edit-harga/{{ $item->id_pesanan }}" class="btn btn-sm btn-flat btn-success">Edit Harga</a> --}}
+                                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editBeriHarga{{$item->id_pesanan}}">Edit Harga</button>
                                             @endif
                                         </td>
                                         <td>
@@ -96,10 +98,90 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <!-- Modal -->
                     </div>
                 </div>
             </div><!-- end form-box -->
         </div><!-- end col-lg-12 -->
     </div><!-- end row -->
 </section>
+
 @endsection
+{{-- tambah harga --}}
+@foreach ($order as $item)
+<div class="modal fade" id="tambahBeriHarga{{$item->id_pesanan}}"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Beri Harga</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form action="/beri-harga/{{ $item->id_pesanan }}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-box">
+                            <label class="label-text">Harga</label>
+                            <div class="form-group">
+                                <input class="form-control" type="number" name="harga" placeholder="Masukkan Harga" value="{{ old('harga') }}" required autofocus>
+                            </div>
+                            @error('harga')
+                            <div style="margin-top: -16px">
+                                <small class="text-danger">{{ $message }}</small>
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+@endforeach
+{{-- edit harga --}}
+@foreach ($order as $item)    
+<div class="modal fade" id="editBeriHarga{{$item->id_pesanan}}"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Harga</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form action="/beri-harga/{{ $item->id_pesanan }}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-box">
+                            <label class="label-text">Harga</label>
+                            <div class="form-group">
+                                <input class="form-control" type="number" name="harga" placeholder="Masukkan Harga" value="{{ $item->harga }}" required autofocus>
+                            </div>
+                            @error('harga')
+                            <div style="margin-top: -16px">
+                                <small class="text-danger">{{ $message }}</small>
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+@endforeach

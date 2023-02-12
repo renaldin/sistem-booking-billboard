@@ -137,6 +137,8 @@
                                     <td>
                                         @if ($item->status_order === 'Batal')
                                             <span class="badge badge-danger">{{ $item->status_order }}</td></span>
+                                        @elseif ($item->status_order === 'Dibayar')
+                                            <span class="badge badge-success">{{ $item->status_order }}</td></span>
                                         @elseif ($item->status_order === 'Dibooking')
                                             <span class="badge badge-primary">{{ $item->status_order }}</td></span>
                                         @endif
