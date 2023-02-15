@@ -20,7 +20,11 @@
                     <ul class="list-items list--items">
                         <li><a href="/">Home</a></li>
                         <li><a href="/reklame">Reklame</a></li>
+                        @if (Session()->get('email'))
                         <li><a href="/booking">Booking Saya</a></li>
+                        <li><a href="/riwayat-booking">Riwayat Order</a></li>
+                        @endif
+                        <li><a href="/faq">FAQ</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->

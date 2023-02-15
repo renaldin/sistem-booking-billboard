@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Feb 2023 pada 05.35
+-- Waktu pembuatan: 12 Feb 2023 pada 09.01
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -106,7 +106,8 @@ CREATE TABLE `invoice` (
 --
 
 INSERT INTO `invoice` (`no_invoice`, `id_pesanan`, `tanggal_dibuat`, `tanggal_tempo`) VALUES
-('IN-202302110323', 'PO-202302110902', '2023-02-11', '2023-02-18');
+('IN-202302110323', 'PO-202302110902', '2023-02-11', '2023-02-18'),
+('IN-202302120704', 'PO-202302111003', '2023-02-12', '2023-02-19');
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,8 @@ CREATE TABLE `konfirmasi_pembayaran` (
 INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi_pembayaran`, `id_pesanan`, `id_member`, `id_reklame`, `tanggal_bayar`, `upload_BT`) VALUES
 (1, 'PO-202301270852', 1, 11, '2023-01-29', '01292023090400PO-202301270852.png'),
 (2, 'PO-202301270655', 1, 10, '2023-01-29', '01292023090531PO-202301270655.png'),
-(3, 'PO-202301270624', 1, 1, '2023-01-29', '01292023090615PO-202301270624.png');
+(3, 'PO-202301270624', 1, 1, '2023-01-29', '01292023090615PO-202301270624.png'),
+(4, 'PO-202302110902', 1, 8, '2023-02-12', '02122023071439PO-202302110902.png');
 
 -- --------------------------------------------------------
 
@@ -160,14 +162,14 @@ CREATE TABLE `order` (
 
 INSERT INTO `order` (`id_pesanan`, `id_member`, `id_reklame`, `cekin_pasang`, `cekout_pasang`, `tambah_cetak`, `tanggal`, `harga`, `jam_harga`, `star`, `review`, `status_order`, `status_invoice`) VALUES
 ('PO-202301270624', 1, 1, 'Ya', 'Ya', 'Ya', '2023-01-27', 5000000, '04:50:52', 4, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibayar', 'Tidak'),
-('PO-202301270646', 3, 3, 'Ya', 'Ya', 'Tidak', '2023-01-27', 5000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibooking', 'Tidak'),
+('PO-202301270646', 3, 3, 'Ya', 'Ya', 'Tidak', '2023-01-27', 15000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibooking', 'Tidak'),
 ('PO-202301270655', 1, 10, 'Ya', 'Ya', 'Ya', '2023-01-27', 5000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibayar', 'Tidak'),
 ('PO-202301270656', 1, 11, 'Ya', 'Ya', 'Ya', '2023-01-27', 10000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Batal', 'Tidak'),
 ('PO-202301270852', 1, 11, 'Ya', 'Ya', 'Ya', '2023-01-28', 10000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibayar', 'Tidak'),
-('PO-202301290745', 4, 11, 'Ya', 'Ya', 'Ya', '2023-01-29', NULL, '03:42:45', 4, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibooking', 'Tidak'),
-('PO-202302110902', 1, 8, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 10000000, '17:48:02', NULL, NULL, 'Dibooking', 'Sudah'),
-('PO-202302110937', 1, 8, '2023-02-11', '2023-06-15', 'Tidak', '2023-02-11', NULL, '05:32:37', NULL, NULL, 'Batal', 'Tidak'),
-('PO-202302111003', 1, 12, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 5000000, '18:27:03', NULL, NULL, 'Dibooking', 'Tidak');
+('PO-202301290745', 4, 11, 'Ya', 'Ya', 'Ya', '2023-01-29', 10000000, '03:42:45', 4, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibooking', 'Tidak'),
+('PO-202302110902', 1, 8, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 10000000, '17:48:02', 4, 'Sangat menarik. Websitenya kerenn euy', 'Dibayar', 'Sudah'),
+('PO-202302110937', 1, 8, '2023-02-11', '2023-06-15', 'Tidak', '2023-02-11', 5000000, '05:32:37', NULL, NULL, 'Batal', 'Tidak'),
+('PO-202302111003', 1, 12, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 5000000, '18:27:03', NULL, NULL, 'Dibooking', 'Sudah');
 
 -- --------------------------------------------------------
 
@@ -226,7 +228,7 @@ INSERT INTO `reklame` (`id_reklame`, `lokasi`, `ukuran`, `alamat`, `orientation_
 (5, 'Lokasi 4', 'Ukuran 4', 'Jalan Contoh 4 No. 4, RT 4 RW 4, Kelurahan 4, Kecamatan 4, Kab. Bandung, Jawa Barat, 60256', 'Lanscape', 'Penerangan 4', 'Jarak Pandang 4', 'Jumlah Sisi 4', 'Lalu Lintas 4', 'Sekitar 4', 'Audiens 4', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023081925Lokasi 4.jpg', 'Belum Dipesan'),
 (6, 'Lokasi 5', 'Ukuran 5', 'Jalan Contoh 5 No. 5, RT 5 RW 5, Kelurahan 5, Kecamatan 5, Kab. Bandung, Jawa Barat, 60256', 'Potrait', 'Penerangan 5', 'Jarak Pandang 5', 'Jumlah Sisi 5', 'Lalu Lintas 5', 'Sekitar 5', 'Audiens 5', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082030Lokasi 5.jpg', 'Belum Dipesan'),
 (7, 'Lokasi 6', 'Ukuran 6', 'Jalan Contoh 6 No. 6, RT 6 RW 6, Kelurahan 6, Kecamatan 6, Kab. Bandung, Jawa Barat, 60256', 'Potrait', 'Penerangan 6', 'Jarak Pandang 6', 'Jumlah Sisi 6', 'Lalu Lintas 6', 'Sekitar 6', 'Audiens 6', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082125Lokasi 6.jpg', 'Belum Dipesan'),
-(8, 'Lokasi 7', 'Ukuran 7', 'Jalan Contoh 7 No. 7, RT 7 RW 7, Kelurahan 7, Kecamatan 7, Kab. Bandung, Jawa Barat, 60256', 'Potrait', 'Penerangan 7', 'Jarak Pandang 7', 'Jumlah Sisi 7', 'Lalu Lintas 7', 'Sekitar 7', 'Audiens 7', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082213Lokasi 7.jpg', 'Sudah Dibooking'),
+(8, 'Lokasi 7', 'Ukuran 7', 'Jalan Contoh 7 No. 7, RT 7 RW 7, Kelurahan 7, Kecamatan 7, Kab. Bandung, Jawa Barat, 60256', 'Potrait', 'Penerangan 7', 'Jarak Pandang 7', 'Jumlah Sisi 7', 'Lalu Lintas 7', 'Sekitar 7', 'Audiens 7', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082213Lokasi 7.jpg', 'Sudah Dipesan'),
 (9, 'Lokasi 8', 'Ukuran 8', 'Jalan Contoh 8 No. 8, RT 8 RW 8, Kelurahan 8, Kecamatan 8, Kab. Bandung, Jawa Barat, 60256', 'Potrait', 'Penerangan 8', 'Jarak Pandang 8', 'Jumlah Sisi 8', 'Lalu Lintas 8', 'Sekitar 8', 'Audiens 8', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082301Lokasi 8.jpg', 'Sudah Dibooking'),
 (10, 'Lokasi 9', 'Ukuran 9', 'Jalan Contoh 9 No. 9, RT 9 RW 9, Kelurahan 9, Kecamatan 9, Kab. Bandung, Jawa Barat, 60256', 'Potrait', 'Penerangan 9', 'Jarak Pandang 9', 'Jumlah Sisi 9', 'Lalu Lintas 9', 'Sekitar 9', 'Audiens 9', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082347Lokasi 9.jpg', 'Sudah Dipesan'),
 (11, 'Lokasi 10', 'Ukuran 10', 'Jalan Contoh 10 No. 10, RT 10 RW 10, Kelurahan 10, Kecamatan 10, Kab. Bandung, Jawa Barat, 60256', 'Potrait', 'Penerangan 10', 'Jarak Pandang 10', 'Jumlah Sisi 10', 'Lalu Lintas 10', 'Sekitar 10', 'Audiens 10', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082434Lokasi 10.jpg', 'Sudah Dipesan'),
@@ -332,7 +334,7 @@ ALTER TABLE `faq`
 -- AUTO_INCREMENT untuk tabel `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
-  MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `partner`
