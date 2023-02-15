@@ -48,21 +48,28 @@
                                 </div>
                             </div><!-- end single-content-item -->
                             <div class="single-content-item padding-bottom-40px">
-                                <h3 class="title font-size-20">Orientation Page</h3>
-                                <p class="pb-4">{{ $reklame->orientation_page }}</p>
-                                <h3 class="title font-size-20">Penerangan</h3>
-                                <p class="pb-4">{{ $reklame->penerangan }}</p>
-                                <h3 class="title font-size-20">Jarak Pandang</h3>
-                                <p class="pb-4">{{ $reklame->jarak_pandang }}</p>
-                                <h3 class="title font-size-20">Jumlah Sisi</h3>
-                                <p class="pb-4">{{ $reklame->jumlah_sisi }}</p>
-                                <h3 class="title font-size-20">Situasi Lalu Lintas</h3>
-                                <p class="pb-4">{{ $reklame->situasi_lalulintas }}</p>
-                                <h3 class="title font-size-20">Situasi Sekitar</h3>
-                                <p class="pb-4">{{ $reklame->situasi_sekitar }}</p>
-                                <h3 class="title font-size-20">Target Audiens</h3>
-                                <p class="pb-4">{{ $reklame->target_audiens }}</p>
-                            </div><!-- end single-content-item -->
+                                <div class="row">
+                                <div class="col-sm-6 col-lg-6">
+                                    <h3 class="title font-size-20">Orientation Page</h3>
+                                    <p class="pb-4">{{ $reklame->orientation_page }}</p>
+                                    <h3 class="title font-size-20">Penerangan</h3>
+                                    <p class="pb-4">{{ $reklame->penerangan }}</p>
+                                    <h3 class="title font-size-20">Jarak Pandang</h3>
+                                    <p class="pb-4">{{ $reklame->jarak_pandang }}</p>
+                                    <h3 class="title font-size-20">Jumlah Sisi</h3>
+                                    <p class="pb-4">{{ $reklame->jumlah_sisi }}</p>
+                                </div>
+                                <div class="col-sm-6 col-lg-6">
+                                    <h3 class="title font-size-20">Situasi Lalu Lintas</h3>
+                                    <p class="pb-4">{{ $reklame->situasi_lalulintas }}</p>
+                                    <h3 class="title font-size-20">Situasi Sekitar</h3>
+                                    <p class="pb-4">{{ $reklame->situasi_sekitar }}</p>
+                                    <h3 class="title font-size-20">Target Audiens</h3>
+                                    <p class="pb-4">{{ $reklame->target_audiens }}</p>
+                                </div>
+                                </div><!-- end single-content-item -->
+                            </div>
+                            
                             <div class="section-block"></div>
                         </div><!-- end description -->
                         <div id="photo" class="page-scroll">

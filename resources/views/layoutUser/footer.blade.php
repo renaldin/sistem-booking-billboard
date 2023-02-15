@@ -25,6 +25,12 @@
                         <li><a href="/riwayat-booking">Riwayat Order</a></li>
                         @endif
                         <li><a href="/faq">FAQ</a></li>
+                        <li>
+                            <a href="/login">Login</a>
+                        </li>
+                        <li>
+                            <a href="/register">Register</a>
+                        </li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->

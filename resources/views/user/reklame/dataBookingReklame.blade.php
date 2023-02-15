@@ -58,12 +58,29 @@
             <?php $no=1;?>
             @foreach ($reklame as $item)
             <div class="col-lg-4">
-                <div class="gallery-card">
-                    <a class="d-block" href="/reklame/{{ $item->id_reklame }}" data-caption="Showing image {{ $no++ }}">
-                        <img src="{{ asset('foto_reklame/'.$item->gambar) }}">
-                    </a>
+                <div class="card-item destination-card">
+                    <div class="card-img">
+                        <img src="{{ asset('foto_reklame/'.$item->gambar) }}" alt="destination-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/reklame/{{ $item->id_reklame }}">{{ $item->lokasi }} ({{$item->ukuran}})</a></h3>
+                        <div class="card-rating d-flex align-items-center">
+                            <span class="rating__text">{{ $item->alamat }}</span>
+                        </div>
+                        <div class="card-price d-flex align-items-center justify-content-between">
+                            <p class="tour__text">
+                                
+                            </p>
+                            <p>
+                                <strong>
+                                    <span class="price__from">Harga?</span>
+                                    <span class="price__from"><a href="/reklame/{{ $item->id_reklame }}" class="text-white">Booking Dulu!</a></span>
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
                 </div><!-- end card-item -->
-            </div><!-- end col-lg-4 -->
+            </div>
             @endforeach
         </div><!-- end row -->
     </div><!-- end container -->

@@ -141,9 +141,9 @@
                 <div class="row">
                     @foreach ($satuReklame as $item)
                     <div class="col-lg-12">
-                        <div class="card-item destination-card" style="height: 300px;">
+                        <div class="card-item destination-card" style="height: 439px;">
                             <div class="card-img">
-                                <img src="{{ asset('foto_reklame/'.$item->gambar) }}" style="height: 300px;" alt="destination-img">
+                                <img src="{{ asset('foto_reklame/'.$item->gambar) }}" style="height: 439px;" alt="destination-img">
                             </div>
                             <div class="card-body">
                                 <h3 class="card-title"><a href="/reklame/{{ $item->id_reklame }}">{{ $item->lokasi }} ({{$item->ukuran}})</a></h3>
@@ -188,7 +188,7 @@
                         <p class="sec__desc pt-4 pb-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 responsive-column">
+                        <div class="col-lg-6 col-sm-6">
                             <div class="counter-item counter-item-layout-2 d-flex">
                                 <div class="counter-icon flex-shrink-0">
                                     <i class="la la-users"></i>
@@ -201,7 +201,7 @@
                                 </div><!-- end counter-content -->
                             </div><!-- end counter-item -->
                         </div><!-- end col-lg-3 -->
-                        <div class="col-lg-6 responsive-column">
+                        <div class="col-lg-6 col-sm-6">
                             <div class="counter-item counter-item-layout-2 d-flex">
                                 <div class="counter-icon flex-shrink-0">
                                     <i class="la la-building"></i>
@@ -214,7 +214,7 @@
                                 </div><!-- end counter-content -->
                             </div><!-- end counter-item -->
                         </div><!-- end col-lg-3 -->
-                        <div class="col-lg-6 responsive-column">
+                        <div class="col-lg-6 col-sm-6">
                             <div class="counter-item counter-item-layout-2 d-flex">
                                 <div class="counter-icon flex-shrink-0">
                                     <i class="la la-user"></i>
@@ -227,7 +227,7 @@
                                 </div><!-- end counter-content -->
                             </div><!-- end counter-item -->
                         </div><!-- end col-lg-3 -->
-                        <div class="col-lg-6 responsive-column">
+                        <div class="col-lg-6 col-sm-6">
                             <div class="counter-item counter-item-layout-2 d-flex">
                                 <div class="counter-icon flex-shrink-0">
                                     <i class="la la-check-circle"></i>

@@ -73,6 +73,15 @@
                                     <li>
                                         <a href="/faq">FAQ</a>
                                     </li>
+                                    @if (!Session()->get('email'))
+                                    <li>
+                                        @if ($title === 'Login')
+                                        <a href="/register">Register</a>
+                                        @else
+                                        <a href="/login">Login</a>
+                                        @endif
+                                    </li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div><!-- end main-menu-content -->
