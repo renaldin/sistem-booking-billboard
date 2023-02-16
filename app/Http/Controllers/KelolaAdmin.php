@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelAdmin;
-use Illuminate\Contracts\Session\Session;
 
 class KelolaAdmin extends Controller
 {
@@ -53,6 +51,7 @@ class KelolaAdmin extends Controller
             'nomor_telepon'     => 'required|numeric',
             'email'             => 'required|unique:admin,email|email',
             'password'          => 'min:6|required',
+            'foto'              => 'required|mimes:jpeg,png,jpg|max:2048',
         ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
@@ -62,13 +61,21 @@ class KelolaAdmin extends Controller
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',
             'password.required'         => 'Password harus diisi!',
             'password.min'              => 'Password minimal 6 karakter!',
+            'foto.required'             => 'Foto harus diisi!',
+            'foto.mimes'                => 'Format Foto harus jpg/jpeg/png/bmp!',
+            'foto.max'                  => 'Ukuran Foto maksimal 2 mb',
         ]);
+
+        $file = Request()->foto;
+        $fileName = date('mdYHis') . Request()->nama . '.' . $file->extension();
+        $file->move(public_path('foto_admin'), $fileName);
 
         $data = [
             'nama'              => Request()->nama,
             'nomor_telepon'     => Request()->nomor_telepon,
             'email'             => Request()->email,
             'password'          => Hash::make(Request()->password),
+            'foto'              => $fileName,
         ];
 
         $this->ModelAdmin->tambah($data);
@@ -96,29 +103,62 @@ class KelolaAdmin extends Controller
             'nama'              => 'required',
             'nomor_telepon'     => 'required|numeric',
             'email'             => 'required|email',
+            'foto'              => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
             'nomor_telepon.numeric'     => 'Nomor telepon harus angka!',
             'email.required'            => 'Email harus diisi!',
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',
+            'foto.mimes'                => 'Format Foto harus jpg/jpeg/png/bmp!',
+            'foto.max'                  => 'Ukuran Foto maksimal 5 mb',
         ]);
 
-        if (Request()->password) {
-            $data = [
-                'id_admin'          => $id_admin,
-                'nama'              => Request()->nama,
-                'nomor_telepon'     => Request()->nomor_telepon,
-                'email'             => Request()->email,
-                'password'          => Hash::make(Request()->password),
-            ];
+        if (Request()->foto <> "") {
+            $admin = $this->ModelAdmin->detail($id_admin);
+            if ($admin->foto <> "") {
+                unlink(public_path('foto_admin') . '/' . $admin->foto);
+            }
+
+            $file = Request()->foto;
+            $fileName = date('mdYHis') . Request()->nama . '.' . $file->extension();
+            $file->move(public_path('foto_admin'), $fileName);
+
+            if (Request()->password) {
+                $data = [
+                    'id_admin'          => $id_admin,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'email'             => Request()->email,
+                    'password'          => Hash::make(Request()->password),
+                    'foto'              => $fileName
+                ];
+            } else {
+                $data = [
+                    'id_admin'          => $id_admin,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'email'             => Request()->email,
+                    'foto'              => $fileName
+                ];
+            }
         } else {
-            $data = [
-                'id_admin'          => $id_admin,
-                'nama'              => Request()->nama,
-                'nomor_telepon'     => Request()->nomor_telepon,
-                'email'             => Request()->email,
-            ];
+            if (Request()->password) {
+                $data = [
+                    'id_admin'          => $id_admin,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'email'             => Request()->email,
+                    'password'          => Hash::make(Request()->password),
+                ];
+            } else {
+                $data = [
+                    'id_admin'          => $id_admin,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'email'             => Request()->email,
+                ];
+            }
         }
 
         $this->ModelAdmin->edit($data);
@@ -127,6 +167,11 @@ class KelolaAdmin extends Controller
 
     public function prosesHapus($id_admin)
     {
+        $admin = $this->ModelAdmin->detail($id_admin);
+        if ($admin->foto <> "") {
+            unlink(public_path('foto_admin') . '/' . $admin->foto);
+        }
+
         $this->ModelAdmin->hapus($id_admin);
         return redirect()->route('kelola-admin')->with('berhasil', 'Data admin berhasil dihapus !');
     }
@@ -152,22 +197,43 @@ class KelolaAdmin extends Controller
             'nama'              => 'required',
             'nomor_telepon'     => 'required|numeric',
             'email'             => 'required|email',
+            'foto'              => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
             'nomor_telepon.numeric'     => 'Nomor telepon harus angka!',
             'email.required'            => 'Email harus diisi!',
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',
+            'foto.mimes'                => 'Format Foto harus jpg/jpeg/png/bmp!',
+            'foto.max'                  => 'Ukuran Foto maksimal 2 mb',
         ]);
 
+        if (Request()->foto <> "") {
+            $admin = $this->ModelAdmin->detail($id_admin);
+            if ($admin->foto <> "") {
+                unlink(public_path('foto_admin') . '/' . $admin->foto);
+            }
 
-        $data = [
-            'id_admin'          => $id_admin,
-            'nama'              => Request()->nama,
-            'nomor_telepon'     => Request()->nomor_telepon,
-            'email'             => Request()->email,
-        ];
+            $file = Request()->foto;
+            $fileName = date('mdYHis') . Request()->nama . '.' . $file->extension();
+            $file->move(public_path('foto_admin'), $fileName);
 
+
+            $data = [
+                'id_admin'          => $id_admin,
+                'nama'              => Request()->nama,
+                'nomor_telepon'     => Request()->nomor_telepon,
+                'email'             => Request()->email,
+                'foto'              => $fileName
+            ];
+        } else {
+            $data = [
+                'id_admin'          => $id_admin,
+                'nama'              => Request()->nama,
+                'nomor_telepon'     => Request()->nomor_telepon,
+                'email'             => Request()->email,
+            ];
+        }
 
         $this->ModelAdmin->edit($data);
         return redirect()->route('profil-admin')->with('berhasil', 'Profil berhasil diedit !');

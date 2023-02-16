@@ -42,6 +42,7 @@ class Register extends Controller
             'alamat_perusahaan' => 'required',
             'email'             => 'required|unique:user,email|email',
             'password'          => 'min:6|required',
+            'foto_perusahaan'   => 'required|mimes:jpeg,png,jpg|max:2048',
         ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
@@ -54,7 +55,14 @@ class Register extends Controller
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',
             'password.required'         => 'Password harus diisi!',
             'password.min'              => 'Password minimal 6 karakter!',
+            'foto_perusahaan.required'  => 'Logo Perusahaan harus diisi!',
+            'foto_perusahaan.mimes'     => 'Format Logo Perusahaan harus jpg/jpeg/png!',
+            'foto_perusahaan.max'       => 'Ukuran Logo Perusahaan maksimal 2 mb',
         ]);
+
+        $file = Request()->foto_perusahaan;
+        $fileName = date('mdYHis') . Request()->nama_perusahaan . '.' . $file->extension();
+        $file->move(public_path('foto_perusahaan'), $fileName);
 
         $data = [
             'nama'              => Request()->nama,
@@ -62,6 +70,7 @@ class Register extends Controller
             'alamat'            => Request()->alamat,
             'nama_perusahaan'   => Request()->nama_perusahaan,
             'alamat_perusahaan' => Request()->alamat_perusahaan,
+            'foto_perusahaan'   => $fileName,
             'email'             => Request()->email,
             'password'          => Hash::make(Request()->password),
         ];

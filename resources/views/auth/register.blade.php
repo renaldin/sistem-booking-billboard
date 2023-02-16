@@ -14,14 +14,14 @@
                     </div>
                     <div class="card-body">
                         <div class="contact-form-action">
-                            <form action="/register" method="Post">
+                            <form action="/register" method="Post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="input-box">
                                             <label class="label-text">Nama Lengkap</label>
                                             <div class="form-group">
-                                                <span class="la la-user form-icon"></span>
+                                                <span class="la la-circle form-icon"></span>
                                                 <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" value="{{ old('nama') }}" autofocus>
                                             </div>
                                             @error('nama')
@@ -35,7 +35,7 @@
                                         <div class="input-box">
                                             <label class="label-text">No. Telepon</label>
                                             <div class="form-group">
-                                                <span class="la la-user form-icon"></span>
+                                                <span class="la la-circle form-icon"></span>
                                                 <input class="form-control" type="text" name="nomor_telepon" placeholder="Masukkan Nomor Telepon" value="{{ old('nomor_telepon') }}">
                                             </div>
                                             @error('nomor_telepon')
@@ -45,11 +45,11 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="input-box">
                                             <label class="label-text">Alamat</label>
                                             <div class="form-group">
-                                                <span class="la la-user form-icon"></span>
+                                                <span class="la la-circle form-icon"></span>
                                                 <input class="form-control" type="text" name="alamat" placeholder="Masukkan Alamat" value="{{ old('alamat') }}">
                                             </div>
                                             @error('alamat')
@@ -63,7 +63,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Nama Perusahaan</label>
                                             <div class="form-group">
-                                                <span class="la la-user form-icon"></span>
+                                                <span class="la la-circle form-icon"></span>
                                                 <input class="form-control" type="text" name="nama_perusahaan" placeholder="Masukkan Nama Perusahaan" value="{{ old('nama_perusahaan') }}">
                                             </div>
                                             @error('nama_perusahaan')
@@ -77,7 +77,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Alamat Perusahaan</label>
                                             <div class="form-group">
-                                                <span class="la la-user form-icon"></span>
+                                                <span class="la la-circle form-icon"></span>
                                                 <input class="form-control" type="text" name="alamat_perusahaan" placeholder="Masukkan Alamat Perusahaan" value="{{ old('alamat_perusahaan') }}">
                                             </div>
                                             @error('alamat_perusahaan')
@@ -89,9 +89,23 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="input-box">
+                                            <label class="label-text">Logo Perusahaan</label>
+                                            <div class="form-group">
+                                                <span class="la la-circle form-icon"></span>
+                                                <input class="form-control" type="file" name="foto_perusahaan">
+                                            </div>
+                                            @error('foto_perusahaan')
+                                            <div style="margin-top: -16px">
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-box">
                                             <label class="label-text">Email</label>
                                             <div class="form-group">
-                                                <span class="la la-envelope form-icon"></span>
+                                                <span class="la la-circle form-icon"></span>
                                                 <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}">
                                             </div>
                                             @error('email')
@@ -105,7 +119,7 @@
                                         <div class="input-box">
                                             <label class="label-text">Password</label>
                                             <div class="form-group">
-                                                <span class="la la-lock form-icon"></span>
+                                                <span class="la la-circle form-icon"></span>
                                                 <input class="form-control" type="password" name="password" placeholder="Masukkan Password">
                                             </div>
                                             @error('password')

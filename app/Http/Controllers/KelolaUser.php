@@ -56,6 +56,8 @@ class KelolaUser extends Controller
             'alamat_perusahaan' => 'required',
             'email'             => 'required|unique:user,email|email',
             'password'          => 'min:6|required',
+            'foto_perusahaan'   => 'required|mimes:jpeg,png,jpg|max:2048',
+            'foto_user'         => 'required|mimes:jpeg,png,jpg|max:2048',
         ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
@@ -68,7 +70,21 @@ class KelolaUser extends Controller
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',
             'password.required'         => 'Password harus diisi!',
             'password.min'              => 'Password minimal 6 karakter!',
+            'foto_perusahaan.required'  => 'Logo Perusahaan harus diisi!',
+            'foto_perusahaan.mimes'     => 'Format Logo Perusahaan harus jpg/jpeg/png!',
+            'foto_perusahaan.max'       => 'Ukuran Logo Perusahaan maksimal 2 mb',
+            'foto_user.required'        => 'Foto Anda harus diisi!',
+            'foto_user.mimes'           => 'Format Foto Anda harus jpg/jpeg/png!',
+            'foto_user.max'             => 'Ukuran Foto Anda maksimal 2 mb',
         ]);
+
+        $file = Request()->foto_perusahaan;
+        $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file->extension();
+        $file->move(public_path('foto_perusahaan'), $filePerusahaan);
+
+        $file1 = Request()->foto_user;
+        $fileUser = date('mdYHis') . Request()->nama . '.' . $file1->extension();
+        $file1->move(public_path('foto_user'), $fileUser);
 
         $data = [
             'nama'              => Request()->nama,
@@ -77,6 +93,8 @@ class KelolaUser extends Controller
             'nama_perusahaan'   => Request()->nama_perusahaan,
             'alamat_perusahaan' => Request()->alamat_perusahaan,
             'email'             => Request()->email,
+            'foto_perusahaan'   => $filePerusahaan,
+            'foto_user'         => $fileUser,
             'password'          => Hash::make(Request()->password),
         ];
 
@@ -109,6 +127,8 @@ class KelolaUser extends Controller
             'nama_perusahaan'   => 'required',
             'alamat_perusahaan' => 'required',
             'email'             => 'required|email',
+            'foto_perusahaan'   => 'mimes:jpeg,png,jpg|max:2048',
+            'foto_user'         => 'mimes:jpeg,png,jpg|max:2048',
         ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
@@ -118,32 +138,154 @@ class KelolaUser extends Controller
             'alamat_perusahaan.required' => 'Alamat perusahaan harus diisi!',
             'email.required'            => 'Email harus diisi!',
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',
+            'foto_perusahaan.mimes'     => 'Format Logo Perusahaan harus jpg/jpeg/png!',
+            'foto_perusahaan.max'       => 'Ukuran Logo Perusahaan maksimal 2 mb',
+            'foto_user.mimes'           => 'Format Foto Anda harus jpg/jpeg/png!',
+            'foto_user.max'             => 'Ukuran Foto Anda maksimal 2 mb',
         ]);
 
         if (Request()->password) {
-            $data = [
-                'id_member'         => $id_member,
-                'nama'              => Request()->nama,
-                'nomor_telepon'     => Request()->nomor_telepon,
-                'alamat'            => Request()->alamat,
-                'nama_perusahaan'   => Request()->nama_perusahaan,
-                'alamat_perusahaan' => Request()->alamat_perusahaan,
-                'email'             => Request()->email,
-                'password'          => Hash::make(Request()->password),
-            ];
-        } else {
-            $data = [
-                'id_member'         => $id_member,
-                'nama'              => Request()->nama,
-                'nomor_telepon'     => Request()->nomor_telepon,
-                'alamat'            => Request()->alamat,
-                'nama_perusahaan'   => Request()->nama_perusahaan,
-                'alamat_perusahaan' => Request()->alamat_perusahaan,
-                'email'             => Request()->email,
-            ];
-        }
 
-        $this->ModelUser->edit($data);
+            $user = $this->ModelUser->detail($id_member);
+
+            if (Request()->foto_perusahaan <> "") {
+                if ($user->foto_perusahaan <> "") {
+                    unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+                }
+
+                $file1 = Request()->foto_perusahaan;
+                $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file1->extension();
+                $file1->move(public_path('foto_perusahaan'), $filePerusahaan);
+
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                    'foto_perusahaan'   => $filePerusahaan,
+                    'password'          => Hash::make(Request()->password),
+                ];
+                $this->ModelUser->edit($data);
+            } else {
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                    'password'          => Hash::make(Request()->password),
+                ];
+                $this->ModelUser->edit($data);
+            }
+
+            if (Request()->foto_user <> "") {
+                if ($user->foto_user <> "") {
+                    unlink(public_path('foto_user') . '/' . $user->foto_user);
+                }
+
+                $file2 = Request()->foto_user;
+                $fileUser = date('mdYHis') . Request()->nama_perusahaan . '.' . $file2->extension();
+                $file2->move(public_path('foto_user'), $fileUser);
+
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                    'foto_user'         => $fileUser,
+                    'password'          => Hash::make(Request()->password),
+                ];
+                $this->ModelUser->edit($data);
+            } else {
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                    'password'          => Hash::make(Request()->password),
+                ];
+                $this->ModelUser->edit($data);
+            }
+        } else {
+            $user = $this->ModelUser->detail($id_member);
+
+            if (Request()->foto_perusahaan <> "") {
+                if ($user->foto_perusahaan <> "") {
+                    unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+                }
+
+                $file1 = Request()->foto_perusahaan;
+                $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file1->extension();
+                $file1->move(public_path('foto_perusahaan'), $filePerusahaan);
+
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                    'foto_perusahaan'   => $filePerusahaan,
+                ];
+                $this->ModelUser->edit($data);
+            } else {
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                ];
+                $this->ModelUser->edit($data);
+            }
+
+            if (Request()->foto_user <> "") {
+                if ($user->foto_user <> "") {
+                    unlink(public_path('foto_user') . '/' . $user->foto_user);
+                }
+
+                $file2 = Request()->foto_user;
+                $fileUser = date('mdYHis') . Request()->nama_perusahaan . '.' . $file2->extension();
+                $file2->move(public_path('foto_user'), $fileUser);
+
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                    'foto_user'         => $fileUser,
+                ];
+                $this->ModelUser->edit($data);
+            } else {
+                $data = [
+                    'id_member'         => $id_member,
+                    'nama'              => Request()->nama,
+                    'nomor_telepon'     => Request()->nomor_telepon,
+                    'alamat'            => Request()->alamat,
+                    'nama_perusahaan'   => Request()->nama_perusahaan,
+                    'alamat_perusahaan' => Request()->alamat_perusahaan,
+                    'email'             => Request()->email,
+                ];
+                $this->ModelUser->edit($data);
+            }
+        }
         return redirect()->route('kelola-user')->with('berhasil', 'Data user berhasil diedit !');
     }
 
@@ -165,6 +307,16 @@ class KelolaUser extends Controller
 
     public function prosesHapus($id_member)
     {
+        $user = $this->ModelUser->detail($id_member);
+
+        if ($user->foto_user <> "") {
+            unlink(public_path('foto_user') . '/' . $user->foto_user);
+        }
+
+        if ($user->foto_perusahaan <> "") {
+            unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+        }
+
         $this->ModelUser->hapus($id_member);
         return redirect()->route('kelola-user')->with('berhasil', 'Data user berhasil dihapus !');
     }
@@ -192,6 +344,8 @@ class KelolaUser extends Controller
             'nama_perusahaan'   => 'required',
             'alamat_perusahaan' => 'required',
             'email'             => 'required|email',
+            'foto_perusahaan'   => 'mimes:jpeg,png,jpg|max:2048',
+            'foto_user'         => 'mimes:jpeg,png,jpg|max:2048',
         ], [
             'nama.required'             => 'Nama lengkap harus diisi!',
             'nomor_telepon.required'    => 'Nomor telepon harus diisi!',
@@ -201,19 +355,80 @@ class KelolaUser extends Controller
             'alamat_perusahaan.required' => 'Alamat perusahaan harus diisi!',
             'email.required'            => 'Email harus diisi!',
             'email.email'               => 'Email harus sesuai format! Contoh: contoh@gmail.com',
+            'foto_perusahaan.mimes'     => 'Format Logo Perusahaan harus jpg/jpeg/png!',
+            'foto_perusahaan.max'       => 'Ukuran Logo Perusahaan maksimal 2 mb',
+            'foto_user.mimes'           => 'Format Foto Anda harus jpg/jpeg/png!',
+            'foto_user.max'             => 'Ukuran Foto Anda maksimal 2 mb',
         ]);
 
-        $data = [
-            'id_member'         => $id_member,
-            'nama'              => Request()->nama,
-            'nomor_telepon'     => Request()->nomor_telepon,
-            'alamat'            => Request()->alamat,
-            'nama_perusahaan'   => Request()->nama_perusahaan,
-            'alamat_perusahaan' => Request()->alamat_perusahaan,
-            'email'             => Request()->email,
-        ];
+        $user = $this->ModelUser->detail($id_member);
 
-        $this->ModelUser->edit($data);
+        if (Request()->foto_perusahaan <> "") {
+            if ($user->foto_perusahaan <> "") {
+                unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+            }
+
+            $file1 = Request()->foto_perusahaan;
+            $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file1->extension();
+            $file1->move(public_path('foto_perusahaan'), $filePerusahaan);
+
+            $data = [
+                'id_member'         => $id_member,
+                'nama'              => Request()->nama,
+                'nomor_telepon'     => Request()->nomor_telepon,
+                'alamat'            => Request()->alamat,
+                'nama_perusahaan'   => Request()->nama_perusahaan,
+                'alamat_perusahaan' => Request()->alamat_perusahaan,
+                'email'             => Request()->email,
+                'foto_perusahaan'   => $filePerusahaan
+            ];
+            $this->ModelUser->edit($data);
+        } else {
+            $data = [
+                'id_member'         => $id_member,
+                'nama'              => Request()->nama,
+                'nomor_telepon'     => Request()->nomor_telepon,
+                'alamat'            => Request()->alamat,
+                'nama_perusahaan'   => Request()->nama_perusahaan,
+                'alamat_perusahaan' => Request()->alamat_perusahaan,
+                'email'             => Request()->email,
+            ];
+            $this->ModelUser->edit($data);
+        }
+
+        if (Request()->foto_user <> "") {
+            if ($user->foto_user <> "") {
+                unlink(public_path('foto_user') . '/' . $user->foto_user);
+            }
+
+            $file2 = Request()->foto_user;
+            $fileUser = date('mdYHis') . Request()->nama_perusahaan . '.' . $file2->extension();
+            $file2->move(public_path('foto_user'), $fileUser);
+
+            $data = [
+                'id_member'         => $id_member,
+                'nama'              => Request()->nama,
+                'nomor_telepon'     => Request()->nomor_telepon,
+                'alamat'            => Request()->alamat,
+                'nama_perusahaan'   => Request()->nama_perusahaan,
+                'alamat_perusahaan' => Request()->alamat_perusahaan,
+                'email'             => Request()->email,
+                'foto_user'         => $fileUser
+            ];
+            $this->ModelUser->edit($data);
+        } else {
+            $data = [
+                'id_member'         => $id_member,
+                'nama'              => Request()->nama,
+                'nomor_telepon'     => Request()->nomor_telepon,
+                'alamat'            => Request()->alamat,
+                'nama_perusahaan'   => Request()->nama_perusahaan,
+                'alamat_perusahaan' => Request()->alamat_perusahaan,
+                'email'             => Request()->email,
+            ];
+            $this->ModelUser->edit($data);
+        }
+
         return redirect()->route('profil')->with('berhasil', 'Profil berhasil diedit !');
     }
 

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelAuth;
-use Illuminate\Contracts\Session\Session;
 
 class Login extends Controller
 {
@@ -73,7 +71,9 @@ class Login extends Controller
                     Session()->put('email', $cekEmail->email);
                     Session()->put('nama_perusahaan', $cekEmail->nama_perusahaan);
                     Session()->put('alamat_perusahaan', $cekEmail->alamat_perusahaan);
+                    Session()->put('foto_perusahaan', $cekEmail->foto_perusahaan);
                     Session()->put('status', $cekEmail->status);
+                    Session()->put('foto_user', $cekEmail->foto_user);
                     Session()->put('log', true);
 
                     return redirect()->route('home');
@@ -92,6 +92,7 @@ class Login extends Controller
                     Session()->put('nama', $cekEmail->nama);
                     Session()->put('email', $cekEmail->email);
                     Session()->put('status', $cekEmail->status);
+                    Session()->put('foto', $cekEmail->foto);
                     Session()->put('log', true);
 
                     return redirect()->route('dashboard');
@@ -111,8 +112,10 @@ class Login extends Controller
             Session()->forget('nama');
             Session()->forget('nama_perusahaan');
             Session()->forget('alamat_perusahaan');
+            Session()->forget('foto_perusahaan');
             Session()->forget('email');
             Session()->forget('status');
+            Session()->forget('foto_user');
             Session()->forget('log');
             return redirect()->route('login')->with('berhasil', 'Logout berhasil!');
         } else if (Session()->get('status') === 'Admin') {
@@ -120,6 +123,7 @@ class Login extends Controller
             Session()->forget('nama');
             Session()->forget('email');
             Session()->forget('status');
+            Session()->forget('foto');
             Session()->forget('log');
             return redirect()->route('admin')->with('berhasil', 'Logout berhasil!');
         }

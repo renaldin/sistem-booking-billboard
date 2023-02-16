@@ -13,14 +13,14 @@
                 </div>
                 <div class="form-content">
                     <div class="contact-form-action">
-                        <form action="/tambah-admin" method="Post">
+                        <form action="/tambah-admin" method="Post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-box">
                                         <label class="label-text">Nama Lengkap</label>
                                         <div class="form-group">
-                                            <span class="la la-user form-icon"></span>
+                                            <span class="la la-circle form-icon"></span>
                                             <input class="form-control" type="text" name="nama" placeholder="Masukkan Nama Lengkap" value="{{ old('nama') }}" autofocus>
                                         </div>
                                         @error('nama')
@@ -34,7 +34,7 @@
                                     <div class="input-box">
                                         <label class="label-text">No. Telepon</label>
                                         <div class="form-group">
-                                            <span class="la la-user form-icon"></span>
+                                            <span class="la la-circle form-icon"></span>
                                             <input class="form-control" type="text" name="nomor_telepon" placeholder="Masukkan Nomor Telepon" value="{{ old('nomor_telepon') }}">
                                         </div>
                                         @error('nomor_telepon')
@@ -48,7 +48,7 @@
                                     <div class="input-box">
                                         <label class="label-text">Email</label>
                                         <div class="form-group">
-                                            <span class="la la-envelope form-icon"></span>
+                                            <span class="la la-circle form-icon"></span>
                                             <input class="form-control" type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}">
                                         </div>
                                         @error('email')
@@ -62,10 +62,24 @@
                                     <div class="input-box">
                                         <label class="label-text">Password</label>
                                         <div class="form-group">
-                                            <span class="la la-lock form-icon"></span>
+                                            <span class="la la-circle form-icon"></span>
                                             <input class="form-control" type="password" name="password" placeholder="Masukkan Password">
                                         </div>
                                         @error('password')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Foto</label>
+                                        <div class="form-group">
+                                            <span class="la la-circle form-icon"></span>
+                                            <input class="form-control" type="file" name="foto">
+                                        </div>
+                                        @error('foto')
                                         <div style="margin-top: -16px">
                                             <small class="text-danger">{{ $message }}</small>
                                         </div>

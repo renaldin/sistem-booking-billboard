@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-content">
                     <div class="contact-form-action">
-                        <form action="/tambah-user" method="Post">
+                        <form action="/tambah-user" method="Post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
@@ -60,6 +60,20 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-box">
+                                        <label class="label-text">Foto Anda</label>
+                                        <div class="form-group">
+                                            <span class="la la-circle form-icon"></span>
+                                            <input class="form-control" type="file" name="foto_user">
+                                        </div>
+                                        @error('foto_user')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>          
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
                                         <label class="label-text">Nama Perusahaan</label>
                                         <div class="form-group">
                                             <span class="la la-user form-icon"></span>
@@ -85,6 +99,20 @@
                                         </div>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Logo Perusahaan</label>
+                                        <div class="form-group">
+                                            <span class="la la-circle form-icon"></span>
+                                            <input class="form-control" type="file" name="foto_perusahaan">
+                                        </div>
+                                        @error('foto_perusahaan')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>          
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-box">

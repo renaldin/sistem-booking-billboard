@@ -17,6 +17,7 @@
                         <div class="dropdown">
                             <a href="#" class="dropdown-toggle" id="userDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-sm flex-shrink-0 mr-2"><img src="@if(Session()->get('foto')){{ asset('foto_admin/'.Session()->get('foto')) }} @else {{ asset('foto_admin/default1.jpg') }} @endif" alt="team-img"></div>
                                     <span class="font-size-14 font-weight-bold">{{ Session()->get('nama') }}</span>
                                 </div>
                             </a>

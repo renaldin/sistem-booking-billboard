@@ -13,10 +13,10 @@
                 </div>
                 <div class="form-content">
                     <div class="contact-form-action">
-                        <form action="/edit-user/{{ $user->id_member }}" method="Post">
+                        <form action="/edit-user/{{ $user->id_member }}" method="Post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="input-box">
                                         <label class="label-text">Nama Lengkap</label>
                                         <div class="form-group">
@@ -113,6 +113,50 @@
                                         </div>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Logo Perusahaan</label>
+                                        <div class="form-group">
+                                            <span class="la la-circle form-icon"></span>
+                                            <input class="form-control" type="file" name="foto_perusahaan"  @if($disabled === TRUE) disabled @endif>
+                                        </div>
+                                        @error('foto_perusahaan')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>          
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text"></label>
+                                        <div class="form-group">
+                                            <img src="@if($user->foto_perusahaan){{ asset('foto_perusahaan/'.$user->foto_perusahaan) }} @else {{ asset('foto_perusahaan/default1.jpg') }} @endif" class="user-pro-img" style="width: 8rem;" alt="">
+                                        </div>
+                                    </div>          
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Foto Anda</label>
+                                        <div class="form-group">
+                                            <span class="la la-circle form-icon"></span>
+                                            <input class="form-control" type="file" name="foto_user"  @if($disabled === TRUE) disabled @endif>
+                                        </div>
+                                        @error('foto_user')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>          
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text"></label>
+                                        <div class="form-group">
+                                            <img src="@if($user->foto_user){{ asset('foto_user/'.$user->foto_user) }} @else {{ asset('foto_user/default1.jpg') }} @endif" class="user-pro-img" style="width: 8rem;" alt=""> 
+                                        </div>
+                                    </div>          
                                 </div>
                             </div>
                             <div class="btn-box pt-3 pb-4">

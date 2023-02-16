@@ -2,6 +2,9 @@
     <div class="sidebar-nav-body">
         <div class="author-content">
             <div class="d-flex align-items-center">
+                <div class="author-img avatar-sm">
+                    <img src="@if(Session()->get('foto')){{ asset('foto_admin/'.Session()->get('foto')) }} @else {{ asset('foto_admin/default1.jpg') }} @endif" alt="testimonial image">
+                </div>
                 <div class="author-bio">
                     <h4 class="author__title">{{ Session()->get('nama') }}</h4>
                     <span class="author__meta">Welcome to Admin Panel</span>
