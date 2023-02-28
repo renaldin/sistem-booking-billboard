@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Feb 2023 pada 20.29
+-- Waktu pembuatan: 16 Feb 2023 pada 17.16
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -33,16 +33,17 @@ CREATE TABLE `admin` (
   `email` varchar(100) NOT NULL,
   `password` text NOT NULL,
   `nomor_telepon` varchar(30) NOT NULL,
-  `status` enum('Admin') NOT NULL DEFAULT 'Admin'
+  `status` enum('Admin') NOT NULL DEFAULT 'Admin',
+  `foto` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`, `nomor_telepon`, `status`) VALUES
-(1, 'Admin Sistem', 'admin122@gmail.com', '$2y$10$FOLMcTQ.ZQmG4XkXHemNkuvTur77scCIzvFMyQyRV9SdbHXGYN0iy', '08989786444', 'Admin'),
-(2, 'Admin Sistem Booking', 'admin@gmail.com', '$2y$10$CfofXEParDaLa28vB2/i9uxG0Z8ywPKJycZ9pBYn/vSYeZ6fd4e9a', '089677565', 'Admin');
+INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`, `nomor_telepon`, `status`, `foto`) VALUES
+(1, 'Admin Sistem', 'admin122@gmail.com', '$2y$10$FOLMcTQ.ZQmG4XkXHemNkuvTur77scCIzvFMyQyRV9SdbHXGYN0iy', '08989786444', 'Admin', '02162023154704Admin Sistem.jpg'),
+(2, 'Admin Sistem Booking', 'admin@gmail.com', '$2y$10$CfofXEParDaLa28vB2/i9uxG0Z8ywPKJycZ9pBYn/vSYeZ6fd4e9a', '089677565', 'Admin', '02162023160429Admin Sistem Booking.jpg');
 
 -- --------------------------------------------------------
 
@@ -250,17 +251,20 @@ CREATE TABLE `user` (
   `nama_perusahaan` varchar(50) NOT NULL,
   `alamat_perusahaan` varchar(100) NOT NULL,
   `status` enum('User') NOT NULL DEFAULT 'User',
-  `tanggal_daftar` date NOT NULL DEFAULT current_timestamp()
+  `tanggal_daftar` date NOT NULL DEFAULT current_timestamp(),
+  `foto_user` text DEFAULT NULL,
+  `foto_perusahaan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_telepon`, `nama_perusahaan`, `alamat_perusahaan`, `status`, `tanggal_daftar`) VALUES
-(1, 'Renaldi', 'renaldi@gmail.com', '$2y$10$6BJ0mhGr3yIKsdmBFbemruUFMCJJm56DkxSD0.B4sa9gvV3V6nNI2', 'Bandung', '0898867631', 'Perusahaan 1', 'Alamat Perusahaan 1', 'User', '2023-01-27'),
-(3, 'Renaldi 2', 'renaldi2@gmail.com', '$2y$10$M5xJPKfF7.gKz5WOkOQEs.3EaU1PUU03vLHt5OFjioT/4XxDAvP3K', 'Bandung', '08989786444', 'Perusahaan 2', 'Alamat Perusahaan 2', 'User', '2023-01-27'),
-(4, 'Renaldi 3', 'renaldi3@gmail.com', '$2y$10$H60vdJc3uoKIZlDMHQgtwey1pMSsdz.2zTfpj8JVzW/GIJE/GuZju', 'Bandung', '08989786444', 'Perusahaan 3', 'Alamat Perusahaan 3', 'User', '2023-01-29');
+INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_telepon`, `nama_perusahaan`, `alamat_perusahaan`, `status`, `tanggal_daftar`, `foto_user`, `foto_perusahaan`) VALUES
+(1, 'Renaldi', 'renaldi@gmail.com', '$2y$10$6BJ0mhGr3yIKsdmBFbemruUFMCJJm56DkxSD0.B4sa9gvV3V6nNI2', 'Bandung', '0898867631', 'Perusahaan 1', 'Alamat Perusahaan 1', 'User', '2023-01-27', NULL, NULL),
+(3, 'Renaldi 2', 'renaldi2@gmail.com', '$2y$10$M5xJPKfF7.gKz5WOkOQEs.3EaU1PUU03vLHt5OFjioT/4XxDAvP3K', 'Bandung', '08989786444', 'Perusahaan 2', 'Alamat Perusahaan 2', 'User', '2023-01-27', NULL, NULL),
+(4, 'Renaldi 3', 'renaldi3@gmail.com', '$2y$10$H60vdJc3uoKIZlDMHQgtwey1pMSsdz.2zTfpj8JVzW/GIJE/GuZju', 'Bandung', '08989786444', 'Perusahaan 3', 'Alamat Perusahaan 3', 'User', '2023-01-29', NULL, NULL),
+(5, 'Renaldi 5', 'renaldi5@gmail.com', '$2y$10$ik1T4nUEDe.gHo2zXSUDqeHqFq701aRrKm6lHObkaDiQFOFkEOH2q', 'Bandung', '08989786444', 'Perusahaan 5', 'Alamat Perusahaan 5', 'User', '2023-02-16', '02162023135448Perusahaan 5.jpg', '02162023135408Perusahaan 5.png');
 
 --
 -- Indexes for dumped tables
@@ -322,7 +326,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `faq`
@@ -352,7 +356,7 @@ ALTER TABLE `reklame`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
