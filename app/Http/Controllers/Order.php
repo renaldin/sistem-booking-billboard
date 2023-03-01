@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Models\ModelOrder;
 use App\Models\ModelReklame;
 use App\Models\ModelUser;
-use Illuminate\Contracts\Session\Session;
+use App\Models\ModelBiodataWeb;
 
 class Order extends Controller
 {
@@ -15,12 +13,14 @@ class Order extends Controller
     private $ModelOrder;
     private $ModelReklame;
     private $ModelUser;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelOrder = new ModelOrder();
         $this->ModelReklame = new ModelReklame();
         $this->ModelUser = new ModelUser();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -32,6 +32,7 @@ class Order extends Controller
         $data = [
             'title'             => 'Data Order',
             'subTitle'          => 'Kelola Order',
+            'biodata'           => $this->ModelBiodataWeb->detail(1),
             'jumlahTungguHarga' => $this->ModelOrder->jumlahTungguHarga(),
             'order'             => $this->ModelOrder->dataOrder(),
         ];
@@ -49,6 +50,7 @@ class Order extends Controller
             'title'     => 'Data Order',
             'subTitle'  => 'Beri Harga',
             'form'      => 'Tambah',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'order'     => $this->ModelOrder->detail($id_pesanan),
         ];
 
@@ -82,6 +84,7 @@ class Order extends Controller
             'title'     => 'Data Order',
             'subTitle'  => 'Edit Harga',
             'form'      => 'Edit',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'order'     => $this->ModelOrder->detail($id_pesanan),
         ];
 
@@ -100,6 +103,7 @@ class Order extends Controller
             'title'             => 'Data Order',
             'subTitle'          => 'Detail Order',
             'order'             => $dataOrder,
+            'biodata'           => $this->ModelBiodataWeb->detail(1),
             'reklame'           => $this->ModelReklame->detail($dataOrder->id_reklame),
             'user'              => $this->ModelUser->detail($dataOrder->id_member)
         ];

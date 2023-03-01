@@ -12,6 +12,7 @@ use App\Http\Controllers\Order;
 use App\Http\Controllers\Reklame;
 use App\Http\Controllers\Partner;
 use App\Http\Controllers\Faq;
+use App\Http\Controllers\BiodataWeb;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,6 +79,9 @@ Route::group(['middleware' => 'revalidate'], function () {
 
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
+
+        Route::get('/biodata-website', [BiodataWeb::class, 'index'])->name('biodata-web');
+        Route::post('/biodata-website/{id}', [BiodataWeb::class, 'prosesEdit']);
 
         // Kelola Admin
         Route::get('/kelola-admin', [KelolaAdmin::class, 'index'])->name('kelola-admin');

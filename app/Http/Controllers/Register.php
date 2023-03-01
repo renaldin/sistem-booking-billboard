@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelAuth;
+use App\Models\ModelBiodataWeb;
 
 class Register extends Controller
 {
 
     private $ModelAuth;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelAuth = new ModelAuth();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -26,7 +29,8 @@ class Register extends Controller
         }
 
         $data = [
-            'title' => 'Register'
+            'title' => 'Register',
+            'biodata'  => $this->ModelBiodataWeb->detail(1),
         ];
 
         return view('auth.register', $data);

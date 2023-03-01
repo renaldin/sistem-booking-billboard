@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelUser;
-use Illuminate\Contracts\Session\Session;
+use App\Models\ModelBiodataWeb;
 
 class KelolaUser extends Controller
 {
 
     private $ModelUser;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelUser = new ModelUser();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -26,6 +27,7 @@ class KelolaUser extends Controller
         $data = [
             'title'     => 'Data User',
             'subTitle'  => 'Kelola User',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'user'      => $this->ModelUser->dataUser()
         ];
 
@@ -40,6 +42,7 @@ class KelolaUser extends Controller
 
         $data = [
             'title'     => 'Data User',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'subTitle'  => 'Tambah User'
         ];
 
@@ -111,6 +114,7 @@ class KelolaUser extends Controller
         $data = [
             'title'     => 'Data User',
             'subTitle'  => 'Edit User',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'disabled'  => FALSE,
             'user'      => $this->ModelUser->detail($id_member)
         ];
@@ -298,6 +302,7 @@ class KelolaUser extends Controller
         $data = [
             'title'     => 'Data User',
             'subTitle'  => 'Detail User',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'disabled'  => TRUE,
             'user'      => $this->ModelUser->detail($id_member)
         ];
@@ -329,6 +334,7 @@ class KelolaUser extends Controller
 
         $data = [
             'title'     => 'Profil',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'user'      => $this->ModelUser->detail(Session()->get('id_member'))
         ];
 
@@ -441,6 +447,7 @@ class KelolaUser extends Controller
 
         $data = [
             'title'     => 'Ubah Password',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'user'      => $this->ModelUser->detail($id_member)
         ];
 

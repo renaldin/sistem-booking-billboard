@@ -131,9 +131,9 @@
 									{{$order->email}}
 								</td>
 								<td>
-									Sparksuite, Inc.<br />
-									12345 Sunny Road<br />
-									Sunnyville, CA 12345
+									{{$biodata->nama_website}}<br />
+									{{$biodata->nomor_telepon}}<br />
+									{{$biodata->email}}
 								</td>
 							</tr>
 						</table>

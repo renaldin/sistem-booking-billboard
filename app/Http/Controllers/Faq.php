@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\ModelFaq;
+use App\Models\ModelBiodataWeb;
 
 class Faq extends Controller
 {
 
     private $ModelFaq;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelFaq = new ModelFaq();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -23,6 +26,7 @@ class Faq extends Controller
         $data = [
             'title'     => 'Data FAQ',
             'subTitle'  => 'Kelola FAQ',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'faq'       => $this->ModelFaq->dataFaq()
         ];
 
@@ -38,6 +42,7 @@ class Faq extends Controller
         $data = [
             'title'     => 'Data FAQ',
             'subTitle'  => 'Tambah FAQ',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'form'      => 'Tambah'
         ];
 
@@ -82,6 +87,7 @@ class Faq extends Controller
             'title'     => 'Data FAQ',
             'subTitle'  => 'Edit FAQ',
             'form'      => 'Edit',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'faq'       => $this->ModelFaq->detail($id_faq)
         ];
 
@@ -125,6 +131,7 @@ class Faq extends Controller
             'title'     => 'Data FAQ',
             'subTitle'  => 'Detail FAQ',
             'form'      => 'Detail',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'faq'       => $this->ModelFaq->detail($id_faq)
         ];
 
@@ -164,6 +171,7 @@ class Faq extends Controller
 
         $data = [
             'title'     => 'FAQ',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'faq'       => $this->ModelFaq->dataFaqUser()
         ];
 

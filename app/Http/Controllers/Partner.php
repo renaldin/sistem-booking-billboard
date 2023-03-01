@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ModelPartner;
-use Illuminate\Contracts\Session\Session;
+use App\Models\ModelBiodataWeb;
 
 class Partner extends Controller
 {
 
     private $ModelPartner;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelPartner = new ModelPartner();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -25,6 +26,7 @@ class Partner extends Controller
         $data = [
             'title'     => 'Data Partner',
             'subTitle'  => 'Kelola Partner',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'partner'   => $this->ModelPartner->dataPartner()
         ];
 
@@ -40,6 +42,7 @@ class Partner extends Controller
         $data = [
             'title'     => 'Data Partner',
             'subTitle'  => 'Tambah Partner',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'form'      => 'Tambah'
         ];
 
@@ -81,6 +84,7 @@ class Partner extends Controller
             'title'     => 'Data Partner',
             'subTitle'  => 'Edit Partner',
             'form'      => 'Edit',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'partner'   => $this->ModelPartner->detail($id_partner)
         ];
 
@@ -132,6 +136,7 @@ class Partner extends Controller
             'title'     => 'Data Partner',
             'subTitle'  => 'Detail Partner',
             'form'      => 'Detail',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'partner'   => $this->ModelPartner->detail($id_partner)
         ];
 

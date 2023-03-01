@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ModelReklame;
 use App\Models\ModelOrder;
 use App\Models\ModelUser;
+use App\Models\ModelBiodataWeb;
 use GuzzleHttp\Psr7\Request;
 
 class Reklame extends Controller
@@ -13,12 +14,14 @@ class Reklame extends Controller
     private $ModelReklame;
     private $ModelOrder;
     private $ModelUser;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelReklame = new ModelReklame();
         $this->ModelOrder = new ModelOrder();
         $this->ModelUser = new ModelUser();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -30,6 +33,7 @@ class Reklame extends Controller
         $data = [
             'title'     => 'Data Reklame',
             'subTitle'  => 'Kelola Reklame',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'reklame'   => $this->ModelReklame->dataReklame()
         ];
 
@@ -45,6 +49,7 @@ class Reklame extends Controller
         $data = [
             'title'     => 'Data Reklame',
             'subTitle'  => 'Tambah Reklame',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'form'      => 'Tambah'
         ];
 
@@ -116,6 +121,7 @@ class Reklame extends Controller
             'title'     => 'Data Reklame',
             'subTitle'  => 'Edit Reklame',
             'form'      => 'Edit',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'reklame'   => $this->ModelReklame->detail($id_reklame)
         ];
 
@@ -209,6 +215,7 @@ class Reklame extends Controller
             'title'     => 'Data Reklame',
             'subTitle'  => 'Detail Reklame',
             'form'      => 'Detail',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'reklame'   => $this->ModelReklame->detail($id_reklame)
         ];
 
@@ -234,6 +241,7 @@ class Reklame extends Controller
                 'title'         => 'Daftar Reklame',
                 'jumlahReklame' => $this->ModelReklame->totalReklame('Belum Dipesan', 'Sudah Dibooking'),
                 'keyword'       => Request()->keyword,
+                'biodata'       => $this->ModelBiodataWeb->detail(1),
                 'reklame'       => $this->ModelReklame->cariReklame(Request()->keyword)
             ];
         } else {
@@ -241,6 +249,7 @@ class Reklame extends Controller
                 'title'         => 'Daftar Reklame',
                 'jumlahReklame' => $this->ModelReklame->totalReklame('Belum Dipesan', 'Sudah Dibooking'),
                 'keyword'       => NULL,
+                'biodata'       => $this->ModelBiodataWeb->detail(1),
                 'reklame'       => $this->ModelReklame->dataReklameDuaStatus('Belum Dipesan', 'Sudah Dibooking')
             ];
         }
@@ -252,6 +261,7 @@ class Reklame extends Controller
     {
         $data = [
             'title'     => 'Daftar Reklame',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'reklame'   => $this->ModelReklame->dataReklameStatus('Belum Dipesan')
         ];
 
@@ -273,6 +283,7 @@ class Reklame extends Controller
             'title'         => 'Detail Reklame',
             'star'          => $star,
             'jumlahOrder'   => $jumlahOrderReklame,
+            'biodata'       => $this->ModelBiodataWeb->detail(1),
             'order'         => $this->ModelOrder->detailReklame($id_reklame, 3),
             'reklame'       => $this->ModelReklame->detail($id_reklame),
         ];
@@ -296,6 +307,7 @@ class Reklame extends Controller
             'star'          => $star,
             'jumlahOrder'   => $jumlahOrderReklame,
             'order'         => $this->ModelOrder->detailReklame($id_reklame),
+            'biodata'       => $this->ModelBiodataWeb->detail(1),
             'reklame'       => $this->ModelReklame->detail($id_reklame),
         ];
 

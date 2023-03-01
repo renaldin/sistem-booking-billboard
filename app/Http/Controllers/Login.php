@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelAuth;
+use App\Models\ModelBiodataWeb;
 
 class Login extends Controller
 {
 
     private $ModelAuth;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelAuth = new ModelAuth();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -26,7 +29,8 @@ class Login extends Controller
         }
 
         $data = [
-            'title' => 'Login'
+            'title' => 'Login',
+            'biodata'  => $this->ModelBiodataWeb->detail(1),
         ];
 
         return view('auth.login', $data);
@@ -43,7 +47,8 @@ class Login extends Controller
         }
 
         $data = [
-            'title' => 'Login Admin'
+            'title' => 'Login Admin',
+            'biodata'  => $this->ModelBiodataWeb->detail(1),
         ];
 
         return view('auth.loginAdmin', $data);

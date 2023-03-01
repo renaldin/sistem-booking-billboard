@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ModelReklame;
 use App\Models\ModelUser;
 use App\Models\ModelOrder;
+use App\Models\ModelBiodataWeb;
 use PDF;
 
 class Booking extends Controller
@@ -13,12 +14,14 @@ class Booking extends Controller
     private $ModelReklame;
     private $ModelUser;
     private $ModelOrder;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelReklame = new ModelReklame();
         $this->ModelUser = new ModelUser();
         $this->ModelOrder = new ModelOrder();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -30,6 +33,7 @@ class Booking extends Controller
         $data = [
             'title'         => 'Data Booking',
             'jumlahOrder'   => $this->ModelOrder->jumlahOrderMember(Session()->get('id_member')),
+            'biodata'       => $this->ModelBiodataWeb->detail(1),
             'booking'       => $this->ModelOrder->dataBooking(Session()->get('id_member'), 'Dibooking')
         ];
 
@@ -96,6 +100,7 @@ class Booking extends Controller
         $data = [
             'title'         => 'Detail Booking',
             'jumlahOrder'   => $this->ModelOrder->jumlahOrderMember(Session()->get('id_member')),
+            'biodata'       => $this->ModelBiodataWeb->detail(1),
             'booking'       => $this->ModelOrder->detail($id_pesanan)
         ];
 
@@ -130,6 +135,7 @@ class Booking extends Controller
         $data = [
             'title'         => 'Riwayat Booking',
             'jumlahOrder'   => $this->ModelOrder->jumlahOrderMember(Session()->get('id_member')),
+            'biodata'       => $this->ModelBiodataWeb->detail(1),
             'booking'       => $this->ModelOrder->dataBookingByMember(Session()->get('id_member'))
         ];
 
@@ -166,6 +172,7 @@ class Booking extends Controller
 
         $data = [
             'title'     => 'Invoice ' . $id_pesanan,
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'order'     => $this->ModelOrder->detail($id_pesanan),
             'invoice'   => $invoice2
         ];

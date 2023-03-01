@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ModelKonfirmasiPembayaran;
 use App\Models\ModelUser;
 use App\Models\ModelOrder;
 use App\Models\ModelReklame;
-use Illuminate\Contracts\Session\Session;
+use App\Models\ModelBiodataWeb;
 
 class KonfirmasiPembayaran extends Controller
 {
@@ -16,6 +15,7 @@ class KonfirmasiPembayaran extends Controller
     private $ModelUser;
     private $ModelOrder;
     private $ModelReklame;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
@@ -23,6 +23,7 @@ class KonfirmasiPembayaran extends Controller
         $this->ModelUser = new ModelUser();
         $this->ModelOrder = new ModelOrder();
         $this->ModelReklame = new ModelReklame();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -34,6 +35,7 @@ class KonfirmasiPembayaran extends Controller
         $data = [
             'title'     => 'Data Konfirmasi Pembayaran',
             'subTitle'  => 'Kelola Konfirmasi Pembayaran',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'order'     => $this->ModelKonfirmasiPembayaran->dataKonfirmasiPembayaran(),
         ];
 
@@ -52,6 +54,7 @@ class KonfirmasiPembayaran extends Controller
             'title'     => 'Data Konfirmasi Pembayaran',
             'subTitle'  => 'Detail',
             'pembayaran' => $detailBayar,
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'order'     => $this->ModelOrder->detail($detailBayar->id_pesanan),
             'reklame'   => $this->ModelReklame->detail($detailBayar->id_reklame),
             'user'      => $this->ModelUser->detail($detailBayar->id_member)
@@ -72,6 +75,7 @@ class KonfirmasiPembayaran extends Controller
             'title'     => 'Konfirmasi Pembayaran',
             'jumlahOrder'   => $this->ModelOrder->jumlahOrderMember(Session()->get('id_member')),
             'user'      => $this->ModelUser->detail($dataOrder->id_member),
+            'biodata'      => $this->ModelBiodataWeb->detail(1),
             'id_pesanan'    => $id_pesanan
         ];
 

@@ -7,6 +7,7 @@ use App\Models\ModelPartner;
 use App\Models\ModelUser;
 use App\Models\ModelOrder;
 use App\Models\ModelFaq;
+use App\Models\ModelBiodataWeb;
 
 class Home extends Controller
 {
@@ -16,6 +17,7 @@ class Home extends Controller
     private $ModelUser;
     private $ModelOrder;
     private $ModelFaq;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
@@ -24,6 +26,7 @@ class Home extends Controller
         $this->ModelUser = new ModelUser();
         $this->ModelOrder = new ModelOrder();
         $this->ModelFaq = new ModelFaq();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -39,6 +42,7 @@ class Home extends Controller
             'jumlahPartner'     => $this->ModelPartner->jumlahPartner(),
             'jumlahReklame'     => $this->ModelReklame->jumlahReklame(),
             'jumlahUser'        => $this->ModelUser->jumlahUser(),
+            'biodata'           => $this->ModelBiodataWeb->detail(1),
             'jumlahOrder'       => $this->ModelOrder->jumlahOrder(),
         ];
         return view('user.home', $data);

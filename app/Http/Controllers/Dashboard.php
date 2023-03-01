@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Http\Request;
 use App\Models\ModelAdmin;
 use App\Models\ModelUser;
 use App\Models\ModelOrder;
+use App\Models\ModelBiodataWeb;
 
 class Dashboard extends Controller
 {
@@ -14,12 +13,14 @@ class Dashboard extends Controller
     private $ModelAdmin;
     private $ModelUser;
     private $ModelOrder;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelAdmin = new ModelAdmin();
         $this->ModelUser = new ModelUser();
         $this->ModelOrder = new ModelOrder();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -32,6 +33,7 @@ class Dashboard extends Controller
         $data = [
             'title'                 => null,
             'subTitle'              => 'Dashboard',
+            'biodata'               => $this->ModelBiodataWeb->detail(1),
             'jumlahAdmin'           => $this->ModelAdmin->jumlahAdmin(),
             'jumlahUser'            => $this->ModelUser->jumlahUser(),
             'jumlahOrder'           => $this->ModelOrder->jumlahOrder(),

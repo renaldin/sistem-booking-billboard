@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Models\ModelAdmin;
+use App\Models\ModelBiodataWeb;
 
 class KelolaAdmin extends Controller
 {
 
     private $ModelAdmin;
+    private $ModelBiodataWeb;
 
     public function __construct()
     {
         $this->ModelAdmin = new ModelAdmin();
+        $this->ModelBiodataWeb = new ModelBiodataWeb();
     }
 
     public function index()
@@ -24,6 +27,7 @@ class KelolaAdmin extends Controller
         $data = [
             'title'     => 'Data Admin',
             'subTitle'  => 'Kelola Admin',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'admin'     => $this->ModelAdmin->dataAdmin()
         ];
 
@@ -38,6 +42,7 @@ class KelolaAdmin extends Controller
 
         $data = [
             'title'     => 'Data Admin',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'subTitle'  => 'Tambah Admin'
         ];
 
@@ -91,6 +96,7 @@ class KelolaAdmin extends Controller
         $data = [
             'title'     => 'Data Admin',
             'subTitle'  => 'Edit Admin',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'admin'     => $this->ModelAdmin->detail($id_admin)
         ];
 
@@ -185,6 +191,7 @@ class KelolaAdmin extends Controller
         $data = [
             'title'     => '',
             'subTitle'  => 'Profil Admin',
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
             'admin'     => $this->ModelAdmin->detail(Session()->get('id_admin'))
         ];
 

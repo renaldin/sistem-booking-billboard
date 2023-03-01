@@ -14,6 +14,7 @@
         <div class="sidebar-menu-wrap">
             <ul class="sidebar-menu toggle-menu list-items">
                 <li class="@if($subTitle === 'Dashboard') page-active @endif"><a href="/dashboard"><i class="la la-dashboard mr-2"></i>Dashboard</a></li>
+                <li class="@if($subTitle === 'Biodata Website') page-active @endif"><a href="/biodata-website"><i class="la la-laptop mr-2"></i>Biodata Web</a></li>
                 <li class="@if($title === 'Data Reklame') page-active @endif"><a href="/kelola-reklame"><i class="la la-box mr-2"></i>Data Reklame</a></li>
                 <li class="@if($title === 'Data Order') page-active @endif"><a href="/kelola-order"><i class="la la-box mr-2"></i>Order</a></li>
                 <li class="@if($title === 'Data Konfirmasi Pembayaran') page-active @endif"><a href="/konfirmasi-pembayaran"><i class="la la-check mr-2"></i>Konfirmasi Pembayaran</a></li>
