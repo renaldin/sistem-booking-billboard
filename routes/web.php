@@ -50,8 +50,16 @@ Route::group(['middleware' => 'revalidate'], function () {
     // Login User
     Route::get('/login', [Login::class, 'index'])->name('login');
     Route::post('/login', [Login::class, 'prosesLogin']);
+    Route::get('/lupa-password', [Login::class, 'lupaPassword']);
+    Route::post('/prosesEmailLupaPassword', [Login::class, 'prosesEmailLupaPassword']);
+    Route::get('/reset-password/{id}', [Login::class, 'resetPassword']);
+    Route::post('/ubah-password', [Login::class, 'prosesUbahPassword']);
+
     // Login Admin
     Route::get('/admin', [Login::class, 'admin'])->name('admin');
+    Route::get('/lupa-password-admin', [Login::class, 'lupaPasswordAdmin']);
+    Route::get('/reset-password-admin/{id}', [Login::class, 'resetPasswordAdmin']);
+    Route::post('/ubah-password-admin', [Login::class, 'prosesUbahPasswordAdmin']);
 
     // Logout
     Route::get('/logout', [Login::class, 'logout'])->name('logout');

@@ -20,6 +20,11 @@ class ModelAdmin extends Model
         return DB::table('admin')->where('id_admin', $id_admin)->first();
     }
 
+    public function detailByEmail($email)
+    {
+        return DB::table('admin')->where('email', $email)->first();
+    }
+
     public function tambah($data)
     {
         DB::table('admin')->insert($data);

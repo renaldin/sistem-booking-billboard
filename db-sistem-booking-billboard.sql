@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Feb 2023 pada 17.16
+-- Waktu pembuatan: 02 Mar 2023 pada 15.23
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -43,7 +43,30 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`, `nomor_telepon`, `status`, `foto`) VALUES
 (1, 'Admin Sistem', 'admin122@gmail.com', '$2y$10$FOLMcTQ.ZQmG4XkXHemNkuvTur77scCIzvFMyQyRV9SdbHXGYN0iy', '08989786444', 'Admin', '02162023154704Admin Sistem.jpg'),
-(2, 'Admin Sistem Booking', 'admin@gmail.com', '$2y$10$CfofXEParDaLa28vB2/i9uxG0Z8ywPKJycZ9pBYn/vSYeZ6fd4e9a', '089677565', 'Admin', '02162023160429Admin Sistem Booking.jpg');
+(2, 'Admin Sistem Booking', 'admin@gmail.com', '$2y$10$CfofXEParDaLa28vB2/i9uxG0Z8ywPKJycZ9pBYn/vSYeZ6fd4e9a', '089677565', 'Admin', '02162023160429Admin Sistem Booking.jpg'),
+(5, 'Renaldi Noviandi', 'renaldinoviandi0@gmail.com', '$2y$10$kctC3pj9zWqryIiQ3COgrex3wzmbvzHfpd2TqJCr8hZC34SW9VeBy', '08989786444', 'Admin', '03022023122336Renaldi Noviandi.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `biodata_web`
+--
+
+CREATE TABLE `biodata_web` (
+  `id_biodata_web` int(11) NOT NULL,
+  `nama_website` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `nomor_telepon` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `logo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `biodata_web`
+--
+
+INSERT INTO `biodata_web` (`id_biodata_web`, `nama_website`, `email`, `nomor_telepon`, `alamat`, `logo`) VALUES
+(1, 'Sistem Booking Billboard', 'sistembookingbillboard@gmail.com', '(123) 123-456', 'Jalan Srigunting Raya Nomor 1 Bandung', '03022023141537.png');
 
 -- --------------------------------------------------------
 
@@ -264,7 +287,8 @@ INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_t
 (1, 'Renaldi', 'renaldi@gmail.com', '$2y$10$6BJ0mhGr3yIKsdmBFbemruUFMCJJm56DkxSD0.B4sa9gvV3V6nNI2', 'Bandung', '0898867631', 'Perusahaan 1', 'Alamat Perusahaan 1', 'User', '2023-01-27', NULL, NULL),
 (3, 'Renaldi 2', 'renaldi2@gmail.com', '$2y$10$M5xJPKfF7.gKz5WOkOQEs.3EaU1PUU03vLHt5OFjioT/4XxDAvP3K', 'Bandung', '08989786444', 'Perusahaan 2', 'Alamat Perusahaan 2', 'User', '2023-01-27', NULL, NULL),
 (4, 'Renaldi 3', 'renaldi3@gmail.com', '$2y$10$H60vdJc3uoKIZlDMHQgtwey1pMSsdz.2zTfpj8JVzW/GIJE/GuZju', 'Bandung', '08989786444', 'Perusahaan 3', 'Alamat Perusahaan 3', 'User', '2023-01-29', NULL, NULL),
-(5, 'Renaldi 5', 'renaldi5@gmail.com', '$2y$10$ik1T4nUEDe.gHo2zXSUDqeHqFq701aRrKm6lHObkaDiQFOFkEOH2q', 'Bandung', '08989786444', 'Perusahaan 5', 'Alamat Perusahaan 5', 'User', '2023-02-16', '02162023135448Perusahaan 5.jpg', '02162023135408Perusahaan 5.png');
+(5, 'Renaldi 5', 'renaldi5@gmail.com', '$2y$10$ik1T4nUEDe.gHo2zXSUDqeHqFq701aRrKm6lHObkaDiQFOFkEOH2q', 'Bandung', '08989786444', 'Perusahaan 5', 'Alamat Perusahaan 5', 'User', '2023-02-16', '02162023135448Perusahaan 5.jpg', '02162023135408Perusahaan 5.png'),
+(7, 'Renaldi Noviandi', 'renaldinoviandi0@gmail.com', '$2y$10$GpY9Ez5StW.yHZIXw58lEeQVawHMeJdtwHrFeg1SnLvujHctKpngi', 'Bandung', '08989786444', 'Perusahaan 0', 'Alamat Perusahaan 0', 'User', '2023-03-02', NULL, '03022023094537Perusahaan 0.png');
 
 --
 -- Indexes for dumped tables
@@ -275,6 +299,12 @@ INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_t
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indeks untuk tabel `biodata_web`
+--
+ALTER TABLE `biodata_web`
+  ADD PRIMARY KEY (`id_biodata_web`);
 
 --
 -- Indeks untuk tabel `faq`
@@ -326,7 +356,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `biodata_web`
+--
+ALTER TABLE `biodata_web`
+  MODIFY `id_biodata_web` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `faq`
@@ -356,7 +392,7 @@ ALTER TABLE `reklame`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

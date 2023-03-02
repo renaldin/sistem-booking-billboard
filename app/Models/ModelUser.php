@@ -20,6 +20,11 @@ class ModelUser extends Model
         return DB::table('user')->where('id_member', $id_member)->first();
     }
 
+    public function detailByEmail($email)
+    {
+        return DB::table('user')->where('email', $email)->first();
+    }
+
     public function tambah($data)
     {
         DB::table('user')->insert($data);

@@ -65,6 +65,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="btn-box pt-2 pb-1 text-right">
+                                    <a href="/lupa-password-admin">Lupa Password</a>
+                                </div>
                                 <div class="btn-box pt-3 pb-4">
                                     <center>
                                         <button type="submit" class="theme-btn w-50">Login</button>
