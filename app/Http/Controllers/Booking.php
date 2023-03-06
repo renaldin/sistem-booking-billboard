@@ -51,6 +51,7 @@ class Booking extends Controller
         ]);
 
         $dataReklame = $this->ModelReklame->detail($id_reklame);
+        // $dataOrder = $this->ModelOrder->cekBooking($id_reklame, 'Dibooking');
 
         if ($dataReklame->status !== 'Sudah Dibooking') {
             $id_pesanan = 'PO-' . date('Ymdhs');
@@ -85,10 +86,15 @@ class Booking extends Controller
 
             $this->ModelReklame->edit($dataReklame);
             $this->ModelOrder->tambah($data);
-            return redirect()->route('booking')->with('berhasil', 'Anda Berhasil Menambahkan Booking Reklame Billboard !');
+            $data['success'] = 'berhasil';
+            $data['pesan']   = 'Anda Berhasil Menambahkan Booking Reklame Billboard !';
+            // return redirect()->route('booking')->with('berhasil', 'Anda Berhasil Menambahkan Booking Reklame Billboard !');
         } else {
-            return redirect()->route('reklame-booking')->with('gagal', 'Reklame Billboard Sudah Dibooking, Anda Tidak Bisa Booking. Silahkan Pilih Reklame Billboard Belum Dibooking Yang Ada Dihalaman ini!');
+            // return redirect()->route('reklame-booking')->with('gagal', 'Reklame Billboard Sudah Dibooking, Anda Tidak Bisa Booking. Silahkan Pilih Reklame Billboard Belum Dibooking Yang Ada Dihalaman ini!');
+            $data['success'] = 'gagal';
+            $data['pesan']   = 'Reklame Billboard Sudah Dibooking, Anda Tidak Bisa Booking. Silahkan Klik Tombol Untuk Pilih Reklame Billboard Yang Dapat Dibooking!';
         }
+        return response()->json($data);
     }
 
     public function detailBooking($id_pesanan)

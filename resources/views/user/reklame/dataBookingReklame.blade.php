@@ -42,18 +42,6 @@
                 </div><!-- end section-heading -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="mt-2">
-                    @if (session('gagal'))    
-                        <div class="alert bg-primary text-white alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{ session('gagal') }}
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
         <div class="row padding-top-50px">
             <?php $no=1;?>
             @foreach ($reklame as $item)
@@ -88,5 +76,6 @@
 <!-- ================================
     END GALLERY AREA
 ================================= -->
+
 
 @endsection

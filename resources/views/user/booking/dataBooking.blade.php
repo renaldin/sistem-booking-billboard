@@ -77,12 +77,12 @@
                     <div class="row mb-2">
                         <div class="col-lg-12">
                             <div class="mb-2">
-                                @if (session('berhasil'))    
+                                {{-- @if (session('berhasil'))    
                                     <div class="alert bg-primary text-white alert-dismissible">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                         {{ session('berhasil') }}
                                     </div>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </div>

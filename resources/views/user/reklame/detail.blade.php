@@ -155,15 +155,15 @@
                                     <p><span class="text-form">Harga? Lakukan booking terlebih dahulu!</span></p>
                                 </div>
                             </div><!-- end sidebar-widget-item -->
-                            <form action="/booking/{{ $reklame->id_reklame }}" method="POST">
-                                @csrf
+                          
                                 <div class="sidebar-widget-item">
                                     <div class="contact-form-action">
                                         <div class="input-box">
                                             <label class="label-text">Checkin Pasang</label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="date" name="cekin_pasang" required>
+                                                <input claxss="date-range form-control" type="hidden" id="id_reklame" value="{{$reklame->id_reklame}}">
+                                                <input class="date-range form-control" type="month"  id="cekin_pasang" required>
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +174,7 @@
                                             <label class="label-text">Checkout Pasang</label>
                                             <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="date" name="cekout_pasang" required>
+                                                <input class="date-range form-control" type="month"  id="cekout_pasang" required>
                                             </div>
                                         </div>
                                     </div>
@@ -183,15 +183,16 @@
                                     <div class="contact-form-action">
                                         <h3 class="title pb-3">Tambahkan Print</h3>
                                         <div class="custom-checkbox">
-                                            <input type="checkbox" name="tambah_cetak" id="agreeChb">
+                                            <input type="checkbox" id="agreeChb">
                                             <label for="agreeChb">Tambahkan Cetak Billboard</label>
                                         </div>
                                     </div>
                                 </div><!-- end sidebar-widget-item -->
                                 <div class="btn-box pt-2">
-                                    <button type="submit" class="theme-btn text-center w-100 mb-2"><i class="la la-shopping-cart mr-2 font-size-18"></i>Booking Sekarang</button>
+                                    {{-- <a href="#" onclick="prosesBooking(12)">Submit</a> --}}
+                                    <button type="submit" onclick="prosesBooking()" class="theme-btn text-center w-100 mb-2"><i class="la la-shopping-cart mr-2 font-size-18"></i>Booking Sekarang</button>
                                 </div>
-                            </form>
+                           
                         </div><!-- end sidebar-widget -->
                     </div><!-- end sidebar -->
                 </div><!-- end col-lg-4 -->
@@ -202,4 +203,60 @@
 <!-- ================================
     END TOUR DETAIL AREA
 ================================= -->
+
+<div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mt-2">
+                        <div class="alert bg-primary text-white alert-dismissible">
+                            <div id="pesan"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="/reklame-booking" class="btn btn-primary">Reklame Dapat Dibooking</a>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
 @endsection
+
+{{-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> --}}
+<script>
+    this.datas = new FormData();
+
+    // untuk proses create data
+    function prosesBooking() {
+            var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+            var id_reklame = $("#id_reklame").val();
+            var cekin_pasang = $("#cekin_pasang").val();
+            var cekout_pasang = $("#cekout_pasang").val();
+            var tambah_cetak = $("#agreeChb").val();
+            datas.append('cekin_pasang',cekin_pasang);
+            datas.append('cekout_pasang',cekout_pasang);
+            datas.append('tambah_cetak',tambah_cetak);
+            datas.append('_token',CSRF_TOKEN);
+            $.ajax({
+                 url: "{{url('/booking')}}/"+id_reklame,
+                 method: 'post',
+                 data: datas,
+                 contentType: false,
+                 processData: false,
+                 dataType: 'json',
+            success: function(response) {
+                    if(response.success == 'berhasil'){
+                        window.location = `{{route('booking')}}`;
+                    } else {
+                        $("#exampleModal").modal('show');
+                        $("#pesan").html(response.pesan);
+                    }
+                }
+            });
+        }
+</script>
