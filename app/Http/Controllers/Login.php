@@ -265,10 +265,11 @@ class Login extends Controller
     public function prosesUbahPassword()
     {
         Request()->validate([
-            'password'     => 'required|min:6',
+            'password' => 'min:6|required|confirmed',
         ], [
             'password.required'    => 'Password baru harus diisi!',
             'password.min'         => 'Password baru minimal 6 karakter!',
+            'password.confirmed'   => 'Password baru tidak sama!',
         ]);
 
         $data = [
@@ -283,10 +284,11 @@ class Login extends Controller
     public function prosesUbahPasswordAdmin()
     {
         Request()->validate([
-            'password'     => 'required|min:6',
+            'password' => 'min:6|required|confirmed',
         ], [
             'password.required'    => 'Password baru harus diisi!',
             'password.min'         => 'Password baru minimal 6 karakter!',
+            'password.confirmed'   => 'Password baru tidak sama!',
         ]);
 
         $data = [

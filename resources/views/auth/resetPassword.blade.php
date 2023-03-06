@@ -50,6 +50,20 @@
                                             @enderror
                                         </div>          
                                     </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <label class="label-text">Konfirmasi Password</label>
+                                            <div class="form-group">
+                                                <span class="la la-envelope form-icon"></span>
+                                                <input class="form-control" type="password" name="password_confirmation" placeholder="Masukkan Konfirmasi Password" value="{{ old('password_confirmation') }}">
+                                            </div>
+                                            @error('password_confirmation')
+                                            <div style="margin-top: -16px">
+                                                <small class="text-danger">{{ $message }}</small>
+                                            </div>
+                                            @enderror
+                                        </div>          
+                                    </div>
                                 </div>
                                 <div class="btn-box pt-3 pb-4">
                                     <center>

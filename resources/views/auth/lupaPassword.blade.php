@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="btn-box pt-3 pb-4">
                                     <center>
-                                        <button type="submit" class="theme-btn w-50">Login</button>
+                                        <button type="submit" class="theme-btn w-50">Kirim</button>
                                     </center>
                                 </div>
                             </form>
