@@ -105,6 +105,28 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Power Harga</label>
+                                        <div class="form-group d-flex align-items-center">
+                                            <label for="radio-5" class="radio-trigger mb-0 font-size-14 mr-3">
+                                                <input type="radio" id="radio-5" value="On" name="power_harga" @if($biodata->power_harga === 'On')checked @endif>
+                                                <span class="checkmark"></span>
+                                                <span>On</span>
+                                            </label>
+                                            <label for="radio-6" class="radio-trigger mb-0 font-size-14">
+                                                <input type="radio" id="radio-6" value="Off" name="power_harga" @if($biodata->power_harga === 'Off')checked @endif>
+                                                <span class="checkmark"></span>
+                                                <span>Off</span>
+                                            </label>
+                                        </div>
+                                        @error('power_harga')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="btn-box pt-3 pb-4">
                                 <center>

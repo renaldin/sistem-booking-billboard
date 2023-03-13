@@ -61,8 +61,13 @@
                             </p>
                             <p>
                                 <strong>
-                                    <span class="price__from">Harga?</span>
-                                    <span class="price__from"><a href="/reklame/{{ $item->id_reklame }}" class="text-white">Booking Dulu!</a></span>
+                                    @if ($biodata->power_harga === 'On')
+                                        <span class="price__from"><?= 'Rp ' . number_format($item->mulai_harga, 0, ',', '.'); ?> - <?= 'Rp ' . number_format($item->sampai_harga, 0, ',', '.'); ?></span>
+                                        <span class="price__from"></span>
+                                    @elseif($biodata->power_harga === 'Off')
+                                        <span class="price__from">Harga?</span>
+                                        <span class="price__from"><a href="/reklame/{{ $item->id_reklame }}" class="text-white">Booking Dulu!</a></span>
+                                    @endif
                                 </strong>
                             </p>
                         </div>

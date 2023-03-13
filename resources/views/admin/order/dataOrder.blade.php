@@ -39,6 +39,9 @@
                 <div class="form-content">
                     <div class="table-form table-responsive">
                         <div class="mb-2">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetak"><i class="la la-print"></i> Cetak PDF</button>
+                        </div>
+                        <div class="mb-2">
                             @if (session('berhasil'))    
                                 <div class="alert bg-primary text-white alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -54,7 +57,6 @@
                                     <th scope="col">Member</th>
                                     <th scope="col">Reklame</th>
                                     <th scope="col">Tanggal</th>
-                                    <th scope="col">Batas Beri Harga</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
@@ -68,7 +70,6 @@
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->lokasi }}</td>
                                         <td>{{ date('d F Y', strtotime($item->tanggal)) }}</td>
-                                        <td>{{ $item->jam_harga }}</td>
                                         <td>
                                             @if ($item->harga === NULL)
                                                 Menunggu Harga <br>
@@ -91,7 +92,8 @@
                                         </td>
                                         <td>
                                             <div class="table-content">
-                                                <a href="/detail-order/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
+                                                <a href="/download-detail/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small mb-1"><i class="la la-download"></i> Unduh</a>
+                                                <a href="/detail-order/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small mb-1"><i class="la la-eye"></i> Detail</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -107,6 +109,37 @@
 </section>
 
 @endsection
+{{-- cetak --}}
+<div class="modal fade" id="cetak"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <form action="/cetak-pdf" method="POST">
+                @csrf
+                <div class="contact-form-action">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-box">
+                                <label class="label-text">Pilih Tanggal</label>
+                                <div class="form-group">
+                                    <span class="la la-calendar form-icon"></span>
+                                    <input type="hidden" name="cetak" value="order">
+                                    <input class="date-range form-control" type="text" name="rangetanggal" r readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Cetak</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+
 {{-- tambah harga --}}
 @foreach ($order as $item)
 <div class="modal fade" id="tambahBeriHarga{{$item->id_pesanan}}"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -146,6 +179,7 @@
     </div>
 </div>
 @endforeach
+
 {{-- edit harga --}}
 @foreach ($order as $item)    
 <div class="modal fade" id="editBeriHarga{{$item->id_pesanan}}"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

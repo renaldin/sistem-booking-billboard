@@ -98,8 +98,13 @@
                     <p class="card-meta">{{ $item->alamat }}</p>
                     <div class="card-price mt-3 d-flex align-items-center justify-content-between">
                         <p>
-                            <span class="price__from">Harga?</span>
-                            <span class="price__num">Booking Dulu!</span>
+                            @if ($biodata->power_harga === 'On')
+                                <span class="price__from"><?= 'Rp ' . number_format($item->mulai_harga, 0, ',', '.'); ?> - <?= 'Rp ' . number_format($item->sampai_harga, 0, ',', '.'); ?></span>
+                                <span class="price__from"></span>
+                            @elseif($biodata->power_harga === 'Off')
+                                <span class="price__from">Harga?</span>
+                                <span class="price__from">Booking Dulu!</span>
+                            @endif
                         </p>
                         <a href="/reklame/{{ $item->id_reklame }}" class="btn-text">Booking<i class="la la-angle-right"></i></a>
                     </div>

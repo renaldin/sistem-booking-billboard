@@ -117,9 +117,11 @@
         <div class="dashboard-main-content">
             <div class="container-fluid">
 
+                <div>
                 {{-- Content --}}
                 @yield('content')
                 {{-- End Content --}}
+                </div>
 
                 <div class="border-top mt-5"></div>
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\Order;
 use App\Http\Controllers\Reklame;
 use App\Http\Controllers\Partner;
 use App\Http\Controllers\Faq;
+use App\Http\Controllers\Cetak;
 use App\Http\Controllers\BiodataWeb;
 use Illuminate\Support\Facades\Route;
 
@@ -145,9 +146,13 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/edit-harga/{id}', [Order::class, 'editHarga']);
         Route::post('/beri-harga/{id}', [Order::class, 'prosesBeriHarga']);
         Route::get('/detail-order/{id}', [Order::class, 'detail']);
+        Route::get('/download-detail/{id}', [Booking::class, 'downloadInvoice']);
 
         // Data Konfirmasi Pembayaran
         Route::get('/konfirmasi-pembayaran', [KonfirmasiPembayaran::class, 'index'])->name('konfirmasi-pembayaran');
         Route::get('/detail-pembayaran/{id}', [KonfirmasiPembayaran::class, 'detail']);
+
+        // Cetak PDF
+        Route::post('/cetak-pdf', [Cetak::class, 'index']);
     });
 });

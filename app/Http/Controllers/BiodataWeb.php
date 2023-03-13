@@ -36,6 +36,7 @@ class BiodataWeb extends Controller
             'email'              => 'required|email',
             'alamat'             => 'required',
             'nomor_telepon'      => 'required',
+            'power_harga'        => 'required',
             'logo'               => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
             'nama_website.required'   => 'Nama website harus diisi!',
@@ -43,6 +44,7 @@ class BiodataWeb extends Controller
             'email.email'             => 'Format email harus sesuai!',
             'alamat.required'         => 'Alamat harus diisi!',
             'nomor_telepon.required'  => 'Nomor telepon harus diisi!',
+            'power_harga.required'    => 'Power harga harus diisi!',
             'logo.mimes'              => 'Format logo harus jpg/jpeg/png/bmp!',
             'logo.max'                => 'Ukuran logo maksimal 5 mb',
         ]);
@@ -63,6 +65,7 @@ class BiodataWeb extends Controller
                 'email'             => Request()->email,
                 'alamat'            => Request()->alamat,
                 'nomor_telepon'     => Request()->nomor_telepon,
+                'power_harga'       => Request()->power_harga,
                 'logo'              => $fileName,
             ];
         } else {
@@ -72,6 +75,7 @@ class BiodataWeb extends Controller
                 'email'             => Request()->email,
                 'alamat'            => Request()->alamat,
                 'nomor_telepon'     => Request()->nomor_telepon,
+                'power_harga'       => Request()->power_harga,
             ];
         }
 

@@ -152,29 +152,22 @@
                             <div class="sidebar-widget-item">
                                 <div class="sidebar-book-title-wrap mb-3">
                                     <h3>Booking Reklame</h3>
+                                    @if($biodata->power_harga === 'On')
+                                    <p><span class="text-form"><?= 'Rp ' . number_format($item->mulai_harga, 0, ',', '.'); ?> - <?= 'Rp ' . number_format($item->sampai_harga, 0, ',', '.'); ?></span></p>
+                                    @elseif($biodata->power_harga === 'Off')
                                     <p><span class="text-form">Harga? Lakukan booking terlebih dahulu!</span></p>
+                                    @endif
                                 </div>
                             </div><!-- end sidebar-widget-item -->
                           
                                 <div class="sidebar-widget-item">
                                     <div class="contact-form-action">
                                         <div class="input-box">
-                                            <label class="label-text">Checkin Pasang</label>
+                                            <label class="label-text">Tanggal</label>
                                             <div class="form-group">
-                                                <span class="la la-calendar form-icon"></span>
                                                 <input claxss="date-range form-control" type="hidden" id="id_reklame" value="{{$reklame->id_reklame}}">
-                                                <input class="date-range form-control" type="month"  id="cekin_pasang" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- end sidebar-widget-item -->
-                                <div class="sidebar-widget-item">
-                                    <div class="contact-form-action">
-                                        <div class="input-box">
-                                            <label class="label-text">Checkout Pasang</label>
-                                            <div class="form-group">
                                                 <span class="la la-calendar form-icon"></span>
-                                                <input class="date-range form-control" type="month"  id="cekout_pasang" required>
+                                                <input class="date-range form-control" type="text" id="daterange" name="daterange" required>
                                             </div>
                                         </div>
                                     </div>
@@ -190,7 +183,11 @@
                                 </div><!-- end sidebar-widget-item -->
                                 <div class="btn-box pt-2">
                                     {{-- <a href="#" onclick="prosesBooking(12)">Submit</a> --}}
-                                    <button type="submit" onclick="prosesBooking()" class="theme-btn text-center w-100 mb-2"><i class="la la-shopping-cart mr-2 font-size-18"></i>Booking Sekarang</button>
+                                    @if (Session()->get('email'))
+                                        <button type="submit" onclick="prosesBooking()" class="theme-btn text-center w-100 mb-2"><i class="la la-shopping-cart mr-2 font-size-18"></i>Booking Sekarang</button>
+                                    @else
+                                        <a href="/login" onclick="prosesBooking()" class="theme-btn text-center w-100 mb-2"><i class="la la-shopping-cart mr-2 font-size-18"></i>Booking Sekarang</a>
+                                    @endif
                                 </div>
                            
                         </div><!-- end sidebar-widget -->
@@ -235,8 +232,15 @@
     function prosesBooking() {
             var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
             var id_reklame = $("#id_reklame").val();
-            var cekin_pasang = $("#cekin_pasang").val();
-            var cekout_pasang = $("#cekout_pasang").val();
+            var daterange = $("#daterange").val();
+            var cekin_pasang_tanggal = daterange.substring(0,2);
+            var cekin_pasang_bulan = daterange.substring(3,5);
+            var cekin_pasang_tahun = daterange.substring(6,10);
+            var cekout_pasang_tanggal = daterange.substring(13,15);
+            var cekout_pasang_bulan = daterange.substring(16,18);
+            var cekout_pasang_tahun = daterange.substring(19,25);
+            var cekin_pasang = cekin_pasang_tahun+'-'+cekin_pasang_bulan+'-'+cekin_pasang_tanggal;
+            var cekout_pasang = cekout_pasang_tahun+'-'+cekout_pasang_bulan+'-'+cekout_pasang_tanggal;
             var tambah_cetak = $("#agreeChb").val();
             datas.append('cekin_pasang',cekin_pasang);
             datas.append('cekout_pasang',cekout_pasang);

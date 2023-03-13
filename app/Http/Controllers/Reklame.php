@@ -96,6 +96,8 @@ class Reklame extends Controller
             'lokasi'                => Request()->lokasi,
             'ukuran'                => Request()->ukuran,
             'alamat'                => Request()->alamat,
+            'mulai_harga'           => Request()->mulai_harga,
+            'sampai_harga'          => Request()->sampai_harga,
             'orientation_page'      => Request()->orientation_page,
             'penerangan'            => Request()->penerangan,
             'jarak_pandang'         => Request()->jarak_pandang,
@@ -169,11 +171,14 @@ class Reklame extends Controller
             $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
             $file->move(public_path('foto_reklame'), $fileName);
 
+
             $data = [
                 'id_reklame'            => $id_reklame,
                 'lokasi'                => Request()->lokasi,
                 'ukuran'                => Request()->ukuran,
                 'alamat'                => Request()->alamat,
+                'mulai_harga'           => Request()->mulai_harga,
+                'sampai_harga'          => Request()->sampai_harga,
                 'orientation_page'      => Request()->orientation_page,
                 'penerangan'            => Request()->penerangan,
                 'jarak_pandang'         => Request()->jarak_pandang,
@@ -190,6 +195,8 @@ class Reklame extends Controller
                 'lokasi'                => Request()->lokasi,
                 'ukuran'                => Request()->ukuran,
                 'alamat'                => Request()->alamat,
+                'mulai_harga'           => Request()->mulai_harga,
+                'sampai_harga'          => Request()->sampai_harga,
                 'orientation_page'      => Request()->orientation_page,
                 'penerangan'            => Request()->penerangan,
                 'jarak_pandang'         => Request()->jarak_pandang,

@@ -184,6 +184,27 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Kisaran Harga</label>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label class="label-text">Mulai Harga</label>
+                                                <div class="form-group">
+                                                    <span class="la la-circle form-icon"></span>
+                                                    <input class="form-control" type="number" name="mulai_harga" placeholder="Mulai Harga" @if($form === 'Edit') value="{{ $reklame->mulai_harga }}" @elseif($form === 'Detail') value="{{ $reklame->mulai_harga }}" disabled @elseif($form === 'Tambah') value="{{ old('mulai_harga') }}" @endif required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label class="label-text">Sampai Harga</label>
+                                                <div class="form-group">
+                                                    <span class="la la-circle form-icon"></span>
+                                                    <input class="form-control" type="number" name="sampai_harga" placeholder="Sampai Harga" @if($form === 'Edit') value="{{ $reklame->sampai_harga }}" @elseif($form === 'Detail') value="{{ $reklame->sampai_harga }}" disabled @elseif($form === 'Tambah') value="{{ old('sampai_harga') }}" @endif required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             @if ($form === 'Detail')
                             <div class="row">

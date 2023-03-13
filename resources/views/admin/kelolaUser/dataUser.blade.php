@@ -13,8 +13,15 @@
                 </div>
                 <div class="form-content">
                     <div class="table-form table-responsive">
-                        <div class="mb-2">
-                            <a href="/tambah-user" class="theme-btn theme-btn-small"><i class="la la-plus"></i> Tambah</a>
+                        <div class="row mb-2">
+                            <div class="col-lg-12">
+                                <form action="/cetak-pdf" method="POST">
+                                    @csrf
+                                    <a href="/tambah-user" class="theme-btn theme-btn-small"><i class="la la-plus"></i> Tambah</a>
+                                    <input type="hidden" name="cetak" value="user">
+                                    <button type="submit" class="theme-btn theme-btn-small"><i class="la la-print"></i> Cetak PDF</button>
+                                </form>
+                            </div>
                         </div>
                         <div class="mb-2">
                             @if (session('berhasil'))    
@@ -22,6 +29,13 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                     <h4><i class="icon fa fa-ban"></i> Berhasil!</h4>
                                     {{ session('berhasil') }}
+                                </div>
+                            @endif
+                            @if (session('gagal'))    
+                                <div class="alert bg-danger text-white alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <h4><i class="icon fa fa-ban"></i> Gagal!</h4>
+                                    {{ session('gagal') }}
                                 </div>
                             @endif
                         </div>
