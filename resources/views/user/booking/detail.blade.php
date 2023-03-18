@@ -144,6 +144,23 @@
                                         <?= $booking->google_maps?>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="card-body p-2">
+                                    <div id="photo" class="page-scroll">
+                                        <div class="single-content-item padding-top-40px">
+                                            <h3 class="title font-size-20">Photo</h3>
+                                            <div class="gallery-carousel carousel-action padding-top-30px">
+                                                @foreach ($gambarReklame as $item)
+                                                    <div class="card-item mb-0">
+                                                        <div class="card-img">
+                                                            <img src="{{ asset('foto_gambar_reklame/'.$item->gambar_reklame) }}" alt="Slide Gambar Reklame">
+                                                        </div>
+                                                    </div><!-- end card-item -->
+                                                @endforeach
+                                            </div><!-- end gallery-carousel -->
+                                        </div><!-- end single-content-item -->
+                                    </div><!-- end photo -->
+                                </div>
                                 <div class="form-title-wrap">
                                     <div class="btn-box">
                                         <a href="/booking" class="theme-btn">Kembali</a>
