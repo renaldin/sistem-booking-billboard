@@ -172,7 +172,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-box">
-                                        <label class="label-text">Gambar</label>
+                                        <label class="label-text">Thumbnail</label>
                                         <div class="form-group">
                                             <span class="la la-circle form-icon"></span>
                                             <input class="form-control" type="file" name="gambar" @if($form === 'Detail') disabled @endif>
@@ -205,16 +205,47 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box">
+                                        <label class="label-text">Slide Gambar</label>
+                                        <div class="form-group">
+                                            <span class="la la-circle form-icon"></span>
+                                            <input class="form-control" type="file" name="gambar_reklame[]" @if($form === 'Detail') disabled @endif multiple>
+                                        </div>
+                                        @error('gambar_reklame')
+                                        <div style="margin-top: -16px">
+                                            <small class="text-danger">{{ $message }}</small>
+                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             @if ($form === 'Detail')
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="input-box">
-                                        <label class="label-text">Gambar</label>
+                                        <label class="label-text">Thumbnail</label>
                                         <div class="form-group">
                                             <img src="{{ asset('foto_reklame/'.$reklame->gambar) }}" width="100%" alt="{{ $reklame->gambar }}">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div id="photo" class="page-scroll">
+                                        <div class="single-content-item">
+                                            <label class="label-text">Slide Gambar Reklame</label>
+                                            <div class="gallery-carousel carousel-action ">
+                                                @foreach ($gambarReklame as $item)
+                                                    <div class="card-item mb-0">
+                                                        <div class="card-img">
+                                                            <img src="{{ asset('foto_gambar_reklame/'.$item->gambar_reklame) }}" alt="Slide Gambar Reklame">
+                                                        </div>
+                                                    </div><!-- end card-item -->
+                                                @endforeach
+                                            </div><!-- end gallery-carousel -->
+                                        </div><!-- end single-content-item -->
+                                        <div class="section-block"></div>
+                                    </div><!-- end photo -->
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="input-box">

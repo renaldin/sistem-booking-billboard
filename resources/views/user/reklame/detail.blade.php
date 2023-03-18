@@ -73,17 +73,18 @@
                             <div class="section-block"></div>
                         </div><!-- end description -->
                         <div id="photo" class="page-scroll">
-                            <div class="single-content-item padding-top-40px padding-bottom-40px">
+                            <div class="single-content-item padding-top-40px">
                                 <h3 class="title font-size-20">Photo</h3>
                                 <div class="gallery-carousel carousel-action padding-top-30px">
-                                    <div class="card-item mb-0">
-                                        <div class="card-img">
-                                            <img src="{{ asset('foto_reklame/'.$reklame->gambar) }}" alt="{{$reklame->lokasi}}">
-                                        </div>
-                                    </div><!-- end card-item -->
+                                    @foreach ($gambarReklame as $item)
+                                        <div class="card-item mb-0">
+                                            <div class="card-img">
+                                                <img src="{{ asset('foto_gambar_reklame/'.$item->gambar_reklame) }}" alt="Slide Gambar Reklame">
+                                            </div>
+                                        </div><!-- end card-item -->
+                                    @endforeach
                                 </div><!-- end gallery-carousel -->
                             </div><!-- end single-content-item -->
-                            <div class="section-block"></div>
                         </div><!-- end photo -->
                         <div id="location-map" class="page-scroll">
                             <div class="single-content-item padding-top-40px padding-bottom-40px">

@@ -71,4 +71,30 @@ class ModelReklame extends Model
     {
         return DB::table('reklame')->where('status', $status)->orderBy('id_reklame', $orderBy)->limit($limit)->get();
     }
+
+    // gambar
+    public function tambahGambar($data)
+    {
+        DB::table('gambar_reklame')->insert($data);
+    }
+
+    public function editGambar($data)
+    {
+        DB::table('gambar_reklame')->where('id_reklame', $data['id_reklame'])->update($data);
+    }
+
+    public function hapusGambar($id_reklame)
+    {
+        DB::table('gambar_reklame')->where('id_reklame', $id_reklame)->delete();
+    }
+
+    public function detailGambar($id_reklame)
+    {
+        return DB::table('gambar_reklame')->where('id_reklame', $id_reklame)->get();
+    }
+
+    public function idReklame()
+    {
+        return DB::table('reklame')->orderBy('id_reklame', 'DESC')->limit(1)->first();
+    }
 }

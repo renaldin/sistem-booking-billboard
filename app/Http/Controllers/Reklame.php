@@ -71,6 +71,8 @@ class Reklame extends Controller
             'target_audiens'        => 'required',
             'google_maps'           => 'required',
             'gambar'                => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_reklame'        => 'required',
+            'gambar_reklame.*'      => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
             'lokasi.required'             => 'Lokasi harus diisi!',
             'ukuran.required'             => 'Ukuran harus diisi!',
@@ -83,34 +85,56 @@ class Reklame extends Controller
             'situasi_sekitar.required'    => 'Situasi Sekitar harus diisi!',
             'target_audiens.required'     => 'Target Audiens harus diisi!',
             'google_maps.required'        => 'Google Maps harus diisi!',
-            'gambar.required'             => 'Gambar harus diisi!',
-            'gambar.mimes'                => 'Format Gambar harus jpg/jpeg/png/bmp!',
-            'gambar.max'                  => 'Ukuran Gambar maksimal 5 mb',
+            'gambar.required'             => 'Thumbnail harus diisi!',
+            'gambar.mimes'                => 'Format Thumbnail harus jpg/jpeg/png/bmp!',
+            'gambar.max'                  => 'Ukuran Thumbnail maksimal 5 mb',
+            'gambar_reklame.required'       => 'Slide Gambar harus diisi!',
+            'gambar_reklame.mimes'          => 'Format Slide Gambar harus jpg/jpeg/png/bmp!',
+            'gambar_reklame.max'            => 'Ukuran Slide Gambar maksimal 5 mb',
         ]);
 
-        $file = Request()->gambar;
-        $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
-        $file->move(public_path('foto_reklame'), $fileName);
+        if (Request()->hasfile('gambar_reklame')) {
 
-        $data = [
-            'lokasi'                => Request()->lokasi,
-            'ukuran'                => Request()->ukuran,
-            'alamat'                => Request()->alamat,
-            'mulai_harga'           => Request()->mulai_harga,
-            'sampai_harga'          => Request()->sampai_harga,
-            'orientation_page'      => Request()->orientation_page,
-            'penerangan'            => Request()->penerangan,
-            'jarak_pandang'         => Request()->jarak_pandang,
-            'jumlah_sisi'           => Request()->jumlah_sisi,
-            'situasi_lalulintas'    => Request()->situasi_lalulintas,
-            'situasi_sekitar'       => Request()->situasi_sekitar,
-            'target_audiens'        => Request()->target_audiens,
-            'google_maps'           => Request()->google_maps,
-            'gambar'                => $fileName,
-        ];
+            $reklame = $this->ModelReklame->idReklame();
+            $i = 0;
+            foreach (Request()->gambar_reklame as $item) {
+                $file2  = $item;
+                $filename2 = date('mdYHis') . Request()->lokasi . $i . '.' . $file2->extension();
+                $file2->move(public_path('foto_gambar_reklame'), $filename2);
+                $dataGambar = [
+                    'id_reklame'        => $reklame->id_reklame + 1,
+                    'gambar_reklame'    => $filename2,
+                ];
+                $this->ModelReklame->tambahGambar($dataGambar);
+                $i = $i + 1;
+            }
 
-        $this->ModelReklame->tambah($data);
-        return redirect()->route('kelola-reklame')->with('berhasil', 'Data Berhasil Ditambahkan !');
+            $file = Request()->gambar;
+            $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
+            $file->move(public_path('foto_reklame'), $fileName);
+
+            $data = [
+                'lokasi'                => Request()->lokasi,
+                'ukuran'                => Request()->ukuran,
+                'alamat'                => Request()->alamat,
+                'mulai_harga'           => Request()->mulai_harga,
+                'sampai_harga'          => Request()->sampai_harga,
+                'orientation_page'      => Request()->orientation_page,
+                'penerangan'            => Request()->penerangan,
+                'jarak_pandang'         => Request()->jarak_pandang,
+                'jumlah_sisi'           => Request()->jumlah_sisi,
+                'situasi_lalulintas'    => Request()->situasi_lalulintas,
+                'situasi_sekitar'       => Request()->situasi_sekitar,
+                'target_audiens'        => Request()->target_audiens,
+                'google_maps'           => Request()->google_maps,
+                'gambar'                => $fileName,
+            ];
+
+            $this->ModelReklame->tambah($data);
+            return redirect()->route('kelola-reklame')->with('berhasil', 'Data Berhasil Ditambahkan !');
+        } else {
+            return back()->with('gagal', 'Input Silde Gambar terjadi kesalahan!');
+        }
     }
 
     public function edit($id_reklame)
@@ -145,6 +169,7 @@ class Reklame extends Controller
             'target_audiens'        => 'required',
             'google_maps'           => 'required',
             'gambar'                => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_reklame.*'      => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
             'lokasi.required'             => 'Lokasi harus diisi!',
             'ukuran.required'             => 'Ukuran harus diisi!',
@@ -157,55 +182,127 @@ class Reklame extends Controller
             'situasi_sekitar.required'    => 'Situasi Sekitar harus diisi!',
             'target_audiens.required'     => 'Target Audiens harus diisi!',
             'google_maps.required'        => 'Google Maps harus diisi!',
-            'gambar.mimes'                => 'Format Gambar harus jpg/jpeg/png/bmp!',
-            'gambar.max'                  => 'Ukuran Gambar maksimal 5 mb',
+            'gambar.mimes'                => 'Format Thumbnail harus jpg/jpeg/png/bmp!',
+            'gambar.max'                  => 'Ukuran Thumbnail maksimal 5 mb',
+            'gambar_reklame.mimes'        => 'Format Slide Gambar harus jpg/jpeg/png/bmp!',
+            'gambar_reklame.max'          => 'Ukuran Slide Gambar maksimal 5 mb',
         ]);
 
-        if (Request()->gambar <> "") {
-            $reklame = $this->ModelReklame->detail($id_reklame);
-            if ($reklame->gambar <> "") {
-                unlink(public_path('foto_reklame') . '/' . $reklame->gambar);
+        if (Request()->gambar_reklame <> "") {
+
+            $gambarReklame = $this->ModelReklame->detailGambar($id_reklame);
+            foreach ($gambarReklame as $item) {
+                unlink(public_path('foto_gambar_reklame') . '/' . $item->gambar_reklame);
             }
 
-            $file = Request()->gambar;
-            $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
-            $file->move(public_path('foto_reklame'), $fileName);
+            $this->ModelReklame->hapusGambar($id_reklame);
+
+            $i = 0;
+            foreach (Request()->gambar_reklame as $item) {
+                $file2  = $item;
+                $filename2 = date('mdYHis') . Request()->lokasi . $i . '.' . $file2->extension();
+                $file2->move(public_path('foto_gambar_reklame'), $filename2);
+                $dataGambar = [
+                    'id_reklame'        => $id_reklame,
+                    'gambar_reklame'    => $filename2,
+                ];
+                $this->ModelReklame->tambahGambar($dataGambar);
+                $i = $i + 1;
+            }
+
+            if (Request()->gambar <> "") {
+                $reklame = $this->ModelReklame->detail($id_reklame);
+                if ($reklame->gambar <> "") {
+                    unlink(public_path('foto_reklame') . '/' . $reklame->gambar);
+                }
+
+                $file = Request()->gambar;
+                $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
+                $file->move(public_path('foto_reklame'), $fileName);
 
 
-            $data = [
-                'id_reklame'            => $id_reklame,
-                'lokasi'                => Request()->lokasi,
-                'ukuran'                => Request()->ukuran,
-                'alamat'                => Request()->alamat,
-                'mulai_harga'           => Request()->mulai_harga,
-                'sampai_harga'          => Request()->sampai_harga,
-                'orientation_page'      => Request()->orientation_page,
-                'penerangan'            => Request()->penerangan,
-                'jarak_pandang'         => Request()->jarak_pandang,
-                'jumlah_sisi'           => Request()->jumlah_sisi,
-                'situasi_lalulintas'    => Request()->situasi_lalulintas,
-                'situasi_sekitar'       => Request()->situasi_sekitar,
-                'target_audiens'        => Request()->target_audiens,
-                'google_maps'           => Request()->google_maps,
-                'gambar'                => $fileName,
-            ];
+                $data = [
+                    'id_reklame'            => $id_reklame,
+                    'lokasi'                => Request()->lokasi,
+                    'ukuran'                => Request()->ukuran,
+                    'alamat'                => Request()->alamat,
+                    'mulai_harga'           => Request()->mulai_harga,
+                    'sampai_harga'          => Request()->sampai_harga,
+                    'orientation_page'      => Request()->orientation_page,
+                    'penerangan'            => Request()->penerangan,
+                    'jarak_pandang'         => Request()->jarak_pandang,
+                    'jumlah_sisi'           => Request()->jumlah_sisi,
+                    'situasi_lalulintas'    => Request()->situasi_lalulintas,
+                    'situasi_sekitar'       => Request()->situasi_sekitar,
+                    'target_audiens'        => Request()->target_audiens,
+                    'google_maps'           => Request()->google_maps,
+                    'gambar'                => $fileName,
+                ];
+            } else {
+                $data = [
+                    'id_reklame'            => $id_reklame,
+                    'lokasi'                => Request()->lokasi,
+                    'ukuran'                => Request()->ukuran,
+                    'alamat'                => Request()->alamat,
+                    'mulai_harga'           => Request()->mulai_harga,
+                    'sampai_harga'          => Request()->sampai_harga,
+                    'orientation_page'      => Request()->orientation_page,
+                    'penerangan'            => Request()->penerangan,
+                    'jarak_pandang'         => Request()->jarak_pandang,
+                    'jumlah_sisi'           => Request()->jumlah_sisi,
+                    'situasi_lalulintas'    => Request()->situasi_lalulintas,
+                    'situasi_sekitar'       => Request()->situasi_sekitar,
+                    'target_audiens'        => Request()->target_audiens,
+                    'google_maps'           => Request()->google_maps,
+                ];
+            }
         } else {
-            $data = [
-                'id_reklame'            => $id_reklame,
-                'lokasi'                => Request()->lokasi,
-                'ukuran'                => Request()->ukuran,
-                'alamat'                => Request()->alamat,
-                'mulai_harga'           => Request()->mulai_harga,
-                'sampai_harga'          => Request()->sampai_harga,
-                'orientation_page'      => Request()->orientation_page,
-                'penerangan'            => Request()->penerangan,
-                'jarak_pandang'         => Request()->jarak_pandang,
-                'jumlah_sisi'           => Request()->jumlah_sisi,
-                'situasi_lalulintas'    => Request()->situasi_lalulintas,
-                'situasi_sekitar'       => Request()->situasi_sekitar,
-                'target_audiens'        => Request()->target_audiens,
-                'google_maps'           => Request()->google_maps,
-            ];
+            if (Request()->gambar <> "") {
+                $reklame = $this->ModelReklame->detail($id_reklame);
+                if ($reklame->gambar <> "") {
+                    unlink(public_path('foto_reklame') . '/' . $reklame->gambar);
+                }
+
+                $file = Request()->gambar;
+                $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
+                $file->move(public_path('foto_reklame'), $fileName);
+
+
+                $data = [
+                    'id_reklame'            => $id_reklame,
+                    'lokasi'                => Request()->lokasi,
+                    'ukuran'                => Request()->ukuran,
+                    'alamat'                => Request()->alamat,
+                    'mulai_harga'           => Request()->mulai_harga,
+                    'sampai_harga'          => Request()->sampai_harga,
+                    'orientation_page'      => Request()->orientation_page,
+                    'penerangan'            => Request()->penerangan,
+                    'jarak_pandang'         => Request()->jarak_pandang,
+                    'jumlah_sisi'           => Request()->jumlah_sisi,
+                    'situasi_lalulintas'    => Request()->situasi_lalulintas,
+                    'situasi_sekitar'       => Request()->situasi_sekitar,
+                    'target_audiens'        => Request()->target_audiens,
+                    'google_maps'           => Request()->google_maps,
+                    'gambar'                => $fileName,
+                ];
+            } else {
+                $data = [
+                    'id_reklame'            => $id_reklame,
+                    'lokasi'                => Request()->lokasi,
+                    'ukuran'                => Request()->ukuran,
+                    'alamat'                => Request()->alamat,
+                    'mulai_harga'           => Request()->mulai_harga,
+                    'sampai_harga'          => Request()->sampai_harga,
+                    'orientation_page'      => Request()->orientation_page,
+                    'penerangan'            => Request()->penerangan,
+                    'jarak_pandang'         => Request()->jarak_pandang,
+                    'jumlah_sisi'           => Request()->jumlah_sisi,
+                    'situasi_lalulintas'    => Request()->situasi_lalulintas,
+                    'situasi_sekitar'       => Request()->situasi_sekitar,
+                    'target_audiens'        => Request()->target_audiens,
+                    'google_maps'           => Request()->google_maps,
+                ];
+            }
         }
 
         $this->ModelReklame->edit($data);
@@ -223,7 +320,8 @@ class Reklame extends Controller
             'subTitle'  => 'Detail Reklame',
             'form'      => 'Detail',
             'biodata'   => $this->ModelBiodataWeb->detail(1),
-            'reklame'   => $this->ModelReklame->detail($id_reklame)
+            'reklame'   => $this->ModelReklame->detail($id_reklame),
+            'gambarReklame' => $this->ModelReklame->detailGambar($id_reklame),
         ];
 
         return view('admin.reklame.form', $data);
@@ -293,6 +391,7 @@ class Reklame extends Controller
             'biodata'       => $this->ModelBiodataWeb->detail(1),
             'order'         => $this->ModelOrder->detailReklame($id_reklame, 3),
             'reklame'       => $this->ModelReklame->detail($id_reklame),
+            'gambarReklame' => $this->ModelReklame->detailGambar($id_reklame),
         ];
 
         return view('user.reklame.detail', $data);

@@ -103,11 +103,14 @@ class Booking extends Controller
             return redirect()->route('login');
         }
 
+        $pesanan = $this->ModelOrder->detail($id_pesanan);
+
         $data = [
             'title'         => 'Detail Booking',
             'jumlahOrder'   => $this->ModelOrder->jumlahOrderMember(Session()->get('id_member')),
             'biodata'       => $this->ModelBiodataWeb->detail(1),
-            'booking'       => $this->ModelOrder->detail($id_pesanan)
+            'booking'       => $pesanan,
+            'gambarReklame' => $this->ModelReklame->detailGambar($pesanan->id_reklame),
         ];
 
         return view('user.booking.detail', $data);
