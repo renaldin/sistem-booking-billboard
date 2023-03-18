@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Mar 2023 pada 07.23
+-- Waktu pembuatan: 18 Mar 2023 pada 09.55
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -112,6 +112,56 @@ INSERT INTO `faq` (`id_faq`, `nama`, `email`, `pertanyaan`, `jawaban`, `tampil`)
 (10, 'Renaldi', 'renaldi@gmail.com', 'Harganya murah ga min?', 'Murah murah kak', 'Ya'),
 (11, 'Renaldi 1', 'renaldi@gmail.com', 'Proses Bookingnya Mudah Ga min?', NULL, 'Tidak'),
 (12, 'Admin', 'admin@gmail.com', 'Pertanyaan 10?', 'Jawaban 10', 'Ya');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `gambar_reklame`
+--
+
+CREATE TABLE `gambar_reklame` (
+  `id_gambar_reklame` int(11) NOT NULL,
+  `id_reklame` int(11) NOT NULL,
+  `gambar_reklame` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `gambar_reklame`
+--
+
+INSERT INTO `gambar_reklame` (`id_gambar_reklame`, `id_reklame`, `gambar_reklame`) VALUES
+(4, 15, '03182023080644Lokasi 180.jpg'),
+(5, 15, '03182023080644Lokasi 181.jpg'),
+(6, 15, '03182023080644Lokasi 182.jpg'),
+(7, 15, '03182023080644Lokasi 183.jpg'),
+(8, 14, '03182023082202Lokasi 160.jpg'),
+(9, 14, '03182023082202Lokasi 161.jpg'),
+(10, 14, '03182023082202Lokasi 162.jpg'),
+(11, 13, '03182023082312Lokasi 150.jpg'),
+(12, 13, '03182023082312Lokasi 151.jpg'),
+(13, 13, '03182023082312Lokasi 152.jpg'),
+(14, 12, '03182023082343Lokasi 110.jpg'),
+(15, 12, '03182023082343Lokasi 111.jpg'),
+(16, 12, '03182023082343Lokasi 112.jpg'),
+(17, 11, '03182023082501Lokasi 100.jpg'),
+(18, 11, '03182023082501Lokasi 101.jpg'),
+(19, 9, '03182023082526Lokasi 80.jpg'),
+(20, 9, '03182023082526Lokasi 81.jpg'),
+(21, 9, '03182023082526Lokasi 82.jpg'),
+(22, 8, '03182023082552Lokasi 70.jpg'),
+(23, 8, '03182023082552Lokasi 71.jpg'),
+(24, 7, '03182023082612Lokasi 60.jpg'),
+(25, 7, '03182023082612Lokasi 61.jpg'),
+(26, 6, '03182023082636Lokasi 50.jpg'),
+(27, 6, '03182023082636Lokasi 51.jpg'),
+(28, 5, '03182023082857Lokasi 40.jpg'),
+(29, 5, '03182023082857Lokasi 41.jpg'),
+(30, 4, '03182023082921Lokasi 30.jpg'),
+(31, 4, '03182023082921Lokasi 31.jpg'),
+(32, 3, '03182023082944Lokasi 20.jpg'),
+(33, 3, '03182023082944Lokasi 21.jpg'),
+(34, 1, '03182023083008Lokasi 10.jpg'),
+(35, 1, '03182023083008Lokasi 11.jpg');
 
 -- --------------------------------------------------------
 
@@ -272,7 +322,8 @@ INSERT INTO `reklame` (`id_reklame`, `lokasi`, `ukuran`, `alamat`, `mulai_harga`
 (11, 'Lokasi 10', 'Ukuran 10', 'Jalan Contoh 10 No. 10, RT 10 RW 10, Kelurahan 10, Kecamatan 10, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 10', 'Jarak Pandang 10', 'Jumlah Sisi 10', 'Lalu Lintas 10', 'Sekitar 10', 'Audiens 10', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082434Lokasi 10.jpg', 'Sudah Dipesan'),
 (12, 'Lokasi 11', 'Ukuran 11', 'Jalan Contoh 11 No. 11, RT 11 RW 11, Kelurahan 11, Kecamatan 10, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Lanscape', 'Penerangan 11', 'Jarak Pandang 11', 'Jumlah Sisi 11', 'Lalu Lintas 11', 'Sekitar 11', 'Audiens 11', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '02042023015842Lokasi 11.jpg', 'Sudah Dibooking'),
 (13, 'Lokasi 15', 'Ukuran 15', 'Bandung', 5000000, 10000000, 'Lanscape', 'Penerangan 15', 'Jarak Pandang 15', 'Jumlah Sisi 15', 'Lalu Lintas 15', 'Sekitar 15', 'Audiens 15', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '03122023100303Lokasi 15.jpg', 'Belum Dipesan'),
-(14, 'Lokasi 16', 'Ukuran 16', 'Bandung', 10000000, 15000000, 'Lanscape', 'Penerangan 16', 'Jarak Pandang 16', 'Jumlah Sisi 16', 'Lalu Lintas 16', 'Sekitar 16', 'Audiens 16', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '03122023101100Lokasi 16.jpg', 'Belum Dipesan');
+(14, 'Lokasi 16', 'Ukuran 16', 'Bandung', 10000000, 15000000, 'Lanscape', 'Penerangan 16', 'Jarak Pandang 16', 'Jumlah Sisi 16', 'Lalu Lintas 16', 'Sekitar 16', 'Audiens 16', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '03122023101100Lokasi 16.jpg', 'Belum Dipesan'),
+(15, 'Lokasi 18', 'Ukuran 18', 'Subang', 5000000, 10000000, 'Lanscape', 'Penerangan 18', 'Jarak Pandang 18', 'Jumlah Sisi 18', 'Lalu Lintas 18', 'Sekitar 18', 'Audiens 18', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '03182023080450Lokasi 18.jpg', 'Belum Dipesan');
 
 -- --------------------------------------------------------
 
@@ -327,6 +378,12 @@ ALTER TABLE `biodata_web`
 --
 ALTER TABLE `faq`
   ADD PRIMARY KEY (`id_faq`);
+
+--
+-- Indeks untuk tabel `gambar_reklame`
+--
+ALTER TABLE `gambar_reklame`
+  ADD PRIMARY KEY (`id_gambar_reklame`);
 
 --
 -- Indeks untuk tabel `invoice`
@@ -387,6 +444,12 @@ ALTER TABLE `faq`
   MODIFY `id_faq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT untuk tabel `gambar_reklame`
+--
+ALTER TABLE `gambar_reklame`
+  MODIFY `id_gambar_reklame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
 -- AUTO_INCREMENT untuk tabel `konfirmasi_pembayaran`
 --
 ALTER TABLE `konfirmasi_pembayaran`
@@ -402,7 +465,7 @@ ALTER TABLE `partner`
 -- AUTO_INCREMENT untuk tabel `reklame`
 --
 ALTER TABLE `reklame`
-  MODIFY `id_reklame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_reklame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
