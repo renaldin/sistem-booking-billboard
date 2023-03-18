@@ -33,8 +33,8 @@ class Home extends Controller
     {
         $data = [
             'title'             => 'Home',
-            'empatReklame'      => $this->ModelReklame->dataReklameLimit(4, 'Belum Dipesan', 'DESC'),
-            'satuReklame'       => $this->ModelReklame->dataReklameLimit(1, 'Belum Dipesan', 'ASC'),
+            'empatReklame'      => $this->ModelReklame->reklameLimit(4, 'ASC'),
+            'satuReklame'       => $this->ModelReklame->dataReklameLimit(1, 'Belum Dipesan', 'DESC'),
             'reklame'           => $this->ModelReklame->dataReklameDuaStatus('Belum Dipesan', 'Sudah Dibooking'),
             'partner'           => $this->ModelPartner->dataPartner(),
             'faq'               => $this->ModelFaq->dataFaqLimit(6),

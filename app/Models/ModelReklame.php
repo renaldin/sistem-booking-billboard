@@ -72,6 +72,11 @@ class ModelReklame extends Model
         return DB::table('reklame')->where('status', $status)->orderBy('id_reklame', $orderBy)->limit($limit)->get();
     }
 
+    public function reklameLimit($limit, $orderBy = 'ASC')
+    {
+        return DB::table('reklame')->orderBy('id_reklame', $orderBy)->limit($limit)->get();
+    }
+
     // gambar
     public function tambahGambar($data)
     {
