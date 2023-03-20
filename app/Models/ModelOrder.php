@@ -131,4 +131,15 @@ class ModelOrder extends Model
             ->join('order', 'order.id_pesanan', '=', 'invoice.id_pesanan', 'left')
             ->first();
     }
+
+    // cetak
+public function ambilDataOrder($kolom, $kolom2)
+    {
+        return DB::table('order')
+            ->select($kolom, $kolom2)
+            ->join('user', 'user.id_member', '=', 'order.id_member', 'left')
+            ->join('reklame', 'reklame.id_reklame', '=', 'order.id_reklame', 'left')
+            ->orderBy('tanggal', 'DESC')
+            ->get();
+    }
 }
