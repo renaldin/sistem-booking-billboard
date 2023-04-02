@@ -73,6 +73,7 @@
                                     <div class="comment">
                                         <div class="comment-body">
                                             @foreach ($order as $item)
+                                            @if($item->star !== null)
                                             <div class="meta-data">
                                                 <h3 class="comment__author">{{ $item->nama }}</h3>
                                                 <div class="meta-data-inner d-flex">
@@ -90,6 +91,7 @@
                                             <p class="comment-content">
                                                {{ $item->review }}
                                             </p>
+                                            @endif
                                             @endforeach
                                         </div>
                                     </div>

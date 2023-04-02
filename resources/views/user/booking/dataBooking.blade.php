@@ -86,9 +86,8 @@
                             </div>
                         </div>
                     </div>
-                    @foreach ($booking as $item)
                     <div class="table-form table-responsive mb-3">
-                        <table class="table">
+                        <table class="table" id="example2">
                             <thead>
                                 <tr>
                                     <th scope="col">Reklame</th>
@@ -97,6 +96,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach ($booking as $item)
                             <tr>
                                 <th scope="row">
                                     <div class="table-content product-content d-flex align-items-center">
@@ -138,28 +138,22 @@
                                 </td>
                                 <td>
                                     @if ($item->status_invoice === 'Sudah')
-                                    <a href="/download-invoice/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Download Invoice"><i class="la la-print"></i></a>
+                                    <a href="/download-invoice/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Download Invoice"><i class="la la-download"></i></a>
                                     @endif
                                     <a href="/detail-booking/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
                                     <a href="/batal-booking/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Batal" onclick="return confirm('Anda yakin akan membatalkan data ini?')"><i class="la la-trash"></i></a>
+                                    @if ($item->status_invoice === 'Tidak')
+                                    <a href="/download-invoice/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Download Invoice" onclick="return confirm('Penting! Setelah melakukan download, lakukan refresh halaman agar mendapatkan informasi baru!')"><i class="la la-download"></i></a>
+                                    @else
+                                    <a href="/pembayaran/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Konfirmasi Pembayaran" disabled><i class="la la-money"></i></a>
+                                    @endif
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
                     <div class="section-block"></div>
-                    <div class="cart-actions d-flex justify-content-end align-items-center pt-4 pb-5">
-                        <div class="btn-box">
-                            @if ($item->status_invoice === 'Tidak')
-                            <a href="/download-invoice/{{ $item->id_pesanan }}" class="theme-btn" onclick="return confirm('Penting! Setelah melakukan download, lakukan refresh halaman agar mendapatkan informasi baru!')">
-                                Download Invoice
-                            </a>
-                            @else
-                            <a href="/pembayaran/{{ $item->id_pesanan }}" class="theme-btn" disabled>Konfirmasi Pembayaran</a>
-                            @endif
-                        </div>
-                    </div>
-                    @endforeach
                 </div><!-- end cart-wrap -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->

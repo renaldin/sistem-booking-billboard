@@ -63,6 +63,78 @@ class KonfirmasiPembayaran extends Controller
         return view('admin.konfirmasiPembayaran.detail', $data);
     }
 
+    public function editStatus($id_pesanan)
+    {
+        if (!Session()->get('email')) {
+            return redirect()->route('admin');
+        }
+
+        $dataOrder = $this->ModelOrder->detail($id_pesanan);
+
+        if (Request()->status_order === 'Dibayar') {
+            // order
+            $dataPesan = [
+                'id_pesanan'    => $id_pesanan,
+                'status_order'  => 'Dibayar',
+            ];
+
+            // reklame
+            $dataReklame = [
+                'id_reklame'    => $dataOrder->id_reklame,
+                'status'        => 'Sudah Dipesan'
+            ];
+        } elseif (Request()->status_order === 'Approve/Tayang') {
+            // order
+            $dataPesan = [
+                'id_pesanan'    => $id_pesanan,
+                'status_order'  => 'Approve/Tayang',
+            ];
+
+            // reklame
+            $dataReklame = [
+                'id_reklame'    => $dataOrder->id_reklame,
+                'status'        => 'Sudah Dipesan'
+            ];
+        } elseif (Request()->status_order === 'Selesai') {
+            // order
+            $dataPesan = [
+                'id_pesanan'    => $id_pesanan,
+                'status_order'  => 'Selesai',
+            ];
+
+            // reklame
+            $dataReklame = [
+                'id_reklame'    => $dataOrder->id_reklame,
+                'status'        => 'Belum Dipesan'
+            ];
+        }
+
+        $this->ModelReklame->edit($dataReklame);
+        $this->ModelOrder->edit($dataPesan);
+        return redirect()->route('konfirmasi-pembayaran')->with('berhasil', 'Anda Berhasil Status ID Pesanan ' . $dataOrder->id_pesanan);
+    }
+
+    public function hapus($id_konfirmasi_pembayaran)
+    {
+        $detailBayar = $this->ModelKonfirmasiPembayaran->detail($id_konfirmasi_pembayaran);
+        $dataOrder = $this->ModelOrder->detail($detailBayar->id_pesanan);
+
+        $data = [
+            'id_pesanan'    => $dataOrder->id_pesanan,
+            'status_order'  => "Batal"
+        ];
+
+        $dataReklame = [
+            'id_reklame'    => $dataOrder->id_reklame,
+            'status'        => 'Belum Dipesan'
+        ];
+
+        $this->ModelReklame->edit($dataReklame);
+        $this->ModelOrder->edit($data);
+        $this->ModelKonfirmasiPembayaran->hapus($id_konfirmasi_pembayaran);
+        return redirect()->route('konfirmasi-pembayaran')->with('berhasil', 'Anda Berhasil Menghapus Pembayaran ID Pesanan ' . $dataOrder->id_pesanan);
+    }
+
     public function pembayaran($id_pesanan)
     {
         if (!Session()->get('email')) {
@@ -72,10 +144,10 @@ class KonfirmasiPembayaran extends Controller
         $dataOrder = $this->ModelOrder->detail($id_pesanan);
 
         $data = [
-            'title'     => 'Konfirmasi Pembayaran',
+            'title'         => 'Konfirmasi Pembayaran',
             'jumlahOrder'   => $this->ModelOrder->jumlahOrderMember(Session()->get('id_member')),
-            'user'      => $this->ModelUser->detail($dataOrder->id_member),
-            'biodata'      => $this->ModelBiodataWeb->detail(1),
+            'user'          => $this->ModelUser->detail($dataOrder->id_member),
+            'biodata'       => $this->ModelBiodataWeb->detail(1),
             'id_pesanan'    => $id_pesanan
         ];
 

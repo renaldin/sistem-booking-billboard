@@ -140,10 +140,17 @@
                                         @elseif ($item->status_order === 'Dibayar')
                                             <span class="badge badge-success">{{ $item->status_order }}</td></span>
                                         @elseif ($item->status_order === 'Dibooking')
+                                            <span class="badge badge-info">{{ $item->status_order }}</td></span>
+                                        @elseif ($item->status_order === 'Approve/Tayang')
+                                            <span class="badge badge-warning">{{ $item->status_order }}</td></span>
+                                        @elseif ($item->status_order === 'Selesai')
                                             <span class="badge badge-primary">{{ $item->status_order }}</td></span>
                                         @endif
                                     </td>
                                     <td>
+                                        @if ($item->status_order !== 'Batal')
+                                        <a href="/download-invoice/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Download Invoice" onclick="return confirm('Klik Ok! Untuk Download Invoice.')"><i class="la la-download"></i></a>  
+                                        @endif
                                         <a href="/detail-booking/{{ $item->id_pesanan }}" class="theme-btn theme-btn-small" data-toggle="tooltip" data-placement="top" title="Detail"><i class="la la-eye"></i></a>
                                     </td>
                                 </tr>

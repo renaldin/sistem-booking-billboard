@@ -121,6 +121,7 @@
                                             <div class="comment">
                                                 <div class="comment-body">
                                                     @foreach ($order as $item)
+                                                    @if($item->star !== null)
                                                     <div class="meta-data">
                                                         <h3 class="comment__author">{{ $item->nama }}</h3>
                                                         <div class="meta-data-inner d-flex">
@@ -138,6 +139,7 @@
                                                     <p class="comment-content">
                                                        {{ $item->review }}
                                                     </p>
+                                                    @endif
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -207,8 +209,8 @@
 ================================= -->
 
 <div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog  modal-lg"" role="document">
+        <div class="modal-content modal-lg">
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-12">

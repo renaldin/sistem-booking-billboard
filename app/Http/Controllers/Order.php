@@ -110,4 +110,18 @@ class Order extends Controller
 
         return view('admin.order.detail', $data);
     }
+
+    public function hapus($id_pesanan)
+    {
+        $dataOrder = $this->ModelOrder->detail($id_pesanan);
+
+        $dataReklame = [
+            'id_reklame'    => $dataOrder->id_reklame,
+            'status'        => 'Belum Dipesan'
+        ];
+
+        $this->ModelReklame->edit($dataReklame);
+        $this->ModelOrder->hapus($id_pesanan);
+        return redirect()->route('kelola-order')->with('berhasil', 'Anda Berhasil Menghapus Pembayaran ID Pesanan ' . $dataOrder->id_pesanan);
+    }
 }

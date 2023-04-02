@@ -147,10 +147,13 @@ Route::group(['middleware' => 'revalidate'], function () {
         Route::post('/beri-harga/{id}', [Order::class, 'prosesBeriHarga']);
         Route::get('/detail-order/{id}', [Order::class, 'detail']);
         Route::get('/download-detail/{id}', [Booking::class, 'downloadInvoice']);
+        Route::get('/hapus-order/{id}', [Order::class, 'hapus']);
 
         // Data Konfirmasi Pembayaran
         Route::get('/konfirmasi-pembayaran', [KonfirmasiPembayaran::class, 'index'])->name('konfirmasi-pembayaran');
         Route::get('/detail-pembayaran/{id}', [KonfirmasiPembayaran::class, 'detail']);
+        Route::get('/hapus-pembayaran/{id}', [KonfirmasiPembayaran::class, 'hapus']);
+        Route::post('/edit-status/{id}', [KonfirmasiPembayaran::class, 'editStatus']);
 
         // Cetak PDF
         Route::post('/cetak-pdf', [Cetak::class, 'index']);

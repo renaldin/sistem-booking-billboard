@@ -92,7 +92,7 @@ class Booking extends Controller
         } else {
             // return redirect()->route('reklame-booking')->with('gagal', 'Reklame Billboard Sudah Dibooking, Anda Tidak Bisa Booking. Silahkan Pilih Reklame Billboard Belum Dibooking Yang Ada Dihalaman ini!');
             $data['success'] = 'gagal';
-            $data['pesan']   = 'Reklame Billboard Sudah Dibooking, Anda Tidak Bisa Booking. Silahkan Klik Tombol Untuk Pilih Reklame Billboard Yang Dapat Dibooking!';
+            $data['pesan']   = 'Billboard sudah dibooking, silahkan pilih tanggal lain, jika menginginkan tanggal yang sama silahkan pilih lokasi lain :';
         }
         return response()->json($data);
     }

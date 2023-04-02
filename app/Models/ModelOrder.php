@@ -43,7 +43,7 @@ class ModelOrder extends Model
 
     public function jumlahOrderReklame($id_reklame)
     {
-        return DB::table('order')->where('id_reklame', $id_reklame)->count();
+        return DB::table('order')->where([['id_reklame', '=', $id_reklame], ['star', '<>', null]])->count();
     }
 
     public function totalStar($id_reklame)
@@ -133,7 +133,7 @@ class ModelOrder extends Model
     }
 
     // cetak
-public function ambilDataOrder($kolom, $kolom2)
+    public function ambilDataOrder($kolom, $kolom2)
     {
         return DB::table('order')
             ->select($kolom, $kolom2)

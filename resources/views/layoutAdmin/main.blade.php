@@ -114,23 +114,17 @@
 
             </div>
         </div>
-        <div class="dashboard-main-content">
-            <div class="container-fluid">
+        
 
-                <div>
                 {{-- Content --}}
                 @yield('content')
                 {{-- End Content --}}
-                </div>
-
-                <div class="border-top mt-5"></div>
 
                 {{-- Footer --}}
-                @include('layoutAdmin.footer')
+                {{-- @include('layoutAdmin.footer') --}}
                 {{-- End Footer --}}
 
-            </div>
-        </div>
+            
     </div>
 </section>
 
