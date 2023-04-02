@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Mar 2023 pada 09.55
+-- Waktu pembuatan: 02 Apr 2023 pada 09.04
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -81,6 +81,22 @@ CREATE TABLE `data_order` (
   `id_reklame` int(11) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -183,7 +199,8 @@ CREATE TABLE `invoice` (
 INSERT INTO `invoice` (`no_invoice`, `id_pesanan`, `tanggal_dibuat`, `tanggal_tempo`) VALUES
 ('IN-202302110323', 'PO-202302110902', '2023-02-11', '2023-02-18'),
 ('IN-202302120704', 'PO-202302111003', '2023-02-12', '2023-02-19'),
-('IN-202303121018', 'PO-202301270624', '2023-03-12', '2023-03-19');
+('IN-202303121018', 'PO-202301270624', '2023-03-12', '2023-03-19'),
+('IN-202303200331', 'PO-202303200335', '2023-03-20', '2023-03-27');
 
 -- --------------------------------------------------------
 
@@ -205,10 +222,30 @@ CREATE TABLE `konfirmasi_pembayaran` (
 --
 
 INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi_pembayaran`, `id_pesanan`, `id_member`, `id_reklame`, `tanggal_bayar`, `upload_BT`) VALUES
-(1, 'PO-202301270852', 1, 11, '2023-01-29', '01292023090400PO-202301270852.png'),
 (2, 'PO-202301270655', 1, 10, '2023-01-29', '01292023090531PO-202301270655.png'),
-(3, 'PO-202301270624', 1, 1, '2023-01-29', '01292023090615PO-202301270624.png'),
-(4, 'PO-202302110902', 1, 8, '2023-02-12', '02122023071439PO-202302110902.png');
+(3, 'PO-202301270624', 1, 1, '2023-01-29', '01292023090615PO-202301270624.png');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
 
 -- --------------------------------------------------------
 
@@ -228,7 +265,7 @@ CREATE TABLE `order` (
   `jam_harga` time NOT NULL,
   `star` int(11) DEFAULT NULL,
   `review` text DEFAULT NULL,
-  `status_order` enum('Dibooking','Batal','Dibayar') NOT NULL,
+  `status_order` enum('Dibooking','Batal','Dibayar','Approve/Tayang','Selesai') NOT NULL,
   `status_invoice` enum('Sudah','Tidak') DEFAULT 'Tidak'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -237,15 +274,14 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id_pesanan`, `id_member`, `id_reklame`, `cekin_pasang`, `cekout_pasang`, `tambah_cetak`, `tanggal`, `harga`, `jam_harga`, `star`, `review`, `status_order`, `status_invoice`) VALUES
-('PO-202301270624', 1, 1, '0000-00-00', '0000-00-00', 'Ya', '2023-01-27', 5000000, '04:50:52', 4, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibayar', 'Sudah'),
+('PO-202301270624', 1, 1, '0000-00-00', '0000-00-00', 'Ya', '2023-01-27', 5000000, '04:50:52', 4, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Approve/Tayang', 'Sudah'),
 ('PO-202301270646', 3, 3, '0000-00-00', '0000-00-00', 'Tidak', '2023-01-27', 15000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibooking', 'Tidak'),
 ('PO-202301270655', 1, 10, '0000-00-00', '0000-00-00', 'Ya', '2023-01-27', 5000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibayar', 'Tidak'),
-('PO-202301270656', 1, 11, '0000-00-00', '0000-00-00', 'Ya', '2023-01-27', 10000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Batal', 'Tidak'),
-('PO-202301270852', 1, 11, '0000-00-00', '0000-00-00', 'Ya', '2023-01-28', 10000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibayar', 'Tidak'),
+('PO-202301270852', 1, 11, '0000-00-00', '0000-00-00', 'Ya', '2023-01-28', 10000000, '04:50:52', 5, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Batal', 'Tidak'),
 ('PO-202301290745', 4, 11, '0000-00-00', '0000-00-00', 'Ya', '2023-01-29', 10000000, '03:42:45', 4, 'Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit anim laborum sint occaecat cupidatat non proident. Occaecat cupidatat non proident des.', 'Dibooking', 'Tidak'),
-('PO-202302110902', 1, 8, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 10000000, '17:48:02', 4, 'Sangat menarik. Websitenya kerenn euy', 'Dibayar', 'Sudah'),
+('PO-202302110902', 1, 8, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 10000000, '17:48:02', 4, 'Sangat menarik. Websitenya kerenn euy', 'Batal', 'Sudah'),
 ('PO-202302110937', 1, 8, '2023-02-11', '2023-06-15', 'Tidak', '2023-02-11', 5000000, '05:32:37', NULL, NULL, 'Batal', 'Tidak'),
-('PO-202302111003', 1, 12, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 5000000, '18:27:03', NULL, NULL, 'Dibooking', 'Sudah'),
+('PO-202302111003', 1, 12, '2023-02-11', '2023-04-11', 'Ya', '2023-02-11', 5000000, '18:27:03', NULL, NULL, 'Batal', 'Sudah'),
 ('PO-202303060144', 1, 7, '0000-00-00', '0000-00-00', 'Ya', '2023-03-06', NULL, '22:22:44', NULL, NULL, 'Batal', 'Tidak'),
 ('PO-202303060148', 1, 7, '0000-00-00', '0000-00-00', 'Ya', '2023-03-06', NULL, '22:33:48', NULL, NULL, 'Batal', 'Tidak'),
 ('PO-202303060204', 1, 7, '0000-00-00', '0000-00-00', 'Ya', '2023-03-06', NULL, '23:19:04', NULL, NULL, 'Batal', 'Tidak'),
@@ -255,7 +291,8 @@ INSERT INTO `order` (`id_pesanan`, `id_member`, `id_reklame`, `cekin_pasang`, `c
 ('PO-202303060249', 1, 7, '0000-00-00', '0000-00-00', 'Ya', '2023-03-06', NULL, '23:07:49', NULL, NULL, 'Batal', 'Tidak'),
 ('PO-202303060741', 1, 7, '2023-03-06', '2023-04-06', 'Ya', '2023-03-06', NULL, '16:59:41', NULL, NULL, 'Batal', 'Tidak'),
 ('PO-202303060859', 1, 7, '2023-03-06', '2023-05-06', 'Ya', '2023-03-06', NULL, '17:14:59', NULL, NULL, 'Batal', 'Tidak'),
-('PO-202303130538', 1, 7, '2023-03-13', '2023-04-13', 'Ya', '2023-03-13', NULL, '14:34:38', NULL, NULL, 'Batal', 'Tidak');
+('PO-202303130538', 1, 7, '2023-03-13', '2023-04-13', 'Ya', '2023-03-13', NULL, '14:34:38', NULL, NULL, 'Batal', 'Tidak'),
+('PO-202303200335', 1, 4, '2023-03-20', '2023-06-20', 'Ya', '2023-03-20', NULL, '12:27:35', NULL, NULL, 'Batal', 'Sudah');
 
 -- --------------------------------------------------------
 
@@ -279,6 +316,36 @@ INSERT INTO `partner` (`id_partner`, `nama_partner`, `gambar`) VALUES
 (4, 'Partner 3', '01242023091826Partner 3.png'),
 (5, 'Partner 4', '01242023091847Partner 4.png'),
 (6, 'Partner 5', '01242023091909Partner 5.png');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -316,11 +383,11 @@ INSERT INTO `reklame` (`id_reklame`, `lokasi`, `ukuran`, `alamat`, `mulai_harga`
 (5, 'Lokasi 4', 'Ukuran 4', 'Jalan Contoh 4 No. 4, RT 4 RW 4, Kelurahan 4, Kecamatan 4, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Lanscape', 'Penerangan 4', 'Jarak Pandang 4', 'Jumlah Sisi 4', 'Lalu Lintas 4', 'Sekitar 4', 'Audiens 4', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023081925Lokasi 4.jpg', 'Belum Dipesan'),
 (6, 'Lokasi 5', 'Ukuran 5', 'Jalan Contoh 5 No. 5, RT 5 RW 5, Kelurahan 5, Kecamatan 5, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 5', 'Jarak Pandang 5', 'Jumlah Sisi 5', 'Lalu Lintas 5', 'Sekitar 5', 'Audiens 5', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082030Lokasi 5.jpg', 'Sudah Dibooking'),
 (7, 'Lokasi 6', 'Ukuran 6', 'Jalan Contoh 6 No. 6, RT 6 RW 6, Kelurahan 6, Kecamatan 6, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 6', 'Jarak Pandang 6', 'Jumlah Sisi 6', 'Lalu Lintas 6', 'Sekitar 6', 'Audiens 6', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082125Lokasi 6.jpg', 'Belum Dipesan'),
-(8, 'Lokasi 7', 'Ukuran 7', 'Jalan Contoh 7 No. 7, RT 7 RW 7, Kelurahan 7, Kecamatan 7, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 7', 'Jarak Pandang 7', 'Jumlah Sisi 7', 'Lalu Lintas 7', 'Sekitar 7', 'Audiens 7', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082213Lokasi 7.jpg', 'Sudah Dipesan'),
+(8, 'Lokasi 7', 'Ukuran 7', 'Jalan Contoh 7 No. 7, RT 7 RW 7, Kelurahan 7, Kecamatan 7, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 7', 'Jarak Pandang 7', 'Jumlah Sisi 7', 'Lalu Lintas 7', 'Sekitar 7', 'Audiens 7', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082213Lokasi 7.jpg', 'Belum Dipesan'),
 (9, 'Lokasi 8', 'Ukuran 8', 'Jalan Contoh 8 No. 8, RT 8 RW 8, Kelurahan 8, Kecamatan 8, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 8', 'Jarak Pandang 8', 'Jumlah Sisi 8', 'Lalu Lintas 8', 'Sekitar 8', 'Audiens 8', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082301Lokasi 8.jpg', 'Sudah Dibooking'),
 (10, 'Lokasi 9', 'Ukuran 9', 'Jalan Contoh 9 No. 9, RT 9 RW 9, Kelurahan 9, Kecamatan 9, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 9', 'Jarak Pandang 9', 'Jumlah Sisi 9', 'Lalu Lintas 9', 'Sekitar 9', 'Audiens 9', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082347Lokasi 9.jpg', 'Sudah Dipesan'),
-(11, 'Lokasi 10', 'Ukuran 10', 'Jalan Contoh 10 No. 10, RT 10 RW 10, Kelurahan 10, Kecamatan 10, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 10', 'Jarak Pandang 10', 'Jumlah Sisi 10', 'Lalu Lintas 10', 'Sekitar 10', 'Audiens 10', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082434Lokasi 10.jpg', 'Sudah Dipesan'),
-(12, 'Lokasi 11', 'Ukuran 11', 'Jalan Contoh 11 No. 11, RT 11 RW 11, Kelurahan 11, Kecamatan 10, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Lanscape', 'Penerangan 11', 'Jarak Pandang 11', 'Jumlah Sisi 11', 'Lalu Lintas 11', 'Sekitar 11', 'Audiens 11', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '02042023015842Lokasi 11.jpg', 'Sudah Dibooking'),
+(11, 'Lokasi 10', 'Ukuran 10', 'Jalan Contoh 10 No. 10, RT 10 RW 10, Kelurahan 10, Kecamatan 10, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Potrait', 'Penerangan 10', 'Jarak Pandang 10', 'Jumlah Sisi 10', 'Lalu Lintas 10', 'Sekitar 10', 'Audiens 10', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '01242023082434Lokasi 10.jpg', 'Belum Dipesan'),
+(12, 'Lokasi 11', 'Ukuran 11', 'Jalan Contoh 11 No. 11, RT 11 RW 11, Kelurahan 11, Kecamatan 10, Kab. Bandung, Jawa Barat, 60256', 5000000, 10000000, 'Lanscape', 'Penerangan 11', 'Jarak Pandang 11', 'Jumlah Sisi 11', 'Lalu Lintas 11', 'Sekitar 11', 'Audiens 11', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '02042023015842Lokasi 11.jpg', 'Belum Dipesan'),
 (13, 'Lokasi 15', 'Ukuran 15', 'Bandung', 5000000, 10000000, 'Lanscape', 'Penerangan 15', 'Jarak Pandang 15', 'Jumlah Sisi 15', 'Lalu Lintas 15', 'Sekitar 15', 'Audiens 15', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '03122023100303Lokasi 15.jpg', 'Belum Dipesan'),
 (14, 'Lokasi 16', 'Ukuran 16', 'Bandung', 10000000, 15000000, 'Lanscape', 'Penerangan 16', 'Jarak Pandang 16', 'Jumlah Sisi 16', 'Lalu Lintas 16', 'Sekitar 16', 'Audiens 16', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '03122023101100Lokasi 16.jpg', 'Belum Dipesan'),
 (15, 'Lokasi 18', 'Ukuran 18', 'Subang', 5000000, 10000000, 'Lanscape', 'Penerangan 18', 'Jarak Pandang 18', 'Jumlah Sisi 18', 'Lalu Lintas 18', 'Sekitar 18', 'Audiens 18', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7383352199904!2d107.60482541427588!3d-6.921851769671816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e89dbe0ec231%3A0x177412aac90cd065!2sAlun-Alun%20Kota%20Bandung!5e0!3m2!1sid!2sid!4v1674467889069!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '03182023080450Lokasi 18.jpg', 'Belum Dipesan');
@@ -357,6 +424,23 @@ INSERT INTO `user` (`id_member`, `nama`, `email`, `password`, `alamat`, `nomor_t
 (5, 'Renaldi 5', 'renaldi5@gmail.com', '$2y$10$ik1T4nUEDe.gHo2zXSUDqeHqFq701aRrKm6lHObkaDiQFOFkEOH2q', 'Bandung', '08989786444', 'Perusahaan 5', 'Alamat Perusahaan 5', 'User', '2023-02-16', '02162023135448Perusahaan 5.jpg', '02162023135408Perusahaan 5.png'),
 (7, 'Renaldi Noviandi', 'renaldinoviandi0@gmail.com', '$2y$10$IkKLIYPgHpFYxU8Kf1Gnsu/alC3Tv0EVwheu.U5aNAJXsR61Q6SUi', 'Bandung', '08989786444', 'Perusahaan 0', 'Alamat Perusahaan 0', 'User', '2023-03-02', NULL, '03022023094537Perusahaan 0.png');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -372,6 +456,13 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `biodata_web`
   ADD PRIMARY KEY (`id_biodata_web`);
+
+--
+-- Indeks untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
 -- Indeks untuk tabel `faq`
@@ -398,6 +489,12 @@ ALTER TABLE `konfirmasi_pembayaran`
   ADD PRIMARY KEY (`id_konfirmasi_pembayaran`);
 
 --
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `order`
 --
 ALTER TABLE `order`
@@ -410,6 +507,20 @@ ALTER TABLE `partner`
   ADD PRIMARY KEY (`id_partner`);
 
 --
+-- Indeks untuk tabel `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indeks untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
 -- Indeks untuk tabel `reklame`
 --
 ALTER TABLE `reklame`
@@ -420,6 +531,13 @@ ALTER TABLE `reklame`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_member`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -436,6 +554,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `biodata_web`
   MODIFY `id_biodata_web` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `faq`
@@ -456,10 +580,22 @@ ALTER TABLE `konfirmasi_pembayaran`
   MODIFY `id_konfirmasi_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `partner`
 --
 ALTER TABLE `partner`
   MODIFY `id_partner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `reklame`
@@ -472,6 +608,12 @@ ALTER TABLE `reklame`
 --
 ALTER TABLE `user`
   MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
