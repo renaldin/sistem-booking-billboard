@@ -142,4 +142,27 @@ class ModelOrder extends Model
             ->orderBy('tanggal', 'DESC')
             ->get();
     }
+
+    public function cetakOrder($kolom, $data)
+    {
+        if ($kolom === 'Member') {
+            return DB::table('order')
+                ->where('order.id_member', $data)
+                ->join('user', 'user.id_member', '=', 'order.id_member', 'left')
+                ->join('reklame', 'reklame.id_reklame', '=', 'order.id_reklame', 'left')
+                ->get();
+        } else if ($kolom === 'Reklame') {
+            return DB::table('order')
+                ->where('order.id_reklame', $data)
+                ->join('user', 'user.id_member', '=', 'order.id_member', 'left')
+                ->join('reklame', 'reklame.id_reklame', '=', 'order.id_reklame', 'left')
+                ->get();
+        } else if ($kolom === 'Tanggal') {
+            return DB::table('order')
+                ->where('order.tanggal', $data)
+                ->join('user', 'user.id_member', '=', 'order.id_member', 'left')
+                ->join('reklame', 'reklame.id_reklame', '=', 'order.id_reklame', 'left')
+                ->get();
+        }
+    }
 }

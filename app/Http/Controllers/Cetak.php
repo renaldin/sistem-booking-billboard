@@ -24,7 +24,7 @@ class Cetak extends Controller
 
     public function index()
     {
-        if (!Session()->get('email')) {
+        if (!Session()->get('status')) {
             return redirect()->route('admin');
         }
 
@@ -43,10 +43,37 @@ class Cetak extends Controller
         }
     }
 
-public function ambilDataOrder(){
-    if(Request()->kolom === 'Pelanggan'){
+    public function cetakOrder()
+    {
+        if (!Session()->get('status')) {
+            return redirect()->route('admin');
+        }
+
+        $cetakOrder = Request()->cetakOrder;
+
+        if ($cetakOrder === 'Member') {
+            $data = Request()->post('id_member');
+        } elseif ($cetakOrder === 'Reklame') {
+            $data = Request()->post('id_reklame');
+        } elseif ($cetakOrder === 'Tanggal') {
+            $data = Request()->post('tanggal');
+        }
+
+        $data = [
+            'title'     => 'Rekap Order Berdasarkan ' . $cetakOrder,
+            'biodata'   => $this->ModelBiodataWeb->detail(1),
+            'order'     => $this->ModelOrder->cetakOrder($cetakOrder, $data)
+        ];
+
+        $pdf = PDF::loadview('admin/cetak/cetak_order', $data);
+        return $pdf->download($data['title'] . ' ' . date('d F Y') . '.pdf');
+    }
+
+    public function ambilDataOrder()
+    {
+        if (Request()->kolom === 'Pelanggan') {
             $kolom = $this->ModelOrder->ambilDataOrder('order.id_member', 'user.nama')->toArray();
-            $dataKolom = array_values (array_map ("unserialize", array_unique (array_map ("serialize", $kolom))));
+            $dataKolom = array_values(array_map("unserialize", array_unique(array_map("serialize", $kolom))));
             $data = [
                 'dataKolom' => $dataKolom,
                 'type'      => 'id_member'

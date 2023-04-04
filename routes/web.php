@@ -157,5 +157,6 @@ Route::group(['middleware' => 'revalidate'], function () {
 
         // Cetak PDF
         Route::post('/cetak-pdf', [Cetak::class, 'index']);
+        Route::post('/cetak-pdf-order', [Cetak::class, 'cetakOrder']);
     });
 });

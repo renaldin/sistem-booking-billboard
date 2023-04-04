@@ -40,7 +40,9 @@
                     <div class="form-content">
                         <div class="table-form table-responsive">
                             <div class="mb-2">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetak"><i class="la la-print"></i> Cetak PDF</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetakMember"><i class="la la-print"></i> Member</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetakReklame"><i class="la la-print"></i> Reklame</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetakTanggal"><i class="la la-print"></i> Tanggal</button>
                             </div>
                             <div class="mb-2">
                                 @if (session('berhasil'))    
@@ -119,11 +121,99 @@
 </div>
 
 {{-- cetak --}}
-<div class="modal fade" id="cetak"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
+<div class="modal fade" id="cetakMember"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cetak Berdasarkan Member</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         <div class="modal-body">
-            <form action="/cetak-pdf" method="POST">
+            <form action="/cetak-pdf-order" method="POST">
+                @csrf
+                <div class="contact-form-action">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-box">
+                                <label class="label-text">Pilih Member</label>
+                                <div class="form-group">
+                                    <span class="la la-calendar form-icon"></span>
+                                    <input type="hidden" name="cetakOrder" value="Member">
+                                    <div class="form-group select-contain w-100">
+                                        <select class="select-contain-select" name="id_member">
+                                            @foreach ($dataMember as $item)
+                                                <option value="{{$item->id_member}}">{{$item->nama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+            <button type="submit" class="btn btn-primary">Cetak</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cetakReklame"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cetak Berdasarkan Reklame</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <div class="modal-body">
+            <form action="/cetak-pdf-order" method="POST">
+                @csrf
+                <div class="contact-form-action">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-box">
+                                <label class="label-text">Pilih Reklame</label>
+                                <div class="form-group">
+                                    <span class="la la-calendar form-icon"></span>
+                                    <input type="hidden" name="cetakOrder" value="Reklame">
+                                    <div class="form-group select-contain w-100">
+                                        <select class="select-contain-select" name="id_reklame">
+                                            @foreach ($dataReklame as $item)
+                                                <option value="{{$item->id_reklame}}">{{$item->lokasi}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+            <button type="submit" class="btn btn-primary">Cetak</button>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cetakTanggal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cetak Berdasarkan Tanggal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <div class="modal-body">
+            <form action="/cetak-pdf-order" method="POST">
                 @csrf
                 <div class="contact-form-action">
                     <div class="row">
@@ -132,8 +222,14 @@
                                 <label class="label-text">Pilih Tanggal</label>
                                 <div class="form-group">
                                     <span class="la la-calendar form-icon"></span>
-                                    <input type="hidden" name="cetak" value="order">
-                                    <input class="date-range form-control" type="text" name="rangetanggal" r readonly>
+                                    <input type="hidden" name="cetakOrder" value="Tanggal">
+                                    <div class="form-group select-contain w-100">
+                                        <select class="select-contain-select" name="tanggal">
+                                            @foreach ($dataTanggal as $item)
+                                                <option value="{{$item->tanggal}}">{{ date('d F Y', strtotime($item->tanggal)) }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -141,13 +237,14 @@
                 </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
             <button type="submit" class="btn btn-primary">Cetak</button>
         </div>
         </form>
         </div>
     </div>
 </div>
+{{-- End cETAK --}}
 
 {{-- tambah harga --}}
 @foreach ($order as $item)

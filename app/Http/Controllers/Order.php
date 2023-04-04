@@ -29,12 +29,25 @@ class Order extends Controller
             return redirect()->route('admin');
         }
 
+        // Data Cetak
+        $member = $this->ModelOrder->ambilDataOrder('order.id_member', 'user.nama')->toArray();
+        $dataMember = array_values(array_map("unserialize", array_unique(array_map("serialize", $member))));
+
+        $reklame = $this->ModelOrder->ambilDataOrder('order.id_reklame', 'reklame.lokasi')->toArray();
+        $dataReklame = array_values(array_map("unserialize", array_unique(array_map("serialize", $reklame))));
+
+        $tanggal = $this->ModelOrder->ambilDataOrder('order.tanggal', 'order.tanggal')->toArray();
+        $dataTanggal = array_values(array_map("unserialize", array_unique(array_map("serialize", $tanggal))));
+
         $data = [
             'title'             => 'Data Order',
             'subTitle'          => 'Kelola Order',
             'biodata'           => $this->ModelBiodataWeb->detail(1),
             'jumlahTungguHarga' => $this->ModelOrder->jumlahTungguHarga(),
             'order'             => $this->ModelOrder->dataOrder(),
+            'dataMember'        => $dataMember,
+            'dataReklame'       => $dataReklame,
+            'dataTanggal'       => $dataTanggal,
         ];
 
         return view('admin.order.dataOrder', $data);
