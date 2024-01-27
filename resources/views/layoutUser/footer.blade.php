@@ -4,7 +4,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo padding-bottom-30px">
-                        <a href="index-2.html" class="foot__logo"><img src="{{ asset('foto_biodata/'.$biodata->logo) }}" alt="logo"></a>
+                        <a href="index-2.html" class="foot__logo"><img src="{{ asset('foto_biodata/'.$biodata->logo) }}" style="width: 100px;" alt="logo"></a>
                     </div><!-- end logo -->
                     <p class="footer__desc">Morbi convallis bibendum urna ut viverra. Maecenas consequat</p>
                     <ul class="list-items pt-3">

@@ -9,12 +9,13 @@ class Partner extends Controller
 {
 
     private $ModelPartner;
-    private $ModelBiodataWeb;
+    private $ModelBiodataWeb, $publicPath;
 
     public function __construct()
     {
         $this->ModelPartner = new ModelPartner();
         $this->ModelBiodataWeb = new ModelBiodataWeb();
+        $this->publicPath = 'foto_partner';
     }
 
     public function index()
@@ -63,7 +64,7 @@ class Partner extends Controller
 
         $file = Request()->gambar;
         $fileName = date('mdYHis') . Request()->nama_partner . '.' . $file->extension();
-        $file->move(public_path('foto_partner'), $fileName);
+        $file->move(public_path($this->publicPath), $fileName);
 
         $data = [
             'nama_partner'          => Request()->nama_partner,
@@ -105,12 +106,12 @@ class Partner extends Controller
         if (Request()->gambar <> "") {
             $partner = $this->ModelPartner->detail($id_partner);
             if ($partner->gambar <> "") {
-                unlink(public_path('foto_partner') . '/' . $partner->gambar);
+                unlink(public_path($this->publicPath) . '/' . $partner->gambar);
             }
 
             $file = Request()->gambar;
             $fileName = date('mdYHis') . Request()->nama_partner . '.' . $file->extension();
-            $file->move(public_path('foto_partner'), $fileName);
+            $file->move(public_path($this->publicPath), $fileName);
 
             $data = [
                 'id_partner'            => $id_partner,
@@ -147,7 +148,7 @@ class Partner extends Controller
     {
         $partner = $this->ModelPartner->detail($id_partner);
         if ($partner->gambar <> "") {
-            unlink(public_path('foto_partner') . '/' . $partner->gambar);
+            unlink(public_path($this->publicPath) . '/' . $partner->gambar);
         }
         $this->ModelPartner->hapus($id_partner);
         return redirect()->route('kelola-partner')->with('berhasil', 'Data Berhasil Dihapus !');

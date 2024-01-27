@@ -15,7 +15,7 @@ class KonfirmasiPembayaran extends Controller
     private $ModelUser;
     private $ModelOrder;
     private $ModelReklame;
-    private $ModelBiodataWeb;
+    private $ModelBiodataWeb, $publicPath;
 
     public function __construct()
     {
@@ -24,6 +24,7 @@ class KonfirmasiPembayaran extends Controller
         $this->ModelOrder = new ModelOrder();
         $this->ModelReklame = new ModelReklame();
         $this->ModelBiodataWeb = new ModelBiodataWeb();
+        $this->publicPath = 'foto_bukti_bayar';
     }
 
     public function index()
@@ -168,7 +169,7 @@ class KonfirmasiPembayaran extends Controller
 
         $file = Request()->upload_BT;
         $fileName = date('mdYHis') . $id_pesanan . '.' . $file->extension();
-        $file->move(public_path('foto_bukti_bayar'), $fileName);
+        $file->move(public_path($this->publicPath), $fileName);
 
         $dataOrder = $this->ModelOrder->detail($id_pesanan);
 

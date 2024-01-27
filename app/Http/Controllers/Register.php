@@ -10,12 +10,13 @@ class Register extends Controller
 {
 
     private $ModelAuth;
-    private $ModelBiodataWeb;
+    private $ModelBiodataWeb, $publicPathPerusahaan;
 
     public function __construct()
     {
         $this->ModelAuth = new ModelAuth();
         $this->ModelBiodataWeb = new ModelBiodataWeb();
+        $this->publicPathPerusahaan = 'foto_perusahaan';
     }
 
     public function index()
@@ -66,7 +67,7 @@ class Register extends Controller
 
         $file = Request()->foto_perusahaan;
         $fileName = date('mdYHis') . Request()->nama_perusahaan . '.' . $file->extension();
-        $file->move(public_path('foto_perusahaan'), $fileName);
+        $file->move(public_path($this->publicPathPerusahaan), $fileName);
 
         $data = [
             'nama'              => Request()->nama,

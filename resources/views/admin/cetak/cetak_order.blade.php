@@ -144,7 +144,7 @@
                             <table>
                                 <tr>
                                     <td class="title">
-                                        <img src="https://www.sparksuite.com/images/logo.png" style="width: 100%; max-width: 300px" />
+                                        {{-- <img src="https://www.sparksuite.com/images/logo.png" style="width: 100%; max-width: 300px" /> --}}
                                     </td>
 
                                     <td>

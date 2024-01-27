@@ -10,12 +10,14 @@ class KelolaUser extends Controller
 {
 
     private $ModelUser;
-    private $ModelBiodataWeb;
+    private $ModelBiodataWeb, $publicPath, $publicPathPerusahan;
 
     public function __construct()
     {
         $this->ModelUser = new ModelUser();
         $this->ModelBiodataWeb = new ModelBiodataWeb();
+        $this->publicPath = 'foto_user';
+        $this->publicPathPerusahan = 'foto_perusahaan';
     }
 
     public function index()
@@ -83,11 +85,11 @@ class KelolaUser extends Controller
 
         $file = Request()->foto_perusahaan;
         $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file->extension();
-        $file->move(public_path('foto_perusahaan'), $filePerusahaan);
+        $file->move(public_path($this->publicPathPerusahan), $filePerusahaan);
 
         $file1 = Request()->foto_user;
         $fileUser = date('mdYHis') . Request()->nama . '.' . $file1->extension();
-        $file1->move(public_path('foto_user'), $fileUser);
+        $file1->move(public_path($this->publicPath), $fileUser);
 
         $data = [
             'nama'              => Request()->nama,
@@ -154,12 +156,12 @@ class KelolaUser extends Controller
 
             if (Request()->foto_perusahaan <> "") {
                 if ($user->foto_perusahaan <> "") {
-                    unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+                    unlink(public_path($this->publicPathPerusahan) . '/' . $user->foto_perusahaan);
                 }
 
                 $file1 = Request()->foto_perusahaan;
                 $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file1->extension();
-                $file1->move(public_path('foto_perusahaan'), $filePerusahaan);
+                $file1->move(public_path($this->publicPathPerusahan), $filePerusahaan);
 
                 $data = [
                     'id_member'         => $id_member,
@@ -189,12 +191,12 @@ class KelolaUser extends Controller
 
             if (Request()->foto_user <> "") {
                 if ($user->foto_user <> "") {
-                    unlink(public_path('foto_user') . '/' . $user->foto_user);
+                    unlink(public_path($this->publicPath) . '/' . $user->foto_user);
                 }
 
                 $file2 = Request()->foto_user;
                 $fileUser = date('mdYHis') . Request()->nama_perusahaan . '.' . $file2->extension();
-                $file2->move(public_path('foto_user'), $fileUser);
+                $file2->move(public_path($this->publicPath), $fileUser);
 
                 $data = [
                     'id_member'         => $id_member,
@@ -226,12 +228,12 @@ class KelolaUser extends Controller
 
             if (Request()->foto_perusahaan <> "") {
                 if ($user->foto_perusahaan <> "") {
-                    unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+                    unlink(public_path($this->publicPathPerusahan) . '/' . $user->foto_perusahaan);
                 }
 
                 $file1 = Request()->foto_perusahaan;
                 $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file1->extension();
-                $file1->move(public_path('foto_perusahaan'), $filePerusahaan);
+                $file1->move(public_path($this->publicPathPerusahan), $filePerusahaan);
 
                 $data = [
                     'id_member'         => $id_member,
@@ -259,12 +261,12 @@ class KelolaUser extends Controller
 
             if (Request()->foto_user <> "") {
                 if ($user->foto_user <> "") {
-                    unlink(public_path('foto_user') . '/' . $user->foto_user);
+                    unlink(public_path($this->publicPath) . '/' . $user->foto_user);
                 }
 
                 $file2 = Request()->foto_user;
                 $fileUser = date('mdYHis') . Request()->nama_perusahaan . '.' . $file2->extension();
-                $file2->move(public_path('foto_user'), $fileUser);
+                $file2->move(public_path($this->publicPath), $fileUser);
 
                 $data = [
                     'id_member'         => $id_member,
@@ -315,11 +317,11 @@ class KelolaUser extends Controller
         $user = $this->ModelUser->detail($id_member);
 
         if ($user->foto_user <> "") {
-            unlink(public_path('foto_user') . '/' . $user->foto_user);
+            unlink(public_path($this->publicPath) . '/' . $user->foto_user);
         }
 
         if ($user->foto_perusahaan <> "") {
-            unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+            unlink(public_path($this->publicPathPerusahan) . '/' . $user->foto_perusahaan);
         }
 
         $this->ModelUser->hapus($id_member);
@@ -371,12 +373,12 @@ class KelolaUser extends Controller
 
         if (Request()->foto_perusahaan <> "") {
             if ($user->foto_perusahaan <> "") {
-                unlink(public_path('foto_perusahaan') . '/' . $user->foto_perusahaan);
+                unlink(public_path($this->publicPathPerusahan) . '/' . $user->foto_perusahaan);
             }
 
             $file1 = Request()->foto_perusahaan;
             $filePerusahaan = date('mdYHis') . Request()->nama_perusahaan . '.' . $file1->extension();
-            $file1->move(public_path('foto_perusahaan'), $filePerusahaan);
+            $file1->move(public_path($this->publicPathPerusahan), $filePerusahaan);
 
             $data = [
                 'id_member'         => $id_member,
@@ -404,12 +406,12 @@ class KelolaUser extends Controller
 
         if (Request()->foto_user <> "") {
             if ($user->foto_user <> "") {
-                unlink(public_path('foto_user') . '/' . $user->foto_user);
+                unlink(public_path($this->publicPath) . '/' . $user->foto_user);
             }
 
             $file2 = Request()->foto_user;
             $fileUser = date('mdYHis') . Request()->nama_perusahaan . '.' . $file2->extension();
-            $file2->move(public_path('foto_user'), $fileUser);
+            $file2->move(public_path($this->publicPath), $fileUser);
 
             $data = [
                 'id_member'         => $id_member,
