@@ -47,7 +47,7 @@
                     <div class="menu-wrapper">
                         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
                         <div class="logo">
-                            <a href="/"><img src="{{ asset('foto_biodata/'.$biodata->logo) }}" alt="logo"></a>
+                            <a href="/"><img src="{{ asset('foto_biodata/'.$biodata->logo) }}" style="width: 100px; margin-bottom: 4px; margin-top: 4px;" alt="logo"></a>
                             <div class="menu-toggler">
                                 <i class="la la-bars"></i>
                                 <i class="la la-times"></i>

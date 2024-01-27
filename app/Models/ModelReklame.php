@@ -25,6 +25,7 @@ class ModelReklame extends Model
         return DB::table('reklame')
             ->where('status', $statusSatu)
             ->orWhere('status', $statusDua)
+            ->orderBy('id_reklame', 'DESC')
             ->get();
     }
 

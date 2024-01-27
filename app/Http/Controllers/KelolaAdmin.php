@@ -10,12 +10,13 @@ class KelolaAdmin extends Controller
 {
 
     private $ModelAdmin;
-    private $ModelBiodataWeb;
+    private $ModelBiodataWeb, $publicPath;
 
     public function __construct()
     {
         $this->ModelAdmin = new ModelAdmin();
         $this->ModelBiodataWeb = new ModelBiodataWeb();
+        $this->publicPath = 'foto_admin';
     }
 
     public function index()
@@ -73,7 +74,7 @@ class KelolaAdmin extends Controller
 
         $file = Request()->foto;
         $fileName = date('mdYHis') . Request()->nama . '.' . $file->extension();
-        $file->move(public_path('foto_admin'), $fileName);
+        $file->move(public_path($this->publicPath), $fileName);
 
         $data = [
             'nama'              => Request()->nama,
@@ -123,12 +124,12 @@ class KelolaAdmin extends Controller
         if (Request()->foto <> "") {
             $admin = $this->ModelAdmin->detail($id_admin);
             if ($admin->foto <> "") {
-                unlink(public_path('foto_admin') . '/' . $admin->foto);
+                unlink(public_path($this->publicPath) . '/' . $admin->foto);
             }
 
             $file = Request()->foto;
             $fileName = date('mdYHis') . Request()->nama . '.' . $file->extension();
-            $file->move(public_path('foto_admin'), $fileName);
+            $file->move(public_path($this->publicPath), $fileName);
 
             if (Request()->password) {
                 $data = [
@@ -175,7 +176,7 @@ class KelolaAdmin extends Controller
     {
         $admin = $this->ModelAdmin->detail($id_admin);
         if ($admin->foto <> "") {
-            unlink(public_path('foto_admin') . '/' . $admin->foto);
+            unlink(public_path($this->publicPath) . '/' . $admin->foto);
         }
 
         $this->ModelAdmin->hapus($id_admin);
@@ -218,12 +219,12 @@ class KelolaAdmin extends Controller
         if (Request()->foto <> "") {
             $admin = $this->ModelAdmin->detail($id_admin);
             if ($admin->foto <> "") {
-                unlink(public_path('foto_admin') . '/' . $admin->foto);
+                unlink(public_path($this->publicPath) . '/' . $admin->foto);
             }
 
             $file = Request()->foto;
             $fileName = date('mdYHis') . Request()->nama . '.' . $file->extension();
-            $file->move(public_path('foto_admin'), $fileName);
+            $file->move(public_path($this->publicPath), $fileName);
 
 
             $data = [

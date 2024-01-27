@@ -14,7 +14,7 @@ class Reklame extends Controller
     private $ModelReklame;
     private $ModelOrder;
     private $ModelUser;
-    private $ModelBiodataWeb;
+    private $ModelBiodataWeb, $publicPath, $publicPathDetail;
 
     public function __construct()
     {
@@ -22,6 +22,8 @@ class Reklame extends Controller
         $this->ModelOrder = new ModelOrder();
         $this->ModelUser = new ModelUser();
         $this->ModelBiodataWeb = new ModelBiodataWeb();
+        $this->publicPath = 'foto_reklame';
+        $this->publicPathDetail = 'foto_gambar_reklame';
     }
 
     public function index()
@@ -100,7 +102,7 @@ class Reklame extends Controller
             foreach (Request()->gambar_reklame as $item) {
                 $file2  = $item;
                 $filename2 = date('mdYHis') . Request()->lokasi . $i . '.' . $file2->extension();
-                $file2->move(public_path('foto_gambar_reklame'), $filename2);
+                $file2->move(public_path($this->publicPathDetail), $filename2);
                 $dataGambar = [
                     'id_reklame'        => $reklame->id_reklame + 1,
                     'gambar_reklame'    => $filename2,
@@ -111,7 +113,7 @@ class Reklame extends Controller
 
             $file = Request()->gambar;
             $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
-            $file->move(public_path('foto_reklame'), $fileName);
+            $file->move(public_path($this->publicPath), $fileName);
 
             $data = [
                 'lokasi'                => Request()->lokasi,
@@ -192,7 +194,7 @@ class Reklame extends Controller
 
             $gambarReklame = $this->ModelReklame->detailGambar($id_reklame);
             foreach ($gambarReklame as $item) {
-                unlink(public_path('foto_gambar_reklame') . '/' . $item->gambar_reklame);
+                unlink(public_path($this->publicPathDetail) . '/' . $item->gambar_reklame);
             }
 
             $this->ModelReklame->hapusGambar($id_reklame);
@@ -201,7 +203,7 @@ class Reklame extends Controller
             foreach (Request()->gambar_reklame as $item) {
                 $file2  = $item;
                 $filename2 = date('mdYHis') . Request()->lokasi . $i . '.' . $file2->extension();
-                $file2->move(public_path('foto_gambar_reklame'), $filename2);
+                $file2->move(public_path($this->publicPathDetail), $filename2);
                 $dataGambar = [
                     'id_reklame'        => $id_reklame,
                     'gambar_reklame'    => $filename2,
@@ -213,12 +215,12 @@ class Reklame extends Controller
             if (Request()->gambar <> "") {
                 $reklame = $this->ModelReklame->detail($id_reklame);
                 if ($reklame->gambar <> "") {
-                    unlink(public_path('foto_reklame') . '/' . $reklame->gambar);
+                    unlink(public_path($this->publicPath) . '/' . $reklame->gambar);
                 }
 
                 $file = Request()->gambar;
                 $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
-                $file->move(public_path('foto_reklame'), $fileName);
+                $file->move(public_path($this->publicPath), $fileName);
 
 
                 $data = [
@@ -260,12 +262,12 @@ class Reklame extends Controller
             if (Request()->gambar <> "") {
                 $reklame = $this->ModelReklame->detail($id_reklame);
                 if ($reklame->gambar <> "") {
-                    unlink(public_path('foto_reklame') . '/' . $reklame->gambar);
+                    unlink(public_path($this->publicPath) . '/' . $reklame->gambar);
                 }
 
                 $file = Request()->gambar;
                 $fileName = date('mdYHis') . Request()->lokasi . '.' . $file->extension();
-                $file->move(public_path('foto_reklame'), $fileName);
+                $file->move(public_path($this->publicPath), $fileName);
 
 
                 $data = [
@@ -331,7 +333,7 @@ class Reklame extends Controller
     {
         $reklame = $this->ModelReklame->detail($id_reklame);
         if ($reklame->gambar <> "") {
-            unlink(public_path('foto_reklame') . '/' . $reklame->gambar);
+            unlink(public_path($this->publicPath) . '/' . $reklame->gambar);
         }
         $this->ModelReklame->hapus($id_reklame);
         return redirect()->route('kelola-reklame')->with('berhasil', 'Data Berhasil Dihapus !');
